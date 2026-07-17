@@ -1,0 +1,32 @@
+---
+import Container from '../ui/Container.astro';
+import { SITE } from '../../data/site';
+import { t, type Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+---
+
+<section class="border-y border-wake-border-subtle bg-wake-subtle py-8">
+  <Container class="flex flex-wrap items-center justify-between gap-8">
+    <span class="font-mono text-[11px] uppercase text-wake-light">{dict.home.trust.text}</span>
+    <div class="flex flex-wrap items-center gap-8 md:gap-16">
+      {
+        SITE.assets.trustLogos.map((src, i) => (
+          <img
+            src={src}
+            alt={dict.home.trust.logoAlts[i]}
+            loading="lazy"
+            width="120"
+            height="50"
+            class="h-[50px] w-auto opacity-40 grayscale transition hover:opacity-90 hover:grayscale-0"
+          />
+        ))
+      }
+    </div>
+  </Container>
+</section>

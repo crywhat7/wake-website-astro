@@ -1,0 +1,103 @@
+---
+import Container from '../ui/Container.astro';
+import Button from '../ui/Button.astro';
+import MonoTag from '../ui/MonoTag.astro';
+import { SITE, whatsappUrl } from '../../data/site';
+import { t, type Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+const wa = whatsappUrl(dict.health.hero.whatsappMsg);
+---
+
+<section
+  id="hero"
+  class="relative overflow-hidden pb-32 pt-[calc(4rem+8rem)] max-lg:pb-20 max-lg:pt-28"
+>
+  <Container class="grid items-center gap-16 lg:grid-cols-[1.1fr_0.9fr]">
+    <div>
+      <MonoTag>{dict.health.hero.tag}</MonoTag>
+      <h1
+        class="mb-4 text-[clamp(2.75rem,5vw,4rem)] font-semibold leading-[1.05] tracking-[-0.04em] text-wake-text"
+      >
+        {dict.health.hero.titleBefore}
+        {' '}
+        <strong
+          class="bg-gradient-to-r from-black to-wake-accent-dark bg-clip-text font-semibold text-transparent"
+        >
+          {dict.health.hero.chaos}
+        </strong>{dict.health.hero.titleMid}
+        {' '}
+        <strong
+          class="bg-gradient-to-r from-black to-wake-accent-dark bg-clip-text font-semibold text-transparent"
+        >
+          {dict.health.hero.control}
+        </strong>
+      </h1>
+      <p class="mb-8 max-w-[520px] text-lg font-light leading-relaxed text-wake-muted">
+        {dict.health.hero.subtitle}
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <Button href={wa} target="_blank" rel="noopener noreferrer">
+          {dict.health.hero.ctaWhatsapp}
+          <i class="fa-brands fa-whatsapp text-sm"></i>
+        </Button>
+        <Button href="#modulos" variant="secondary">{dict.health.hero.ctaSystem}</Button>
+      </div>
+      <div class="mt-4">
+        <Button
+          href={SITE.healthAppLogin}
+          variant="secondary"
+          class="!text-[13px]"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i class="fa-solid fa-rocket text-[11px]"></i>
+          {dict.health.hero.ctaTry}
+        </Button>
+      </div>
+    </div>
+
+    <div
+      class="relative mx-auto flex w-full max-w-[540px] items-center justify-center lg:order-none max-lg:order-first"
+    >
+      <div
+        class="relative w-full overflow-hidden rounded-xl border border-wake-border bg-white p-4 shadow-[0_20px_40px_rgba(0,0,0,0.03)]"
+      >
+        <div class="mb-4 flex gap-1.5 border-b border-wake-border-subtle pb-2">
+          <div class="h-2 w-2 rounded-full bg-wake-border"></div>
+          <div class="h-2 w-2 rounded-full bg-wake-border"></div>
+          <div class="h-2 w-2 rounded-full bg-wake-border"></div>
+        </div>
+        <img
+          src={SITE.assets.gallery[0].src}
+          alt={dict.health.gallery.items.dashboard.alt}
+          class="mb-4 w-full rounded-lg border border-wake-border-subtle object-cover"
+          width="480"
+          height="280"
+          loading="eager"
+        />
+        <div class="grid grid-cols-2 gap-4">
+          <div class="rounded-lg border border-wake-border-subtle bg-wake-card p-4">
+            <div class="mb-2 h-2 w-[60%] rounded bg-wake-border-subtle"></div>
+            <div class="h-2 w-full rounded bg-wake-accent"></div>
+          </div>
+          <div class="rounded-lg border border-wake-border-subtle bg-wake-card p-4">
+            <div class="mb-2 h-2 w-full rounded bg-wake-border-subtle"></div>
+            <div class="h-2 w-[60%] rounded bg-wake-border-subtle"></div>
+          </div>
+        </div>
+        <div
+          class="absolute -bottom-5 -left-5 flex items-center gap-2 rounded-lg bg-wake-text px-4 py-2.5 font-mono text-[11px] text-white shadow-[0_10px_20px_rgba(0,0,0,0.1)] max-sm:left-0"
+        >
+          <span class="h-1.5 w-1.5 rounded-full bg-wake-accent-dark"></span>
+          {dict.health.hero.badge}
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>

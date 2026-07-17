@@ -1,0 +1,52 @@
+---
+interface Props {
+  href?: string;
+  variant?: 'primary' | 'secondary' | 'try' | 'nav' | 'dark';
+  class?: string;
+  type?: 'button' | 'submit';
+  target?: string;
+  rel?: string;
+  id?: string;
+}
+
+const {
+  href,
+  variant = 'primary',
+  class: className = '',
+  type = 'button',
+  target,
+  rel,
+  id,
+} = Astro.props;
+
+const variants: Record<string, string> = {
+  primary:
+    'bg-wake-text text-white border border-wake-text hover:bg-zinc-800 hover:border-zinc-800 hover:-translate-y-px',
+  secondary:
+    'bg-white text-wake-text border border-wake-border hover:bg-wake-subtle hover:border-wake-light',
+  try: 'bg-white/10 text-white border border-white/30 backdrop-blur-sm hover:bg-wake-accent hover:text-black hover:border-wake-accent',
+  nav: 'bg-health-dark text-white hover:bg-black hover:-translate-y-0.5',
+  dark: 'bg-[#333] text-white hover:bg-black',
+};
+
+const base =
+  'inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium no-underline transition-all duration-200 cursor-pointer';
+---
+
+{
+  href ? (
+    <a
+      id={id}
+      href={href}
+      target={target}
+      rel={rel}
+      class:list={[base, variants[variant], className]}
+    >
+      <slot />
+    </a>
+  ) : (
+    <button id={id} type={type} class:list={[base, variants[variant], className]}>
+      <slot />
+    </button>
+  )
+}

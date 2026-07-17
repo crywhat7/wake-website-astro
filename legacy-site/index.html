@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WAKE SOLUTIONS | Infraestructura Tecnológica Empresarial</title>
+    
+    <!-- Tipografías Premium de la industria SaaS -->
+    <link rel="poppins" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Iconos limpios -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ==========================================================================
+           SISTEMA DE DISEÑO (Variables inspiradas en Linear & Stripe)
+           ========================================================================== */
+        :root {
+            --bg: #ffffff;
+            --bg-subtle: #fafafa;
+            --bg-card: #fcfcfc;
+            
+            /* Paleta Monocromática con Acento Solicitado */
+            --accent: #adfcdc;
+            --accent-glow: rgba(173, 252, 220, 0.4);
+            --accent-dark: #00f59b;
+            --text-main: #0c0c0d;
+            --text-muted: #616166;
+            --text-light: #8e8e93;
+            
+            /* Estructura y Bordes */
+            --border: #e4e4e7;
+            --border-subtle: #f4f4f5;
+            --radius-lg: 12px;
+            --radius-md: 8px;
+            --radius-sm: 4px;
+
+            /* Sistema de Espaciado Estricto (Escala tipográfica y de aire) */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 2rem;
+            --space-lg: 4rem;
+            --space-xl: 8rem;
+            
+            --transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* ==========================================================================
+           RESET & ESTILOS BASE
+           ========================================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+            font-size: 15px;
+            letter-spacing: -0.01em;
+        }
+
+        /* Componentes de Diseño Globales */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .mono-tag {
+            font-family: 'Geist Mono', monospace;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: var(--bg-subtle);
+            border: 1px solid var(--border);
+            padding: 4px 10px;
+            border-radius: var(--radius-sm);
+            display: inline-block;
+            margin-bottom: var(--space-sm);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            color: var(--text-main);
+            margin-bottom: var(--space-xs);
+        }
+
+        .section-subtitle {
+            font-size: 17px;
+            color: var(--text-muted);
+            max-width: 600px;
+            font-weight: 400;
+            margin-bottom: var(--space-lg);
+        }
+
+        /* Botones Estilo Premium */
+        .btn {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--text-main);
+            color: var(--bg);
+            border: 1px solid var(--text-main);
+        }
+
+        .btn-primary:hover {
+            background: #27272a;
+            border-color: #27272a;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: var(--bg);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-subtle);
+            border-color: var(--text-light);
+        }
+
+        /* ==========================================================================
+           HEADER / NAVEGACIÓN
+           ========================================================================== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(228, 228, 231, 0.5);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            height: 64px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: -0.03em;
+            color: var(--text-main);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--text-main);
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        nav {
+            display: flex;
+            gap: var(--space-md);
+        }
+
+        nav a {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+            font-weight: 400;
+        }
+
+        nav a:hover {
+            color: var(--text-main);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: var(--text-main);
+            cursor: pointer;
+        }
+
+        /* ==========================================================================
+           HERO SECTION
+           ========================================================================== */
+        .hero-section {
+            padding-top: calc(64px + var(--space-xl));
+            padding-bottom: var(--space-xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: var(--space-lg);
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.75rem, 5vw, 4rem);
+            font-weight: 600;
+            letter-spacing: -0.04em;
+            line-height: 1.05;
+            color: var(--text-main);
+            margin-bottom: var(--space-sm);
+        }
+
+        .hero-content h1 strong {
+            font-weight: 600;
+            background: linear-gradient(to right, #000000, #00f59b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: var(--space-md);
+            font-weight: 300;
+            max-width: 520px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: var(--space-sm);
+        }
+
+        /* Canvas visual abstracto del Hero (Puro CSS premium) */
+        .hero-visual-wrapper {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-dashboard-mockup {
+            width: 100%;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+            padding: var(--space-sm);
+            position: relative;
+        }
+
+        .mockup-header {
+            display: flex;
+            gap: 6px;
+            margin-bottom: var(--space-sm);
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: var(--space-xs);
+        }
+
+        .mockup-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--border);
+            border-radius: 50%;
+        }
+
+        .mockup-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-sm);
+        }
+
+        .mockup-box {
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: var(--space-sm);
+            background: var(--bg-card);
+        }
+
+        .mockup-line {
+            height: 8px;
+            background: var(--border-subtle);
+            border-radius: var(--radius-sm);
+            margin-bottom: var(--space-xs);
+            width: 100%;
+        }
+
+        .mockup-line.short { width: 60%; }
+        .mockup-line.accent-line { background: var(--accent); width: 40%; }
+
+        .floating-badge {
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            background: #0c0c0d;
+            color: #fff;
+            padding: 10px 16px;
+            border-radius: var(--radius-md);
+            font-family: 'Geist Mono', monospace;
+            font-size: 11px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .floating-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--accent-dark);
+            border-radius: 50%;
+        }
+
+        /* ==========================================================================
+           LOGOS DE CLIENTES / VALOR DE MARCA
+           ========================================================================== */
+        .brand-trust {
+            padding: var(--space-md) 0;
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+            background: var(--bg-subtle);
+        }
+
+        .trust-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+        }
+
+        .trust-text {
+            font-family: 'Geist Mono', monospace;
+            font-size: 11px;
+            color: var(--text-light);
+            text-transform: uppercase;
+        }
+
+        .trust-logos {
+            display: flex;
+            gap: var(--space-lg);
+            align-items: center;
+        }
+
+        .trust-logos img {
+            height: 50px;
+            opacity: 0.4;
+            filter: grayscale(100%);
+            transition: var(--transition);
+        }
+
+        .trust-logos img:hover {
+            opacity: 0.9;
+            filter: grayscale(0%);
+        }
+
+        /* ==========================================================================
+           BENEFICIOS (Resultados Reales al estilo Metas de Stripe)
+           ========================================================================== */
+        .benefits-section {
+            padding: var(--space-xl) 0;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-md);
+        }
+
+        .benefit-metric-card {
+            border-left: 1px solid var(--border);
+            padding-left: var(--space-sm);
+            padding-top: var(--space-xs);
+            transition: var(--transition);
+        }
+
+        .benefit-metric-card:hover {
+            border-left-color: var(--text-main);
+        }
+
+        .metric-num {
+            font-family: 'Geist Mono', monospace;
+            font-size: 32px;
+            font-weight: 500;
+            letter-spacing: -0.05em;
+            color: var(--text-main);
+            margin-bottom: var(--space-xs);
+        }
+
+        .metric-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* ==========================================================================
+           SERVICIOS (Linear Grid layout alternado sin tarjetas pesadas)
+           ========================================================================== */
+        .services-section {
+            padding: var(--space-xl) 0;
+            background: var(--bg-subtle);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .services-linear-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border-top: 1px solid var(--border);
+            border-left: 1px solid var(--border);
+            margin-top: var(--space-md);
+        }
+
+        .service-linear-cell {
+            padding: var(--space-lg) var(--space-md);
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: var(--bg);
+            transition: var(--transition);
+        }
+
+        .service-linear-cell:hover {
+            background: var(--bg-card);
+            box-shadow: inset 0 -4px 0 var(--accent);
+        }
+
+        .service-linear-cell i {
+            font-size: 18px;
+            color: var(--text-main);
+            margin-bottom: var(--space-sm);
+        }
+
+        .service-linear-cell h3 {
+            font-size: 17px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .service-linear-cell p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ==========================================================================
+           PRODUCTOS DESTACADOS (Enfoque en WAKE Health como Banner Premium)
+           ========================================================================== */
+        .products-section {
+            padding: var(--space-xl) 0;
+        }
+
+        .product-hero-banner {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: var(--space-lg);
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-hero-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            z-index: 1;
+        }
+
+        .product-logo-wrapper {
+            height: 250px;
+            margin-bottom: var(--space-sm);
+        }
+
+        .product-logo-wrapper img {
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .product-info h3 {
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .product-info p {
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: var(--space-md);
+            max-width: 540px;
+        }
+
+        .product-preview-ui {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: var(--space-sm);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+        }
+
+        /* ==========================================================================
+           SOBRE NOSOTROS (Composición Visual Asimétrica Estilo Notion)
+           ========================================================================== */
+        .about-section {
+            padding: var(--space-xl) 0;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .about-composition {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: var(--space-lg);
+            align-items: start;
+        }
+
+        .about-pillars {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .pillar-block {
+            padding-bottom: var(--space-sm);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .pillar-block h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: var(--space-xs);
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .pillar-block p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ==========================================================================
+           PROCESO DE TRABAJO (Secuencial Numérico Minimalista)
+           ========================================================================== */
+        .process-section {
+            padding: var(--space-xl) 0;
+            background: var(--bg-subtle);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .process-flow {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-lg);
+            margin-top: var(--space-md);
+        }
+
+        .process-step {
+            position: relative;
+        }
+
+        .step-num {
+            font-family: 'Geist Mono', monospace;
+            font-size: 12px;
+            color: var(--text-light);
+            margin-bottom: var(--space-xs);
+            display: block;
+        }
+
+        .process-step h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: var(--space-xs);
+        }
+
+        .process-step p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* =====================================================================
+   TARIFAS / WAKE HEALTH SaaS
+   ===================================================================== */
+
+        .pricing-section {
+            padding: var(--space-xl) 0;
+        }
+
+
+        .pricing-table {
+            display:flex;
+            justify-content:center;
+            margin-top:var(--space-md);
+        }
+
+
+        .price-card {
+            max-width:720px;
+            width:100%;
+            background:var(--bg);
+            border:1px solid var(--border);
+            border-radius:var(--radius-lg);
+            padding:var(--space-lg);
+            display:flex;
+            flex-direction:column;
+            transition:var(--transition);
+        }
+
+
+        .price-card:hover {
+            border-color:#d4d4d8;
+        }
+
+
+        .price-card.popular {
+            border-color:var(--text-main);
+            box-shadow:0 20px 40px rgba(0,0,0,0.04);
+        }
+
+
+        .popular-badge {
+            background:var(--text-main);
+            color:white;
+        }
+
+
+        .price-card h3 {
+            font-size:22px;
+            font-weight:600;
+            margin-bottom:var(--space-xs);
+        }
+
+
+        .price-card .desc {
+            font-size:15px;
+            color:var(--text-muted);
+            max-width:500px;
+            min-height:auto;
+            line-height:1.5;
+        }
+
+
+        .price-amt {
+            font-family:'Geist Mono', monospace;
+            font-size:42px;
+            margin:var(--space-md) 0;
+        }
+
+
+        .price-features {
+            list-style:none;
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:14px 30px;
+            margin-bottom:var(--space-md);
+        }
+
+
+        .price-features li {
+            font-size:14px;
+            color:var(--text-muted);
+            display:flex;
+            align-items:center;
+            gap:10px;
+        }
+
+
+        .price-features li i {
+            color:var(--accent-dark);
+        }
+
+
+        .trial-box {
+
+            border-top:1px solid var(--border-subtle);
+            padding-top:var(--space-md);
+            margin-bottom:var(--space-md);
+
+            display:flex;
+            flex-direction:column;
+            gap:6px;
+
+        }
+
+
+        .trial-box strong {
+
+            font-size:15px;
+            font-weight:600;
+
+        }
+
+
+        .trial-box span {
+
+            color:var(--text-muted);
+            font-size:13px;
+
+        }
+
+
+        .price-card .btn {
+
+            max-width:260px;
+
+        }
+
+
+
+        @media(max-width:768px){
+
+            .price-features {
+                grid-template-columns:1fr;
+            }
+
+        }
+        /* ==========================================================================
+           CONTACTO / FORMULARIO CLEAN
+           ========================================================================== */
+        .contact-section {
+            padding: var(--space-xl) 0;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: var(--space-lg);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-sm);
+        }
+
+        .field-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .field-group label {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .field-group input,
+        .field-group textarea {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 10px 14px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: var(--text-main);
+            transition: var(--transition);
+        }
+
+        .field-group input:focus,
+        .field-group textarea:focus {
+            border-color: var(--text-main);
+            box-shadow: 0 0 0 1px var(--text-main);
+        }
+
+        .field-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* ==========================================================================
+           FOOTER MINIMALISTA
+           ========================================================================== */
+        footer {
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            padding: var(--space-lg) 0 var(--space-md) 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr repeat(3, 1fr);
+            gap: var(--space-md);
+            padding-bottom: var(--space-lg);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .footer-brand p {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            margin-top: var(--space-xs);
+            max-width: 240px;
+        }
+
+        .footer-col h5 {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+            color: var(--text-main);
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer-col ul a {
+            font-size: 13px;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-col ul a:hover {
+            color: var(--text-main);
+        }
+
+        .footer-bottom {
+            padding-top: var(--space-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-bottom p {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: var(--space-sm);
+        }
+
+        .footer-socials a {
+            color: var(--text-muted);
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .footer-socials a:hover {
+            color: var(--text-main);
+        }
+
+        /* ==========================================================================
+           RESPONSIVE DESIGN (Adaptación Absoluta sin ocultar datos cruciales)
+           ========================================================================== */
+        @media (max-width: 1024px) {
+            :root {
+                --space-xl: 5rem;
+                --space-lg: 3rem;
+            }
+            .hero-grid, .about-composition, .product-hero-banner, .contact-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-lg);
+            }
+            .services-linear-grid, .pricing-table, .process-flow {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .services-linear-grid {
+                border-bottom: none;
+            }
+            .hero-visual-wrapper {
+                order: -1;
+                max-width: 540px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none; /* Menú móvil dinámico simplificado en JS */
+            }
+            .nav-actions {
+                display: none;
+            }
+            .mobile-toggle {
+                display: block;
+            }
+            .services-linear-grid, .pricing-table, .process-flow, .footer-grid, .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            .services-linear-grid, .benefits-grid {
+                border-left: none;
+                border-top: none;
+            }
+            .benefit-metric-card {
+                border-left: 2px solid var(--border);
+                margin-bottom: var(--space-xs);
+            }
+            .price-card.popular {
+                transform: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVEGACIÓN -->
+    <header id="header">
+        <div class="container nav-container">
+            <a href="#hero" class="logo">WAKE SOLUTIONS<span class="logo-dot"></span></a>
+            <nav id="nav-menu">
+                <a href="#about">Nosotros</a>
+                <a href="#services">Servicios</a>
+                <a href="#products">Productos</a>
+                <a href="#pricing">Planes</a>
+                <a href="#contact">Contacto</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="#contact" class="btn btn-secondary" style="font-size: 13px; padding: 6px 14px;">Consultoría</a>
+            </div>
+            <button class="mobile-toggle" id="menu-btn" aria-label="Abrir Menú">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section id="hero" class="hero-section">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <span class="mono-tag">Infraestructura del Crecimiento</span>
+                <h1>Menos caos.<br><strong>Más orden operativo.</strong></h1>
+                <p>Construimos las bases tecnológicas para empresas en Honduras y Centroamérica. Automatizamos operaciones, configuramos software centralizado e integramos IA para escalar sin fricciones.</p>
+                <div class="hero-actions">
+                    <a href="https://wake.solutions/health" class="btn btn-primary" target="_blank" rel="noopener">Probar software <i class="fa-solid fa-arrow-right" style="font-size: 11px;"></i></a>
+                    <a href="#services" class="btn btn-secondary">Ver soluciones</a>
+                </div>
+            </div>
+            <div class="hero-visual-wrapper">
+                <div class="hero-dashboard-mockup">
+                    <div class="mockup-header">
+                        <div class="mockup-dot"></div>
+                        <div class="mockup-dot"></div>
+                        <div class="mockup-dot"></div>
+                    </div>
+                    <div class="mockup-grid">
+                        <div class="mockup-box" style="grid-column: span 2;">
+                            <div class="mockup-line" style="width: 30%;"></div>
+                            <div class="mockup-line accent-line" style="height: 16px; width: 100%; border-radius: 4px; margin-top: 10px;"></div>
+                        </div>
+                        <div class="mockup-box">
+                            <div class="mockup-line short"></div>
+                            <div class="mockup-line"></div>
+                        </div>
+                        <div class="mockup-box">
+                            <div class="mockup-line"></div>
+                            <div class="mockup-line short"></div>
+                        </div>
+                    </div>
+                    <div class="floating-badge">
+                        <span>WAKE_CORE // ACCIONADO</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOGOS DE CONFIANZA GRYSCALE -->
+    <section class="brand-trust">
+        <div class="container trust-flex">
+            <span class="trust-text">Infraestructura de confianza regional</span>
+            <div class="trust-logos">
+                <!-- Se mantienen las referencias estructurales listas para tus logos de cliente -->
+                <img src="https://lh3.googleusercontent.com/d/1ZwSVPhyS1dJcbxYjlJH8PfO0Q9sc64NB" alt="Socio de Negocio 1" loading="lazy">
+                <img src="https://lh3.googleusercontent.com/d/1dFJNLP-3p855R1hCtLvAnAEDIBlzuPEr" alt="Socio de Negocio 2" loading="lazy">
+                <img src="https://lh3.googleusercontent.com/d/18bvpl-104yGuCtGxQ-3w_XzOX-Vk576p" alt="Socio de Negocio 3" loading="lazy">
+                <img src="https://lh3.googleusercontent.com/d/1S3byR29fdjwN_VtF8eecd5NhSGk5oCMY" alt="Socio de Negocio 4" loading="lazy">
+                <img src="https://lh3.googleusercontent.com/d/1-Ioj0XeJoDFmjQpkEftAVIgM81WknWe0" alt="Socio de Negocio 5" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFICIOS / MÉTRICAS -->
+    <section class="benefits-section">
+        <div class="container">
+            <div class="benefits-grid">
+                <div class="benefit-metric-card">
+                    <div class="metric-num">-50%</div>
+                    <div class="metric-desc">Reducción drástica en errores operativos directamente en administración.</div>
+                </div>
+                <div class="benefit-metric-card">
+                    <div class="metric-num">100%</div>
+                    <div class="metric-desc">Control centralizado en inventario en tiempo real, ventas y flujos.</div>
+                </div>
+                <div class="benefit-metric-card">
+                    <div class="metric-num">0%</div>
+                    <div class="metric-desc">Fricción manual. Automatización completa de tareas administrativas repetitivas.</div>
+                </div>
+                <div class="benefit-metric-card">
+                    <div class="metric-num">DATA</div>
+                    <div class="metric-desc">Mayor claridad financiera total para decisiones estratégicas inmediatas.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICIOS ESTILO LINEAR GRID -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <span class="mono-tag">Capacidades</span>
+            <h2 class="section-title">¿Qué resolvemos?</h2>
+            <p class="section-subtitle">Diseñamos arquitecturas lógicas y configuramos software robusto para empresas que exigen crecer con métricas predecibles.</p>
+            
+            <div class="services-linear-grid">
+                <div class="service-linear-cell">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <h3>Sistematización</h3>
+                    <p>Centralizamos flujos de ventas, control logístico de inventarios y finanzas en una sola consola de comando operativa.</p>
+                </div>
+                <div class="service-linear-cell">
+                    <i class="fa-solid fa-code"></i>
+                    <h3>Desarrollo de soluciones</h3>
+                    <p>Ingeniería de software a la medida construida exclusivamente alrededor de los procesos reales de tu negocio.</p>
+                </div>
+                <div class="service-linear-cell">
+                    <i class="fa-solid fa-bolt"></i>
+                    <h3>Automatización</h3>
+                    <p>Eliminamos permanentemente cuellos de botella manuales e interconectamos sistemas dispares.</p>
+                </div>
+                <div class="service-linear-cell">
+                    <i class="fa-solid fa-server"></i>
+                    <h3>Infraestructura</h3>
+                    <p>Diseño de una arquitectura tecnológica escalable lista para absorber demandas masivas de transacciones.</p>
+                </div>
+                <div class="service-linear-cell">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <h3>Consultoría Estratégica</h3>
+                    <p>Auditoría tecnológica profunda de tu operación para trazar una hoja de ruta con retornos de inversión medibles.</p>
+                </div>
+                <div class="service-linear-cell">
+                    <i class="fa-solid fa-robot"></i>
+                    <h3>Inteligencia Artificial</h3>
+                    <p>Despliegue e integración de modelos de lenguaje e IA avanzada para automatizar flujos complejos de atención y análisis.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTOS DESTACADOS: WAKE HEALTH -->
+    <section id="products" class="products-section">
+        <div class="container">
+            <span class="mono-tag">Ecosistema Propio</span>
+            <h2 class="section-title">Productos Core</h2>
+            <p class="section-subtitle">Software especializado listo para operar de forma vertical en tu industria.</p>
+            
+            <div class="product-hero-banner">
+                <div class="product-info">
+                    <div class="product-logo-wrapper">
+                        <img src="https://pub-c91a757ecc0647fc9f8436786c936eff.r2.dev/logos/WAKE%20healt%20svg.svg" alt="WAKE Health" logo>
+                    </div>
+                    <h3>Gestión clínica avanzada de grado médico</h3>
+                    <p>El sistema integral unificado para optimizar el control absoluto de pacientes, flujos de citas médicas, agendas dinámicas e historiales clínicos confidenciales bajo máxima seguridad estructural.</p>
+                    <a href="https://wake.solutions/health" class="btn btn-secondary" target="_blank" rel="noopener">Explorar WAKE Health <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 11px; margin-left: 4px;"></i></a>
+                </div>
+                <div class="product-preview-ui">
+                    <!-- Representación UI abstracta del software médico -->
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                        <span style="font-family:'Geist Mono', monospace; font-size:11px; color:var(--text-light);">PACIENTES ACTIVOS</span>
+                        <span style="width:8px; height:8px; background:#00f59b; border-radius:50%;"></span>
+                    </div>
+                    <div style="font-size:24px; font-weight:600; font-family:'Geist Mono', monospace; margin-bottom:12px;">1,240</div>
+                    <div class="mockup-line" style="width:80%"></div>
+                    <div class="mockup-line" style="width:95%"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE NOSOTROS -->
+    <section id="about" class="about-section">
+        <div class="container about-composition">
+            <div>
+                <span class="mono-tag">Manifiesto</span>
+                <h2 class="section-title">Tecnología sin fricciones ni rodeos técnicos.</h2>
+                <p class="section-subtitle" style="margin-bottom:0;">Nos convertimos en el socio tecnológico estratégico que acompaña de punta a punta el desarrollo corporativo en Centroamérica, transformando la complejidad informática en ventajas competitivas nítidas.</p>
+            </div>
+            <div class="about-pillars">
+                <div class="pillar-block">
+                    <h4><i class="fa-solid fa-crosshairs"></i> Enfoque en Retorno</h4>
+                    <p>Diseñamos e implementamos soluciones enfocadas rigurosamente en la obtención de resultados cuantificables y eficiencia de costes organizacionales.</p>
+                </div>
+                <div class="pillar-block">
+                    <h4><i class="fa-solid fa-gears"></i> Ejecución Limpia</h4>
+                    <p>Instalamos herramientas informáticas avanzadas alineadas exactamente al ritmo operacional real de tu equipo de trabajo.</p>
+                </div>
+                <div class="pillar-block">
+                    <h4><i class="fa-solid fa-laptop-code"></i> Transformación Digital</h4>
+                    <p>Modernizamos la operación de tu empresa con plataformas tecnológicas diseñadas para adaptarse a tus procesos y crecer junto a tu negocio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESO DE TRABAJO -->
+    <section class="process-section">
+        <div class="container">
+            <span class="mono-tag">Metodología</span>
+            <h2 class="section-title">El camino al orden</h2>
+            <p class="section-subtitle">Cómo estructuramos la transición tecnológica de tu empresa.</p>
+            
+            <div class="process-flow">
+                <div class="process-step">
+                    <span class="step-num">01 // AUDITORÍA</span>
+                    <h3>Análisis operativo</h3>
+                    <p>Evaluamos tus flujos de trabajo actuales para identificar fugas de control y oportunidades críticas de automatización.</p>
+                </div>
+                <div class="process-step">
+                    <span class="step-num">02 // DESPLIEGUE</span>
+                    <h3>Implementación modular</h3>
+                    <p>Configuramos e interconectamos tus sistemas de manera gradual, asegurando cero interrupciones en tu operación diaria.</p>
+                </div>
+                <div class="process-step">
+                    <span class="step-num">03 // OPTIMIZACIÓN</span>
+                    <h3>Soporte y escalabilidad</h3>
+                    <p>Monitoreamos el rendimiento, capacitamos a tu equipo y ajustamos la infraestructura para soportar un crecimiento continuo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TARIFAS -->
+    <section id="pricing" class="pricing-section">
+                <div class="container">
+
+                    <span class="mono-tag">Plan único</span>
+
+                    <h2 class="section-title">
+                        Todo lo que tu clínica necesita.
+                    </h2>
+
+                    <p class="section-subtitle">
+                        Una plataforma completa para gestionar pacientes, citas y operaciones sin complicaciones.
+                    </p>
+
+
+                    <div class="pricing-table">
+
+                        <div class="price-card popular">
+
+                            <span class="popular-badge">
+                                Prueba gratuita 3 días
+                            </span>
+
+
+                            <h3>Wake Health</h3>
+
+                            <p class="desc">
+                                Software clínico todo incluido para médicos y clínicas que buscan digitalizar su operación.
+                            </p>
+
+
+                            <div class="price-amt">
+                                US$29<span>/mes</span>
+                            </div>
+
+
+                            <div class="features-grid">
+
+                                <div>
+                                    <ul class="price-features">
+                                        <li><i class="fa-solid fa-check"></i> Expediente clínico digital</li>
+                                        <li><i class="fa-solid fa-check"></i> Agenda de citas</li>
+                                        <li><i class="fa-solid fa-check"></i> Historial médico</li>
+                                        <li><i class="fa-solid fa-check"></i> Recetas digitales</li>
+                                        <li><i class="fa-solid fa-check"></i> Facturación y caja</li>
+                                        <li><i class="fa-solid fa-check"></i> Inventario médico</li>
+                                    </ul>
+                                </div>
+
+
+                                <div>
+                                    <ul class="price-features">
+                                        <li><i class="fa-solid fa-check"></i> Reportes inteligentes</li>
+                                        <li><i class="fa-solid fa-check"></i> Multiusuario</li>
+                                        <li><i class="fa-solid fa-check"></i> Acceso desde cualquier dispositivo</li>
+                                        <li><i class="fa-solid fa-check"></i> Copias de seguridad automáticas</li>
+                                        <li><i class="fa-solid fa-check"></i> Actualizaciones incluidas</li>
+                                        <li><i class="fa-solid fa-check"></i> Soporte asistido por IA</li>
+                                    </ul>
+                                </div>
+
+                            </div>
+
+
+                            <div class="trial-box">
+
+                                <strong>
+                                    🎁 Empieza gratis durante 3 días
+                                </strong>
+
+                                <span>
+                                    Sin tarjeta de crédito. Sin compromiso.
+                                </span>
+
+                            </div>
+
+
+                            <a href="#contact" class="btn btn-primary">
+                                Comenzar prueba gratuita
+                            </a>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+
+    <!-- CONTACTO -->
+    <section id="contact" class="contact-section">
+        <div class="container contact-grid">
+            <div>
+                <span class="mono-tag">Contacto directo</span>
+                <h2 class="section-title">Hablemos de tu negocio.</h2>
+                <p class="section-subtitle">Analizamos tus necesidades técnicas de inmediato. Tu infraestructura de crecimiento comienza aquí.</p>
+            </div>
+            <div>
+                <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+                    <div class="form-row">
+                        <div class="field-group">
+                            <label for="name">Nombre completo *</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="field-group">
+                            <label for="company">Empresa corporativa</label>
+                            <input type="text" id="company">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="field-group">
+                            <label for="email">Correo electrónico *</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="field-group">
+                            <label for="phone">Teléfono de contacto</label>
+                            <input type="tel" id="phone">
+                        </div>
+                    </div>
+                    <div class="field-group">
+                        <label for="message">Mensaje u objetivos operativos</label>
+                        <textarea id="message"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="align-self: flex-start; padding: 12px 24px; margin-top: var(--space-xs);">Enviar consulta</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#hero" class="logo">WAKE SOLUTIONS<span class="logo-dot"></span></a>
+                    <p>Construyendo tecnología predictiva para empresas en expansión.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>Compañía</h5>
+                    <ul>
+                        <li><a href="#about">Nosotros</a></li>
+                        <li><a href="#services">Servicios</a></li>
+                        <li><a href="#products">Productos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Legal</h5>
+                    <ul>
+                        <li><a href="legal.html">Términos de Servicio</a></li>
+                        <li><a href="legal.html">Política de Privacidad</a></li>
+                        <li><a href="legal.html">Política de Reembolso</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Ubicación</h5>
+                    <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6;">Honduras & Centroamérica<br><a href="mailto:ventas@wake.solution" style="color: var(--text-main); text-decoration:none;">ventas@wake.solution</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 WAKE SOLUTIONS. Todos los derechos reservados.</p>
+                <div class="footer-socials">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVIDAD & LÓGICA PURA -->
+    <script>
+        // Manejo del Formulario nativo unificado
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const company = document.getElementById('company').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+            
+            const mailtoLink = `mailto:ventas@wake.solution?subject=Solicitud de Infraestructura Tecnológica - ${name}&body=Nombre: ${name}%0AEmpresa: ${company}%0AEmail: ${email}%0ATeléfono: ${phone}%0A%0AMensaje:%0A${message}`;
+            
+            window.open(mailtoLink);
+            document.getElementById('contactForm').reset();
+        }
+
+        // Menú Móvil Minimalista
+        const menuBtn = document.getElementById('menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuBtn.addEventListener('click', () => {
+            if (navMenu.style.display === 'flex') {
+                navMenu.style.display = '';
+            } else {
+                navMenu.style.display = 'flex';
+                navMenu.style.flexDirection = 'column';
+                navMenu.style.position = 'absolute';
+                navMenu.style.top = '64px';
+                navMenu.style.left = '0';
+                navMenu.style.width = '100%';
+                navMenu.style.background = '#ffffff';
+                navMenu.style.padding = '20px';
+                navMenu.style.borderBottom = '1px solid var(--border)';
+                navMenu.style.gap = '15px';
+            }
+        });
+
+        // Efecto sutil al hacer Scroll en el Header
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 20) {
+                header.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.02)';
+                header.style.borderBottom = '1px solid var(--border)';
+            } else {
+                header.style.boxShadow = 'none';
+                header.style.borderBottom = '1px solid rgba(228, 228, 231, 0.5)';
+            }
+        });
+    </script>
+</body>
+</html>

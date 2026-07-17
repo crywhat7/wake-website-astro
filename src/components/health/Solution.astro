@@ -1,0 +1,48 @@
+---
+import Container from '../ui/Container.astro';
+import Button from '../ui/Button.astro';
+import MonoTag from '../ui/MonoTag.astro';
+import { SITE, whatsappUrl } from '../../data/site';
+import { t, type Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+const wa = whatsappUrl(dict.health.solution.whatsappMsg);
+---
+
+<section class="border-y border-wake-border bg-wake-subtle py-32 max-lg:py-20">
+  <Container class="grid items-center gap-12 lg:grid-cols-[1.2fr_0.8fr]">
+    <div>
+      <MonoTag>{dict.health.solution.tag}</MonoTag>
+      <h2
+        class="mb-2 text-[clamp(2rem,4vw,2.75rem)] font-semibold leading-[1.15] tracking-tight text-wake-text"
+      >
+        {dict.health.solution.title}
+      </h2>
+      <p class="mb-8 max-w-[560px] text-[17px] text-wake-muted">{dict.health.solution.subtitle}</p>
+      <div class="flex flex-wrap gap-4">
+        <Button href={SITE.healthAppLogin} target="_blank" rel="noopener noreferrer">
+          {dict.health.solution.ctaEnter}
+          <i class="fa-solid fa-arrow-right text-[11px]"></i>
+        </Button>
+        <Button href={wa} variant="secondary" target="_blank" rel="noopener noreferrer">
+          {dict.health.solution.ctaDemo}
+        </Button>
+      </div>
+    </div>
+    <div class="rounded-xl border border-wake-border bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.02)]">
+      <div class="mb-4 flex items-center justify-between">
+        <span class="font-mono text-[11px] uppercase text-wake-light">WAKE HEALTH</span>
+        <span class="h-2 w-2 rounded-full bg-wake-accent-dark"></span>
+      </div>
+      <div class="mb-3 h-2 w-1/3 rounded bg-wake-border-subtle"></div>
+      <div class="mb-2 h-3 w-full rounded bg-wake-accent"></div>
+      <div class="mb-2 h-2 w-4/5 rounded bg-wake-border-subtle"></div>
+      <div class="h-2 w-[95%] rounded bg-wake-border-subtle"></div>
+    </div>
+  </Container>
+</section>

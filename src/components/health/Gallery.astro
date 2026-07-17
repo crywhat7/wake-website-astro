@@ -1,0 +1,101 @@
+---
+import Container from '../ui/Container.astro';
+import MonoTag from '../ui/MonoTag.astro';
+import { SITE } from '../../data/site';
+import { t, type Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+const gallery = SITE.assets.gallery;
+---
+
+<section id="galeria" class="border-y border-wake-border bg-wake-subtle py-32 max-lg:py-20">
+  <Container>
+    <MonoTag>{dict.health.gallery.tag}</MonoTag>
+    <h2
+      class="mb-2 text-[clamp(2rem,4vw,2.75rem)] font-semibold leading-[1.15] tracking-tight text-wake-text"
+    >
+      {dict.health.gallery.title}
+    </h2>
+    <p class="mb-16 max-w-[600px] text-[17px] text-wake-muted">{dict.health.gallery.subtitle}</p>
+
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        gallery.map((item) => {
+          const copy = dict.health.gallery.items[item.key as keyof typeof dict.health.gallery.items];
+          return (
+            <article class="gallery-card overflow-hidden rounded-xl border border-wake-border bg-white transition hover:border-wake-text/20 hover:shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
+              <img
+                src={item.src}
+                alt={copy.alt}
+                loading="lazy"
+                width="400"
+                height="200"
+                class="h-[200px] w-full cursor-pointer border-b border-wake-border-subtle object-cover transition duration-300 hover:opacity-95"
+              />
+              <div class="p-5">
+                <h3 class="mb-1 text-[15px] font-semibold tracking-tight text-wake-text">
+                  {copy.title}
+                </h3>
+                <p class="text-sm leading-relaxed text-wake-muted">{copy.desc}</p>
+              </div>
+            </article>
+          );
+        })
+      }
+    </div>
+  </Container>
+</section>
+
+<div
+  id="imageModal"
+  class="fixed inset-0 z-[1000] hidden overflow-auto bg-black/80 pt-[50px]"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Image preview"
+>
+  <button
+    type="button"
+    id="closeModal"
+    class="absolute top-5 right-[35px] cursor-pointer border-0 bg-transparent text-4xl font-bold text-[#f1f1f1] transition hover:text-wake-accent"
+    aria-label="Close"
+  >
+    &times;
+  </button>
+  <img
+    id="modalImage"
+    class="mx-auto block max-h-[85vh] max-w-[90%] rounded-lg shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
+    alt=""
+  />
+</div>
+
+<script>
+  const modal = document.getElementById('imageModal');
+  const modalImg = document.getElementById('modalImage') as HTMLImageElement | null;
+  const images = document.querySelectorAll('.gallery-card img');
+  const closeBtn = document.getElementById('closeModal');
+
+  images.forEach((img) => {
+    img.addEventListener('click', () => {
+      if (!modal || !modalImg) return;
+      modal.classList.remove('hidden');
+      modal.classList.add('block');
+      modalImg.src = (img as HTMLImageElement).src;
+      modalImg.alt = (img as HTMLImageElement).alt;
+    });
+  });
+
+  const close = () => {
+    modal?.classList.add('hidden');
+    modal?.classList.remove('block');
+  };
+
+  closeBtn?.addEventListener('click', close);
+  modal?.addEventListener('click', (e) => {
+    if (e.target !== modalImg) close();
+  });
+</script>

@@ -1,0 +1,69 @@
+---
+import Container from '../ui/Container.astro';
+import Button from '../ui/Button.astro';
+import MonoTag from '../ui/MonoTag.astro';
+import { SITE } from '../../data/site';
+import { t, getLocalizedPath, type Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+const healthPath = getLocalizedPath('health', locale);
+---
+
+<section id="products" class="py-32 max-lg:py-20">
+  <Container>
+    <MonoTag>{dict.home.products.tag}</MonoTag>
+    <h2
+      class="mb-2 text-[clamp(2rem,4vw,2.75rem)] font-semibold leading-[1.15] tracking-tight text-wake-text"
+    >
+      {dict.home.products.title}
+    </h2>
+    <p class="mb-16 max-w-[600px] text-[17px] text-wake-muted">{dict.home.products.subtitle}</p>
+
+    <div
+      class="relative grid items-center gap-16 overflow-hidden rounded-xl border border-wake-border bg-wake-card p-8 md:p-12 lg:grid-cols-[1.2fr_0.8fr]"
+    >
+      <div
+        class="pointer-events-none absolute top-0 right-0 z-[1] h-[150px] w-[150px] bg-[radial-gradient(circle,rgba(173,252,220,0.4)_0%,transparent_70%)]"
+      >
+      </div>
+      <div class="relative z-[2]">
+        <div class="mb-4 h-[250px]">
+          <img
+            src={SITE.assets.healthLogoSvg}
+            alt={dict.home.products.logoAlt}
+            class="h-full w-auto object-contain"
+            loading="lazy"
+            width="400"
+            height="250"
+          />
+        </div>
+        <h3 class="mb-2 text-2xl font-semibold tracking-tight">{dict.home.products.healthTitle}</h3>
+        <p class="mb-8 max-w-[540px] text-[15px] leading-relaxed text-wake-muted">
+          {dict.home.products.healthDesc}
+        </p>
+        <Button href={healthPath} variant="secondary">
+          {dict.home.products.healthCta}
+          <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[11px]"></i>
+        </Button>
+      </div>
+      <div
+        class="relative z-[2] rounded-lg border border-wake-border bg-white p-4 shadow-[0_10px_30px_rgba(0,0,0,0.02)]"
+      >
+        <div class="mb-3 flex items-center justify-between">
+          <span class="font-mono text-[11px] text-wake-light"
+            >{dict.home.products.patientsLabel}</span
+          >
+          <span class="h-2 w-2 rounded-full bg-wake-accent-dark"></span>
+        </div>
+        <div class="mb-3 font-mono text-2xl font-semibold">{dict.home.products.patientsCount}</div>
+        <div class="mb-2 h-2 w-4/5 rounded bg-wake-border-subtle"></div>
+        <div class="h-2 w-[95%] rounded bg-wake-border-subtle"></div>
+      </div>
+    </div>
+  </Container>
+</section>

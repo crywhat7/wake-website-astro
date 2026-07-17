@@ -1,0 +1,175 @@
+---
+import { SITE } from '../../data/site';
+import type { Locale, PageKey } from '../../i18n';
+import { getLocalizedPath, t } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+  page: PageKey;
+}
+
+const { locale, page } = Astro.props;
+const dict = t(locale);
+const siteUrl = (Astro.site?.href ?? SITE.url).replace(/\/$/, '');
+const homeUrl = new URL(getLocalizedPath('home', locale), `${siteUrl}/`).href;
+const healthUrl = new URL(getLocalizedPath('health', locale), `${siteUrl}/`).href;
+
+const organization = {
+  '@type': 'Organization',
+  '@id': `${siteUrl}/#organization`,
+  name: SITE.name,
+  url: siteUrl,
+  email: SITE.email,
+  logo: SITE.assets.healthLogoSvg,
+  description: dict.home.seo.description,
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: 'HN',
+    addressRegion: 'Francisco Morazán',
+    addressLocality: 'Tegucigalpa',
+  },
+  areaServed: [
+    { '@type': 'Country', name: 'Honduras' },
+    { '@type': 'Place', name: 'Central America' },
+    { '@type': 'Place', name: 'Latin America' },
+    { '@type': 'Country', name: 'United States' },
+  ],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: `+${SITE.whatsapp}`,
+    contactType: 'sales',
+    availableLanguage: ['Spanish', 'English'],
+    areaServed: ['HN', 'US', 'LATAM'],
+  },
+  sameAs: [SITE.social.facebook, SITE.social.linkedin, SITE.social.instagram].filter(
+    (u) => u !== '#',
+  ),
+};
+
+const website = {
+  '@type': 'WebSite',
+  '@id': `${siteUrl}/#website`,
+  url: siteUrl,
+  name: SITE.name,
+  description: dict.home.seo.description,
+  publisher: { '@id': `${siteUrl}/#organization` },
+  inLanguage: locale === 'es' ? ['es-HN', 'es'] : ['en-US', 'en'],
+};
+
+const professionalService = {
+  '@type': 'ProfessionalService',
+  '@id': `${siteUrl}/#service`,
+  name: SITE.name,
+  url: homeUrl,
+  image: SITE.assets.healthLogoSvg,
+  description: dict.home.seo.description,
+  priceRange: '$$',
+  address: organization.address,
+  areaServed: organization.areaServed,
+  telephone: `+${SITE.whatsapp}`,
+};
+
+const softwareApplication = {
+  '@type': 'SoftwareApplication',
+  '@id': `${healthUrl}/#software`,
+  name: SITE.healthName,
+  applicationCategory: 'HealthApplication',
+  operatingSystem: 'Web, iOS, Android',
+  url: healthUrl,
+  image: SITE.assets.healthLogo,
+  description: dict.health.seo.description,
+  offers: [
+    {
+      '@type': 'Offer',
+      name: dict.health.pricing.basic.name,
+      price: '9.99',
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+      url: healthUrl,
+    },
+    {
+      '@type': 'Offer',
+      name: dict.health.pricing.plus.name,
+      price: '17.99',
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+      url: healthUrl,
+    },
+    {
+      '@type': 'Offer',
+      name: dict.health.pricing.business.name,
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+      url: healthUrl,
+    },
+  ],
+  provider: { '@id': `${siteUrl}/#organization` },
+  featureList: dict.health.modules.items.map((m) => m.title),
+  inLanguage: locale === 'es' ? 'es-HN' : 'en-US',
+  audience: {
+    '@type': 'Audience',
+    audienceType: 'Clinics, doctors, medical practices',
+    geographicArea: organization.areaServed,
+  },
+};
+
+const faq =
+  page === 'health'
+    ? {
+        '@type': 'FAQPage',
+        mainEntity: [
+          {
+            '@type': 'Question',
+            name:
+              locale === 'es'
+                ? '¿Qué es WAKE Health?'
+                : 'What is WAKE Health?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: dict.health.seo.description,
+            },
+          },
+          {
+            '@type': 'Question',
+            name:
+              locale === 'es'
+                ? '¿WAKE Health funciona en Honduras y Latinoamérica?'
+                : 'Does WAKE Health work in Honduras and Latin America?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text:
+                locale === 'es'
+                  ? 'Sí. WAKE Health está diseñado para clínicas en Honduras, Centroamérica, Latinoamérica y también para prácticas en Estados Unidos.'
+                  : 'Yes. WAKE Health is built for clinics in Honduras, Central America, Latin America, and practices in the United States.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name:
+              locale === 'es'
+                ? '¿Cuánto cuesta WAKE Health?'
+                : 'How much does WAKE Health cost?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text:
+                locale === 'es'
+                  ? 'Planes desde $9.99/mes (Básico), $17.99/mes (Plus) y cotización personalizada Business para redes clínicas.'
+                  : 'Plans from $9.99/mo (Basic), $17.99/mo (Plus), and custom Business quotes for clinic networks.',
+            },
+          },
+        ],
+      }
+    : null;
+
+const graph =
+  page === 'home'
+    ? [organization, website, professionalService]
+    : [organization, website, softwareApplication, faq].filter(Boolean);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': graph,
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

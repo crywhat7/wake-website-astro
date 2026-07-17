@@ -1,17 +1,41 @@
 ---
+import BaseLayout from '../components/layout/BaseLayout.astro';
+import Header from '../components/home/Header.astro';
+import Hero from '../components/home/Hero.astro';
+import Trust from '../components/home/Trust.astro';
+import Benefits from '../components/home/Benefits.astro';
+import Services from '../components/home/Services.astro';
+import Products from '../components/home/Products.astro';
+import About from '../components/home/About.astro';
+import Process from '../components/home/Process.astro';
+import Pricing from '../components/home/Pricing.astro';
+import Contact from '../components/home/Contact.astro';
+import Footer from '../components/home/Footer.astro';
+import { t, type Locale } from '../i18n';
 
+const locale: Locale = 'es';
+const dict = t(locale);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  locale={locale}
+  page="home"
+  title={dict.home.seo.title}
+  description={dict.home.seo.description}
+  keywords={dict.home.seo.keywords}
+  theme="home"
+>
+  <Header locale={locale} />
+  <main>
+    <Hero locale={locale} />
+    <Trust locale={locale} />
+    <Benefits locale={locale} />
+    <Services locale={locale} />
+    <Products locale={locale} />
+    <About locale={locale} />
+    <Process locale={locale} />
+    <Pricing locale={locale} />
+    <Contact locale={locale} />
+  </main>
+  <Footer locale={locale} />
+</BaseLayout>

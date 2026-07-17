@@ -1,0 +1,63 @@
+---
+import '../../styles/global.css';
+import SeoHead from '../seo/SeoHead.astro';
+import JsonLd from '../seo/JsonLd.astro';
+import type { Locale, PageKey } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+  page: PageKey;
+  title: string;
+  description: string;
+  keywords: string;
+  image?: string;
+  theme?: 'home' | 'health';
+}
+
+const {
+  locale,
+  page,
+  title,
+  description,
+  keywords,
+  image,
+  theme = 'home',
+} = Astro.props;
+
+const fontHref =
+  theme === 'health'
+    ? 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Montserrat:wght@400;500;600&display=swap'
+    : 'https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap';
+---
+
+<!doctype html>
+<html lang={locale === 'es' ? 'es-HN' : 'en-US'}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href={fontHref} rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <SeoHead
+      locale={locale}
+      page={page}
+      title={title}
+      description={description}
+      keywords={keywords}
+      image={image}
+    />
+    <JsonLd locale={locale} page={page} />
+  </head>
+  <body class:list={[theme === 'health' && 'font-health-body']}>
+    <slot />
+  </body>
+</html>

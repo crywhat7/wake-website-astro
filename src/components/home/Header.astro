@@ -1,0 +1,93 @@
+---
+import Container from '../ui/Container.astro';
+import Button from '../ui/Button.astro';
+import LanguageSwitcher from '../ui/LanguageSwitcher.astro';
+import { t, getLocalizedPath, type Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+const healthPath = getLocalizedPath('health', locale);
+---
+
+<header
+  id="header"
+  class="fixed top-0 left-0 z-50 w-full border-b border-wake-border/50 bg-white/80 backdrop-blur-md transition-all"
+>
+  <Container class="flex h-16 items-center justify-between">
+    <a
+      href="#hero"
+      class="flex items-center gap-1.5 text-base font-bold tracking-tight text-wake-text no-underline"
+    >
+      WAKE SOLUTIONS
+      <span class="inline-block h-2 w-2 rounded-full bg-wake-text"></span>
+    </a>
+
+    <nav
+      id="nav-menu"
+      class="absolute top-16 left-0 hidden w-full flex-col gap-4 border-b border-wake-border bg-white p-5 md:static md:flex md:w-auto md:flex-row md:gap-8 md:border-0 md:bg-transparent md:p-0"
+    >
+      <a href="#about" class="text-[13.5px] text-wake-muted no-underline hover:text-wake-text"
+        >{dict.home.nav.about}</a
+      >
+      <a href="#services" class="text-[13.5px] text-wake-muted no-underline hover:text-wake-text"
+        >{dict.home.nav.services}</a
+      >
+      <a href="#products" class="text-[13.5px] text-wake-muted no-underline hover:text-wake-text"
+        >{dict.home.nav.products}</a
+      >
+      <a href="#pricing" class="text-[13.5px] text-wake-muted no-underline hover:text-wake-text"
+        >{dict.home.nav.pricing}</a
+      >
+      <a href="#contact" class="text-[13.5px] text-wake-muted no-underline hover:text-wake-text"
+        >{dict.home.nav.contact}</a
+      >
+      <a
+        href={healthPath}
+        class="text-[13.5px] text-wake-muted no-underline hover:text-wake-text md:hidden"
+        >WAKE Health</a
+      >
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <LanguageSwitcher locale={locale} page="home" class="hidden sm:inline-flex" />
+      <div class="nav-actions hidden md:block">
+        <Button href="#contact" variant="secondary" class="!px-3.5 !py-1.5 !text-[13px]">
+          {dict.home.nav.cta}
+        </Button>
+      </div>
+      <button
+        id="menu-btn"
+        class="border-0 bg-transparent text-xl text-wake-text md:hidden"
+        aria-label={dict.common.openMenu}
+        type="button"
+      >
+        <i class="fa-solid fa-bars-staggered"></i>
+      </button>
+    </div>
+  </Container>
+</header>
+
+<script>
+  const menuBtn = document.getElementById('menu-btn');
+  const navMenu = document.getElementById('nav-menu');
+  menuBtn?.addEventListener('click', () => {
+    navMenu?.classList.toggle('hidden');
+    navMenu?.classList.toggle('flex');
+  });
+
+  window.addEventListener('scroll', () => {
+    const header = document.getElementById('header');
+    if (!header) return;
+    if (window.scrollY > 20) {
+      header.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.02)';
+      header.style.borderBottom = '1px solid #e4e4e7';
+    } else {
+      header.style.boxShadow = 'none';
+      header.style.borderBottom = '1px solid rgba(228, 228, 231, 0.5)';
+    }
+  });
+</script>

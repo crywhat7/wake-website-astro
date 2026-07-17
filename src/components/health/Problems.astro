@@ -1,0 +1,37 @@
+---
+import Container from '../ui/Container.astro';
+import MonoTag from '../ui/MonoTag.astro';
+import { t, type Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+---
+
+<section id="problemas" class="border-t border-wake-border-subtle py-32 max-lg:py-20">
+  <Container>
+    <MonoTag>{dict.health.problems.tag}</MonoTag>
+    <h2
+      class="mb-2 text-[clamp(2rem,4vw,2.75rem)] font-semibold leading-[1.15] tracking-tight text-wake-text"
+    >
+      {dict.health.problems.title}
+    </h2>
+    <p class="mb-16 max-w-[600px] text-[17px] text-wake-muted">{dict.health.problems.subtitle}</p>
+
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        dict.health.problems.items.map((item) => (
+          <div class="border-l border-wake-border py-2 pl-4 transition hover:border-l-wake-text">
+            <div class="mb-3 text-wake-text">
+              <i class="fa-solid fa-xmark text-lg" />
+            </div>
+            <p class="text-sm leading-snug text-wake-muted">{item}</p>
+          </div>
+        ))
+      }
+    </div>
+  </Container>
+</section>

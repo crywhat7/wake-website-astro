@@ -1,0 +1,102 @@
+---
+import {
+  getAlternateUrls,
+  getLocalizedPath,
+  ogLocale,
+  type Locale,
+  type PageKey,
+} from '../../i18n';
+import { SITE } from '../../data/site';
+
+interface Props {
+  locale: Locale;
+  page: PageKey;
+  title: string;
+  description: string;
+  keywords: string;
+  image?: string;
+  type?: 'website' | 'product';
+}
+
+const {
+  locale,
+  page,
+  title,
+  description,
+  keywords,
+  image = SITE.assets.healthLogoSvg,
+  type = 'website',
+} = Astro.props;
+
+const siteUrl = (Astro.site?.href ?? SITE.url).replace(/\/$/, '') + '/';
+const canonicalPath = getLocalizedPath(page, locale);
+const canonical = new URL(canonicalPath, siteUrl).href;
+const alternates = getAlternateUrls(page, siteUrl);
+const xDefault = new URL(getLocalizedPath(page, 'es'), siteUrl).href;
+const geoRegion = locale === 'es' ? SITE.location.geoRegionEs : SITE.location.geoRegionEn;
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="keywords" content={keywords} />
+<meta
+  name="robots"
+  content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+/>
+<meta name="googlebot" content="index, follow" />
+<meta name="author" content={SITE.name} />
+<meta name="publisher" content={SITE.name} />
+<link rel="canonical" href={canonical} />
+
+{/* Hreflang: language + regional + x-default */}
+{alternates.map(({ href, hreflang }) => (
+  <link rel="alternate" hreflang={hreflang} href={href} />
+))}
+{alternates.map(({ href, locale: loc }) => (
+  <link rel="alternate" hreflang={loc} href={href} />
+))}
+<link rel="alternate" hreflang="x-default" href={xDefault} />
+{/* Extra regional Spanish signals for LATAM markets → Spanish URL */}
+<link rel="alternate" hreflang="es-MX" href={xDefault} />
+<link rel="alternate" hreflang="es-GT" href={xDefault} />
+<link rel="alternate" hreflang="es-SV" href={xDefault} />
+<link rel="alternate" hreflang="es-CR" href={xDefault} />
+<link rel="alternate" hreflang="es-PA" href={xDefault} />
+<link rel="alternate" hreflang="es-CO" href={xDefault} />
+<link rel="alternate" hreflang="es-US" href={xDefault} />
+
+{/* Open Graph */}
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content={SITE.name} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={image} />
+<meta property="og:image:alt" content={title} />
+<meta property="og:locale" content={ogLocale[locale]} />
+<meta
+  property="og:locale:alternate"
+  content={locale === 'es' ? 'en_US' : 'es_HN'}
+/>
+
+{/* Twitter */}
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image} />
+
+{/* Geo / market targeting */}
+<meta name="geo.region" content={geoRegion} />
+<meta name="geo.placename" content={SITE.location.country} />
+<meta name="ICBM" content="14.0723, -87.1921" />
+<meta name="language" content={locale === 'es' ? 'Spanish' : 'English'} />
+<meta name="coverage" content="Honduras, Central America, Latin America, United States" />
+<meta name="target" content="all" />
+<meta name="audience" content="all" />
+<meta name="distribution" content="global" />
+<meta name="rating" content="general" />
+<meta name="revisit-after" content="3 days" />
+
+{/* Theme */}
+<meta name="theme-color" content="#0c0c0d" />
+<meta name="msapplication-TileColor" content="#0c0c0d" />

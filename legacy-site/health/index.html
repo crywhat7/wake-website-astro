@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WAKE HEALTH | Sistema para Clínicas</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+:root{
+--primary:#333;
+--accent:#adfcdc;
+--secondary:#e4f1ff;
+--text:#333;
+--light:#8f8f8f;
+--white:#fff;
+--dark-btn: #1a1a1a;
+}
+
+body{
+font-family:'Montserrat',sans-serif;
+color:var(--text);
+line-height: 1.6;
+scroll-behavior: smooth;
+}
+
+/* HEADER */
+header{
+background:white;
+padding:15px 20px;
+box-shadow:0 2px 10px rgba(0,0,0,0.05);
+position:sticky;
+top:0;
+z-index:100;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo img{height:45px;}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav a{
+margin-left:25px;
+text-decoration:none;
+color:var(--text);
+font-size:14px;
+font-weight: 600;
+transition: 0.3s;
+}
+
+nav a:hover{
+color: #16c2a3;
+}
+
+/* BOTÓN DE ACCESO EN NAV */
+.btn-nav-access {
+    background: var(--dark-btn);
+    color: var(--white) !important;
+    padding: 10px 20px;
+    border-radius: 6px;
+    margin-left: 30px;
+    font-size: 13px !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-nav-access:hover {
+    background: #000;
+    transform: translateY(-2px);
+}
+
+/* HERO CON PARALLAX */
+.hero{
+padding:140px 20px;
+text-align:center;
+position:relative;
+background:url('https://pub-f6d32fe4d40f4f899fa753aab8eb28d5.r2.dev/healthwpp.png') center/cover no-repeat fixed;
+color:white;
+overflow:hidden;
+}
+
+.hero::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+z-index:0;
+}
+
+.hero *{
+position:relative;
+z-index:1;
+}
+
+.hero h1{
+font-family:'Poppins';
+font-size:56px;
+font-weight:800;
+margin-bottom:20px;
+line-height:1.2;
+}
+
+.highlight{
+color:#adfcdc; 
+animation:fadeIn 1.2s ease;
+}
+
+.highlight-2{
+color:#adfcdc;
+padding:5px 10px;
+border-radius:6px;
+}
+
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(10px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+.hero p{
+font-size:20px;
+color:#ddd;
+max-width:700px;
+margin:auto;
+margin-bottom:30px;
+}
+
+/* BOTONES PRINCIPALES */
+.btn{
+padding:14px 30px;
+border-radius:8px;
+border:none;
+cursor:pointer;
+font-weight:600;
+margin:5px;
+text-decoration:none;
+display:inline-block;
+transition:0.3s;
+font-family: 'Poppins';
+}
+
+.btn-primary{
+background:var(--accent);
+color:#000;
+box-shadow:0 10px 25px rgba(173,252,220,0.3);
+}
+
+.btn-primary:hover{
+transform:translateY(-3px);
+background: #8eefc7;
+}
+
+.btn-secondary{
+border:2px solid white;
+color:white;
+}
+
+.btn-secondary:hover{
+background:white;
+color:black;
+}
+
+/* NUEVO BOTÓN DE PRUEBA EN HERO */
+.btn-try {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+    backdrop-filter: blur(5px);
+    margin-top: 20px;
+}
+
+.btn-try:hover {
+    background: var(--accent);
+    color: #000;
+    border-color: var(--accent);
+}
+
+/* SECTION */
+.section{
+padding:80px 20px;
+}
+
+.title{
+text-align:center;
+font-family:'Poppins';
+font-size:34px;
+margin-bottom:40px;
+}
+
+/* GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+max-width:1100px;
+margin:auto;
+}
+
+.card{
+background:white;
+padding:30px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
+text-align:center;
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 12px 30px rgba(0,0,0,0.1);
+}
+
+.card i{
+font-size:30px;
+color:var(--accent);
+margin-bottom:15px;
+background: #f0fff9;
+width: 60px;
+height: 60px;
+line-height: 60px;
+border-radius: 50%;
+}
+
+/* GALERIA ESPECIFICA */
+.gallery-card {
+    padding: 15px;
+    text-align: left;
+}
+
+.gallery-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; 
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #eee;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.gallery-card:hover img {
+    transform: scale(1.03);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.gallery-card h4 {
+    font-family: 'Poppins';
+    margin-bottom: 5px;
+    color: var(--primary);
+}
+
+.gallery-card p {
+    font-size: 14px;
+    color: var(--light);
+}
+
+/* ESTILOS DEL MODAL */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    padding-top: 50px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.85); 
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 85vh;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    animation: zoom 0.3s ease;
+}
+
+@keyframes zoom {
+    from {transform:scale(0.9); opacity:0;}
+    to {transform:scale(1); opacity:1;}
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+/* DARK SECTION */
+.dark{
+background:#222;
+color:white;
+text-align:center;
+}
+
+.dark p{color:#ccc;}
+
+/* CTA */
+.cta{
+text-align:center;
+margin-top:40px;
+}
+
+/* FOOTER */
+footer{
+background:#111;
+color:white;
+text-align:center;
+padding:40px 20px;
+font-size:13px;
+}
+
+/* RESPONSIVO */
+@media (max-width: 992px) {
+    .btn-nav-access { display: none; } /* Ocultar en móviles para no amontonar el nav */
+}
+
+@media (max-width: 768px) {
+    .hero h1 { font-size: 36px; }
+    .container { flex-direction: column; }
+    nav { margin-top: 20px; flex-wrap: wrap; justify-content: center; }
+    nav a { margin: 5px 10px; }
+}
+
+/* SECCIÓN DE PRECIOS */
+.pricing-section {
+    background: #f4f7f6;
+    padding: 80px 20px;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.pricing-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: 0.3s;
+    border: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+}
+
+.pricing-card.featured {
+    border: 2px solid var(--accent);
+    transform: scale(1.05);
+    position: relative;
+}
+
+.pricing-card.featured .badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent);
+    color: #000;
+    padding: 5px 20px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.price {
+    font-size: 42px;
+    font-weight: 800;
+    margin: 20px 0;
+    font-family: 'Poppins';
+}
+
+.price span {
+    font-size: 16px;
+    color: var(--light);
+}
+
+.pricing-features {
+    list-style: none;
+    margin-bottom: 30px;
+    text-align: left;
+    flex-grow: 1;
+}
+
+.pricing-features li {
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: #555;
+}
+
+.pricing-features i {
+    color: #16c2a3;
+    margin-right: 10px;
+}
+
+/* Ajuste para móviles */
+@media (max-width: 768px) {
+    .pricing-card.featured {
+        transform: scale(1);
+        margin: 20px 0;
+    }
+}
+
+
+
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+<div class="container">
+<div class="logo">
+<img src="https://lh3.googleusercontent.com/d/1Bkvz0VkWBsWgZIh6ewkMzUFqVQfj3FOQ" alt="Wake Health Logo">
+</div>
+
+<nav>
+<a href="#">Inicio</a>
+<a href="#problemas">Problemas</a>
+<a href="#modulos">Sistema</a>
+<a href="#galeria">Capturas</a>
+<a href="#contacto">Demo</a>
+<!-- BOTÓN PROFESIONAL EN EL NAV -->
+<a href="https://wakehealth.vercel.app/login" class="btn-nav-access">
+    <i class="fas fa-sign-in-alt"></i> Acceso Sistema
+</a>
+</nav>
+</div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+<h1>
+Tu clínica no necesita más 
+<span class="highlight">caos</span>, necesita 
+<span class="highlight-2">control</span>
+</h1>
+
+<p>
+Deja atrás el papel, las citas desordenadas y la falta de control.  
+Con <b>WAKE HEALTH</b> organizas toda tu clínica en un solo sistema.
+</p>
+
+<div class="main-buttons">
+    <a href="https://wa.me/50433292869?text=Hola!%20Necesito%20m%C3%A1s%20informaci%C3%B3n%20sobre%20WAKE%20HEALTH!" class="btn btn-primary">Hablar por WhatsApp</a>
+    <a href="#modulos" class="btn btn-secondary">Ver sistema</a>
+</div>
+<!-- BOTÓN DE PRUEBA ESTILO PROFESIONAL -->
+<a href="https://wakehealth.vercel.app/login" class="btn btn-try">
+    <i class="fas fa-rocket"></i> Probar Sistema Ahora
+</a>
+</section>
+
+<!-- PROBLEMAS -->
+<section class="section" id="problemas">
+<h2 class="title">Si esto te pasa… necesitas un cambio</h2>
+<div class="grid">
+<div class="card"><i class="fas fa-times-circle"></i><p>Se pierden citas o se desordenan los horarios</p></div>
+<div class="card"><i class="fas fa-times-circle"></i><p>Todo se maneja en papel o Excel</p></div>
+<div class="card"><i class="fas fa-times-circle"></i><p>No tienes control claro de ingresos</p></div>
+<div class="card"><i class="fas fa-times-circle"></i><p>El historial de pacientes es lento de consultar</p></div>
+</div>
+</section>
+
+<!-- SOLUCION INTERMEDIA -->
+<section class="section dark">
+<h2 class="title">Un sistema. Todo bajo control.</h2>
+<p>WAKE HEALTH centraliza pacientes, citas, consultas y finanzas en un solo lugar.</p>
+<div class="cta">
+<a href="https://wakehealth.vercel.app/login" class="btn btn-primary">Entrar al Sistema</a>
+<a href="https://wa.me/50433292869?text=Hola!%20Necesito%20m%C3%A1s%20informaci%C3%B3n%20sobre%20WAKE%20HEALTH!" class="btn btn-secondary">Solicitar Demo Personalizada</a>
+</div>
+</section>
+
+<!-- MODULOS -->
+<section class="section" id="modulos">
+<h2 class="title">Módulos del Sistema</h2>
+<div class="grid">
+<div class="card"><i class="fas fa-user"></i><h3>Pacientes</h3></div>
+<div class="card"><i class="fas fa-calendar-check"></i><h3>Citas</h3></div>
+<div class="card"><i class="fas fa-stethoscope"></i><h3>Consulta</h3></div>
+<div class="card"><i class="fas fa-notes-medical"></i><h3>Historial</h3></div>
+<div class="card"><i class="fas fa-file-invoice-dollar"></i><h3>Facturación</h3></div>
+<div class="card"><i class="fas fa-calculator"></i><h3>Contabilidad</h3></div>
+<div class="card"><i class="fas fa-vials"></i><h3>Laboratorio</h3></div>
+<div class="card"><i class="fas fa-pills"></i><h3>Farmacia</h3></div>
+<div class="card"><i class="fas fa-cog"></i><h3>Configuración</h3></div>
+</div>
+</section>
+
+<!-- GALERIA DE CAPTURAS -->
+<section class="section" id="galeria" style="background: #fdfdfd; border-top: 1px solid #eee;">
+    <h2 class="title">Explora la Interfaz</h2>
+    <div class="grid">
+        <div class="card gallery-card">
+            <img src="https://pub-f6d32fe4d40f4f899fa753aab8eb28d5.r2.dev/capturaswakehealth/wkhpantallaprincipal.png" alt="Dashboard">
+            <h4>Panel Principal</h4>
+            <p>Visualiza tus métricas, citas del día, recordatorios importantes de un vistazo.</p>
+        </div>
+        <div class="card gallery-card">
+            <img src="https://pub-f6d32fe4d40f4f899fa753aab8eb28d5.r2.dev/capturaswakehealth/wkhcontroltotal.png" alt="Citas">
+            <h4>Control de Citas</h4>
+            <p>Calendario inteligente para evitar cruces y organizar a tus médicos eficientemente.</p>
+        </div>
+        <div class="card gallery-card">
+            <img src="https://pub-f6d32fe4d40f4f899fa753aab8eb28d5.r2.dev/capturaswakehealth/wkhdatos.png" alt="Historial">
+            <h4>Expediente Digital</h4>
+            <p>Accede a diagnósticos previos, recetas y exámenes de laboratorio en segundos.</p>
+        </div>
+
+
+        <div class="card gallery-card">
+            <img src="https://pub-f6d32fe4d40f4f899fa753aab8eb28d5.r2.dev/capturaswakehealth/wkhatenciondirecta.png" alt="Antención Directa">
+            <h4>Atención Directa</h4>
+            <p>Prioridad máxima cuando cada segundo cuenta. Nuestro botón de atención directa permite saltar procesos burocráticos para atender emergencias al instante.</p>
+        </div>
+
+        <!-- Captura 5 -->
+        <div class="card gallery-card">
+            <img src="https://pub-f6d32fe4d40f4f899fa753aab8eb28d5.r2.dev/capturaswakehealth/wkhoptimizadoconia.png" alt="Diagnosticos inteligentes">
+            <h4>Diagnósticos con IA</h4>
+            <p>Precisión clínica potenciada por Inteligencia Artificial. Optimiza tus diagnósticos con sugerencias basadas en datos, reduciendo el margen de error y agilizando la consulta.</p>
+        </div>
+
+        <!-- Captura 6 -->
+        <div class="card gallery-card">
+            <img src="https://pub-f6d32fe4d40f4f899fa753aab8eb28d5.r2.dev/capturaswakehealth/wkhresponsivo.png" alt="Multidispositivo">
+            <h4>Multidispositivo</h4>
+            <p>Tu clínica en tu bolsillo. Accede a toda la información desde tu celular, tablet o computadora con una interfaz que se adapta perfectamente a cualquier pantalla.</p>
+        </div>
+    
+    </div>
+</section>
+
+<!-- SECCIÓN DE PRECIOS (CONECTADA A PADDLE) -->
+<section class="section pricing-section" id="precios">
+    <h2 class="title">Planes diseñados para tu crecimiento</h2>
+    <div class="pricing-grid">
+        
+        <!-- PLAN BÁSICO -->
+        <div class="pricing-card">
+            <h3>Básico</h3>
+            <div class="price">$9.99<span>/mes</span></div>
+            <ul class="pricing-features">
+                <li><i class="fas fa-check"></i> Hasta 500 pacientes</li>
+                <li><i class="fas fa-check"></i> Agenda Médica</li>
+                <li><i class="fas fa-check"></i> Expediente Clínico</li>
+                <li><i class="fas fa-check"></i> Soporte por Email</li>
+            </ul>
+            <!-- AQUÍ CAMBIAMOS EL BOTÓN PARA PADDLE -->
+            <a href="#!" class="btn" style="background:#333; color:white; text-decoration:none; padding:12px; border-radius:6px; text-align:center;" onclick="Paddle.Checkout.open({ settings: { displayMode: 'overlay', theme: 'light' }, items: [{ priceId: 'pri_01krmbgr56p436gyy0vpk98pgn', quantity: 1 }] });">Elegir Plan</a>
+        </div>
+
+        <!-- PLAN PLUS -->
+        <div class="pricing-card featured">
+            <div class="badge">RECOMENDADO</div>
+            <h3>Plus</h3>
+            <div class="price">$17.99<span>/mes</span></div>
+            <ul class="pricing-features">
+                <li><i class="fas fa-check"></i> Pacientes Ilimitados</li>
+                <li><i class="fas fa-check"></i> Módulo de Laboratorio</li>
+                <li><i class="fas fa-check"></i> Facturación y Contabilidad</li>
+                <li><i class="fas fa-check"></i> Soporte Prioritario 24/7</li>
+                <li><i class="fas fa-check"></i> Diagnósticos con IA</li>
+            </ul>
+            <!-- AQUÍ CAMBIAMOS EL BOTÓN PARA PADDLE -->
+            <a href="#!" class="btn btn-primary" style="text-align:center;" onclick="Paddle.Checkout.open({ settings: { displayMode: 'overlay', theme: 'light' }, items: [{ priceId: 'pri_01krmbnb8c7nskjpaj785ry82v', quantity: 1 }] });">Comenzar Ahora</a>
+        </div>
+
+        <!-- PLAN BUSINESS -->
+        <div class="pricing-card">
+            <h3>Business</h3>
+            <div class="price">Cotizar</div>
+            <p style="margin-bottom: 20px; color: #666;">Para clínicas grandes o redes hospitalarias que necesitan una solución a medida.</p>
+            <ul class="pricing-features">
+                <li><i class="fas fa-check"></i> Multi-sucursales</li>
+                <li><i class="fas fa-check"></i> Integración API personalizada</li>
+                <li><i class="fas fa-check"></i> Servidor Dedicado</li>
+                <li><i class="fas fa-check"></i> Capacitación presencial</li>
+            </ul>
+            <!-- Este se queda enviando a WhatsApp/Correo porque es cotización personalizada -->
+            <a href="https://wa.me/50433292869?text=Hola!%20Necesito%20una%20cotizaci%C3%B3n%20para%20el%20Plan%20Business%20de%20Wake%20Health" class="btn btn-secondary" style="color:black; border-color: black; text-align:center;">Solicitar Cotización</a>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- CTA FINAL -->
+<section class="section dark" id="contacto">
+<h2 class="title">Agenda tu demostración</h2>
+<p>O si prefieres, entra directamente y conoce la interfaz ahora mismo.</p>
+<div class="cta">
+<a href="https://wa.me/50433292869?text=Hola!%20Necesito%20m%C3%A1s%20informaci%C3%B3n%20sobre%20WAKE%20HEALTH!" class="btn btn-primary">Hablar por WhatsApp</a>
+<a href="https://wakehealth.vercel.app/login" class="btn btn-secondary">Probar Sistema</a>
+</div>
+</section>
+
+<footer>
+<p>© 2026 WAKE HEALTH | Soluciones Tecnológicas para el Sector Salud</p>
+<div style="margin-top: 10px;">
+    <a href="legal.html" style="color: #adfcdc; margin: 0 10px; text-decoration: none; font-size: 11px;">Términos de Servicio</a>  
+    <a href="legal.html" style="color: #adfcdc; margin: 0 10px; text-decoration: none; font-size: 11px;">Política de Privacidad</a>  
+    <a href="legal.html" style="color: #adfcdc; margin: 0 10px; text-decoration: none; font-size: 11px;">Política de Reembolso</a>   
+</div>
+</footer>
+
+<!-- MODAL PARA IMÁGENES -->
+<div id="imageModal" class="modal">
+    <span class="close-modal">&times;</span>
+    <img class="modal-content" id="modalImage">
+</div>
+
+<script>
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    const images = document.querySelectorAll(".gallery-card img");
+    const closeBtn = document.querySelector(".close-modal");
+
+    images.forEach(img => {
+        img.addEventListener('click', function() {
+            modal.style.display = "block";
+            modalImg.src = this.src;
+        });
+    });
+
+    closeBtn.addEventListener('click', function() {
+        modal.style.display = "none";
+    });
+
+    modal.addEventListener('click', function(e) {
+        if (e.target !== modalImg) {
+            modal.style.display = "none";
+        }
+    });
+</script>
+
+<!-- Script de Paddle para procesar pagos -->
+<script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+<script type="text/javascript">
+  Paddle.Setup({ 
+    token: 'live_2361ad8192506b03ec7b58407db'
+  });
+</script>
+
+</body>
+</html>

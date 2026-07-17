@@ -1,0 +1,135 @@
+---
+import Container from '../ui/Container.astro';
+import Button from '../ui/Button.astro';
+import MonoTag from '../ui/MonoTag.astro';
+import { SITE, whatsappUrl } from '../../data/site';
+import { t, type Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+const businessWa = whatsappUrl(dict.health.pricing.business.whatsappMsg);
+---
+
+<section id="precios" class="py-32 max-lg:py-20">
+  <Container>
+    <MonoTag>{dict.health.pricing.tag}</MonoTag>
+    <h2
+      class="mb-2 text-[clamp(2rem,4vw,2.75rem)] font-semibold leading-[1.15] tracking-tight text-wake-text"
+    >
+      {dict.health.pricing.title}
+    </h2>
+    <p class="mb-16 max-w-[600px] text-[17px] text-wake-muted">{dict.health.pricing.subtitle}</p>
+
+    <div class="grid gap-6 lg:grid-cols-3">
+      {/* Basic */}
+      <div
+        class="flex flex-col rounded-xl border border-wake-border bg-white p-8 transition hover:border-zinc-300"
+      >
+        <h3 class="mb-2 text-[22px] font-semibold">{dict.health.pricing.basic.name}</h3>
+        <div class="my-6 font-mono text-[42px] tracking-tight">
+          {dict.health.pricing.basic.price}<span class="text-base text-wake-muted"
+            >{dict.health.pricing.period}</span
+          >
+        </div>
+        <ul class="mb-8 flex flex-grow list-none flex-col gap-2.5">
+          {
+            dict.health.pricing.basic.features.map((f) => (
+              <li class="flex items-center gap-2.5 text-sm text-wake-muted">
+                <i class="fa-solid fa-check text-wake-accent-dark" />
+                {f}
+              </li>
+            ))
+          }
+        </ul>
+        <button
+          type="button"
+          class="paddle-checkout inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg border border-wake-text bg-wake-text px-5 py-2.5 text-sm font-medium text-white transition hover:bg-zinc-800"
+          data-price-id={SITE.paddle.prices.basic}
+        >
+          {dict.health.pricing.choose}
+        </button>
+      </div>
+
+      {/* Plus */}
+      <div
+        class="relative flex flex-col rounded-xl border border-wake-text bg-white p-8 shadow-[0_20px_40px_rgba(0,0,0,0.04)]"
+      >
+        <span
+          class="mb-4 inline-block w-fit rounded bg-wake-text px-3 py-1 text-xs font-medium text-white"
+        >
+          {dict.health.pricing.recommended}
+        </span>
+        <h3 class="mb-2 text-[22px] font-semibold">{dict.health.pricing.plus.name}</h3>
+        <div class="my-6 font-mono text-[42px] tracking-tight">
+          {dict.health.pricing.plus.price}<span class="text-base text-wake-muted"
+            >{dict.health.pricing.period}</span
+          >
+        </div>
+        <ul class="mb-8 flex flex-grow list-none flex-col gap-2.5">
+          {
+            dict.health.pricing.plus.features.map((f) => (
+              <li class="flex items-center gap-2.5 text-sm text-wake-muted">
+                <i class="fa-solid fa-check text-wake-accent-dark" />
+                {f}
+              </li>
+            ))
+          }
+        </ul>
+        <button
+          type="button"
+          class="paddle-checkout inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg border border-wake-text bg-wake-text px-5 py-2.5 text-sm font-medium text-white transition hover:bg-zinc-800"
+          data-price-id={SITE.paddle.prices.plus}
+        >
+          {dict.health.pricing.start}
+        </button>
+      </div>
+
+      {/* Business */}
+      <div
+        class="flex flex-col rounded-xl border border-wake-border bg-white p-8 transition hover:border-zinc-300"
+      >
+        <h3 class="mb-2 text-[22px] font-semibold">{dict.health.pricing.business.name}</h3>
+        <div class="my-6 font-mono text-[42px] tracking-tight">
+          {dict.health.pricing.business.price}
+        </div>
+        <p class="mb-6 text-sm leading-relaxed text-wake-muted">
+          {dict.health.pricing.business.note}
+        </p>
+        <ul class="mb-8 flex flex-grow list-none flex-col gap-2.5">
+          {
+            dict.health.pricing.business.features.map((f) => (
+              <li class="flex items-center gap-2.5 text-sm text-wake-muted">
+                <i class="fa-solid fa-check text-wake-accent-dark" />
+                {f}
+              </li>
+            ))
+          }
+        </ul>
+        <Button href={businessWa} variant="secondary" target="_blank" rel="noopener noreferrer">
+          {dict.health.pricing.quote}
+        </Button>
+      </div>
+    </div>
+  </Container>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.paddle-checkout').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const priceId = btn.getAttribute('data-price-id');
+        // @ts-expect-error Paddle CDN
+        if (!priceId || typeof Paddle === 'undefined') return;
+        // @ts-expect-error Paddle CDN
+        Paddle.Checkout.open({
+          settings: { displayMode: 'overlay', theme: 'light' },
+          items: [{ priceId, quantity: 1 }],
+        });
+      });
+    });
+  });
+</script>

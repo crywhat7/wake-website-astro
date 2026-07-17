@@ -1,0 +1,28 @@
+---
+import Container from '../ui/Container.astro';
+import { t, type Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+---
+
+<section class="py-32 max-lg:py-20">
+  <Container>
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        dict.home.benefits.map((b) => (
+          <div class="border-l border-wake-border py-2 pl-4 transition hover:border-l-wake-text">
+            <div class="mb-2 font-mono text-[32px] font-medium tracking-tighter text-wake-text">
+              {b.num}
+            </div>
+            <div class="text-sm leading-snug text-wake-muted">{b.desc}</div>
+          </div>
+        ))
+      }
+    </div>
+  </Container>
+</section>

@@ -1,0 +1,76 @@
+---
+import Container from '../ui/Container.astro';
+import Button from '../ui/Button.astro';
+import MonoTag from '../ui/MonoTag.astro';
+import { t, type Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+---
+
+<section id="pricing" class="py-32 max-lg:py-20">
+  <Container>
+    <MonoTag>{dict.home.pricing.tag}</MonoTag>
+    <h2
+      class="mb-2 text-[clamp(2rem,4vw,2.75rem)] font-semibold leading-[1.15] tracking-tight text-wake-text"
+    >
+      {dict.home.pricing.title}
+    </h2>
+    <p class="mb-16 max-w-[600px] text-[17px] text-wake-muted">{dict.home.pricing.subtitle}</p>
+
+    <div class="mt-8 flex justify-center">
+      <div
+        class="flex w-full max-w-[720px] flex-col rounded-xl border border-wake-text bg-white p-8 shadow-[0_20px_40px_rgba(0,0,0,0.04)] md:p-12"
+      >
+        <span
+          class="mb-4 inline-block w-fit rounded bg-wake-text px-3 py-1 text-xs font-medium text-white"
+        >
+          {dict.home.pricing.badge}
+        </span>
+        <h3 class="mb-2 text-[22px] font-semibold">{dict.home.pricing.planName}</h3>
+        <p class="max-w-[500px] text-[15px] leading-relaxed text-wake-muted">
+          {dict.home.pricing.planDesc}
+        </p>
+        <div class="my-8 font-mono text-[42px]">
+          {dict.home.pricing.price}<span class="text-base text-wake-muted"
+            >{dict.home.pricing.period}</span
+          >
+        </div>
+
+        <div class="mb-8 grid gap-3.5 sm:grid-cols-2 sm:gap-x-[30px]">
+          <ul class="flex list-none flex-col gap-2.5">
+            {
+              dict.home.pricing.featuresLeft.map((f) => (
+                <li class="flex items-center gap-2.5 text-sm text-wake-muted">
+                  <i class="fa-solid fa-check text-wake-accent-dark" />
+                  {f}
+                </li>
+              ))
+            }
+          </ul>
+          <ul class="flex list-none flex-col gap-2.5">
+            {
+              dict.home.pricing.featuresRight.map((f) => (
+                <li class="flex items-center gap-2.5 text-sm text-wake-muted">
+                  <i class="fa-solid fa-check text-wake-accent-dark" />
+                  {f}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <div class="mb-8 flex flex-col gap-1.5 border-t border-wake-border-subtle pt-8">
+          <strong class="text-[15px] font-semibold">{dict.home.pricing.trialTitle}</strong>
+          <span class="text-[13px] text-wake-muted">{dict.home.pricing.trialNote}</span>
+        </div>
+
+        <Button href="#contact" class="max-w-[260px]">{dict.home.pricing.cta}</Button>
+      </div>
+    </div>
+  </Container>
+</section>

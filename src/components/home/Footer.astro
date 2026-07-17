@@ -1,0 +1,102 @@
+---
+import Container from '../ui/Container.astro';
+import LanguageSwitcher from '../ui/LanguageSwitcher.astro';
+import { SITE } from '../../data/site';
+import { t, getLocalizedPath, type Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+const healthPath = getLocalizedPath('health', locale);
+---
+
+<footer class="border-t border-wake-border bg-white pb-8 pt-16">
+  <Container>
+    <div
+      class="grid gap-8 border-b border-wake-border-subtle pb-16 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]"
+    >
+      <div>
+        <a
+          href="#hero"
+          class="flex items-center gap-1.5 text-base font-bold tracking-tight text-wake-text no-underline"
+        >
+          WAKE SOLUTIONS
+          <span class="inline-block h-2 w-2 rounded-full bg-wake-text"></span>
+        </a>
+        <p class="mt-2 max-w-[240px] text-[13.5px] text-wake-muted">{dict.home.footer.brand}</p>
+        <LanguageSwitcher locale={locale} page="home" class="mt-4" />
+      </div>
+      <div>
+        <h5 class="mb-4 text-[13px] font-semibold text-wake-text">{dict.home.footer.company}</h5>
+        <ul class="flex list-none flex-col gap-2">
+          <li>
+            <a href="#about" class="text-[13px] text-wake-muted no-underline hover:text-wake-text"
+              >{dict.home.nav.about}</a
+            >
+          </li>
+          <li>
+            <a href="#services" class="text-[13px] text-wake-muted no-underline hover:text-wake-text"
+              >{dict.home.nav.services}</a
+            >
+          </li>
+          <li>
+            <a href="#products" class="text-[13px] text-wake-muted no-underline hover:text-wake-text"
+              >{dict.home.nav.products}</a
+            >
+          </li>
+          <li>
+            <a
+              href={healthPath}
+              class="text-[13px] text-wake-muted no-underline hover:text-wake-text"
+              >WAKE Health</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="mb-4 text-[13px] font-semibold text-wake-text">{dict.home.footer.legal}</h5>
+        <ul class="flex list-none flex-col gap-2">
+          <li>
+            <a href="/legal" class="text-[13px] text-wake-muted no-underline hover:text-wake-text"
+              >{dict.home.footer.terms}</a
+            >
+          </li>
+          <li>
+            <a href="/legal" class="text-[13px] text-wake-muted no-underline hover:text-wake-text"
+              >{dict.home.footer.privacy}</a
+            >
+          </li>
+          <li>
+            <a href="/legal" class="text-[13px] text-wake-muted no-underline hover:text-wake-text"
+              >{dict.home.footer.refund}</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="mb-4 text-[13px] font-semibold text-wake-text">{dict.home.footer.location}</h5>
+        <p class="text-[13px] leading-relaxed text-wake-muted">
+          {dict.home.footer.locationText}<br />
+          <a href={`mailto:${SITE.email}`} class="text-wake-text no-underline">{SITE.email}</a>
+        </p>
+      </div>
+    </div>
+    <div class="flex flex-wrap items-center justify-between gap-4 pt-8">
+      <p class="text-xs text-wake-light">{dict.home.footer.rights}</p>
+      <div class="flex gap-4">
+        <a href={SITE.social.facebook} aria-label="Facebook" class="text-sm text-wake-muted hover:text-wake-text"
+          ><i class="fab fa-facebook"></i></a
+        >
+        <a href={SITE.social.linkedin} aria-label="LinkedIn" class="text-sm text-wake-muted hover:text-wake-text"
+          ><i class="fab fa-linkedin"></i></a
+        >
+        <a href={SITE.social.instagram} aria-label="Instagram" class="text-sm text-wake-muted hover:text-wake-text"
+          ><i class="fab fa-instagram"></i></a
+        >
+      </div>
+    </div>
+  </Container>
+</footer>

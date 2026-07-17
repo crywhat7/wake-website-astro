@@ -1,0 +1,75 @@
+---
+import Container from '../ui/Container.astro';
+import Button from '../ui/Button.astro';
+import MonoTag from '../ui/MonoTag.astro';
+import { t, getLocalizedPath, type Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+const healthPath = getLocalizedPath('health', locale);
+---
+
+<section id="hero" class="relative overflow-hidden pb-32 pt-[calc(4rem+8rem)] max-lg:pb-20 max-lg:pt-28">
+  <Container class="grid items-center gap-16 lg:grid-cols-[1.1fr_0.9fr]">
+    <div>
+      <MonoTag>{dict.home.hero.tag}</MonoTag>
+      <h1
+        class="mb-4 text-[clamp(2.75rem,5vw,4rem)] font-semibold leading-[1.05] tracking-[-0.04em] text-wake-text"
+      >
+        {dict.home.hero.titleBefore}
+        <br />
+        <strong
+          class="bg-gradient-to-r from-black to-wake-accent-dark bg-clip-text font-semibold text-transparent"
+        >
+          {dict.home.hero.titleAccent}
+        </strong>
+      </h1>
+      <p class="mb-8 max-w-[520px] text-lg font-light leading-relaxed text-wake-muted">
+        {dict.home.hero.subtitle}
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <Button href={healthPath}>
+          {dict.home.hero.ctaPrimary}
+          <i class="fa-solid fa-arrow-right text-[11px]"></i>
+        </Button>
+        <Button href="#services" variant="secondary">{dict.home.hero.ctaSecondary}</Button>
+      </div>
+    </div>
+
+    <div class="relative mx-auto flex w-full max-w-[540px] items-center justify-center lg:order-none max-lg:order-first">
+      <div
+        class="relative w-full rounded-xl border border-wake-border bg-white p-4 shadow-[0_20px_40px_rgba(0,0,0,0.03)]"
+      >
+        <div class="mb-4 flex gap-1.5 border-b border-wake-border-subtle pb-2">
+          <div class="h-2 w-2 rounded-full bg-wake-border"></div>
+          <div class="h-2 w-2 rounded-full bg-wake-border"></div>
+          <div class="h-2 w-2 rounded-full bg-wake-border"></div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="col-span-2 rounded-lg border border-wake-border-subtle bg-wake-card p-4">
+            <div class="mb-2 h-2 w-[30%] rounded bg-wake-border-subtle"></div>
+            <div class="mt-2.5 h-4 w-full rounded bg-wake-accent"></div>
+          </div>
+          <div class="rounded-lg border border-wake-border-subtle bg-wake-card p-4">
+            <div class="mb-2 h-2 w-[60%] rounded bg-wake-border-subtle"></div>
+            <div class="h-2 w-full rounded bg-wake-border-subtle"></div>
+          </div>
+          <div class="rounded-lg border border-wake-border-subtle bg-wake-card p-4">
+            <div class="mb-2 h-2 w-full rounded bg-wake-border-subtle"></div>
+            <div class="h-2 w-[60%] rounded bg-wake-border-subtle"></div>
+          </div>
+        </div>
+        <div
+          class="absolute -bottom-5 -left-5 flex items-center gap-2 rounded-lg bg-wake-text px-4 py-2.5 font-mono text-[11px] text-white shadow-[0_10px_20px_rgba(0,0,0,0.1)] max-sm:left-0"
+        >
+          <span class="h-1.5 w-1.5 rounded-full bg-wake-accent-dark"></span>
+          {dict.home.hero.badge}
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>
