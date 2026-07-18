@@ -1,0 +1,40 @@
+---
+import { getGeoPath, latamRegions, usRegions, type GeoPageKind } from '../../data/geo';
+import type { Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+  kind: GeoPageKind;
+}
+
+const { locale, kind } = Astro.props;
+const regions = locale === 'es' ? latamRegions : usRegions;
+const title =
+  locale === 'es'
+    ? kind === 'home'
+      ? 'Cobertura LATAM'
+      : 'Clínicas en LATAM'
+    : kind === 'home'
+      ? 'Coverage in the USA'
+      : 'Clinics in the USA';
+---
+
+{
+  regions.length > 0 && (
+    <div>
+      <h5 class="mb-4 text-[13px] font-semibold text-wake-text">{title}</h5>
+      <ul class="flex list-none flex-col gap-2">
+        {regions.slice(0, 8).map((r) => (
+          <li>
+            <a
+              href={getGeoPath(kind, r)}
+              class="text-[13px] text-wake-muted no-underline hover:text-wake-text"
+            >
+              {r.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}

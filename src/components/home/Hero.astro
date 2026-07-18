@@ -6,17 +6,22 @@ import { t, getLocalizedPath, type Locale } from '../../i18n';
 
 interface Props {
   locale: Locale;
+  tag?: string;
+  subtitle?: string;
+  healthHref?: string;
 }
 
-const { locale } = Astro.props;
+const { locale, tag, subtitle, healthHref } = Astro.props;
 const dict = t(locale);
-const healthPath = getLocalizedPath('health', locale);
+const healthPath = healthHref ?? getLocalizedPath('health', locale);
+const heroTag = tag ?? dict.home.hero.tag;
+const heroSubtitle = subtitle ?? dict.home.hero.subtitle;
 ---
 
 <section id="hero" class="relative overflow-hidden pb-32 pt-[calc(4rem+8rem)] max-lg:pb-20 max-lg:pt-28">
   <Container class="grid items-center gap-16 lg:grid-cols-[1.1fr_0.9fr]">
     <div>
-      <MonoTag>{dict.home.hero.tag}</MonoTag>
+      <MonoTag>{heroTag}</MonoTag>
       <h1
         class="mb-4 text-[clamp(2.75rem,5vw,4rem)] font-semibold leading-[1.05] tracking-[-0.04em] text-wake-text"
       >
@@ -29,7 +34,7 @@ const healthPath = getLocalizedPath('health', locale);
         </strong>
       </h1>
       <p class="mb-8 max-w-[520px] text-lg font-light leading-relaxed text-wake-muted">
-        {dict.home.hero.subtitle}
+        {heroSubtitle}
       </p>
       <div class="flex flex-wrap gap-4">
         <Button href={healthPath}>

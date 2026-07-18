@@ -1,0 +1,722 @@
+[
+  {
+    "slug": "honduras",
+    "market": "latam",
+    "locale": "es",
+    "name": "Honduras",
+    "hreflang": "es-HN",
+    "cities": ["Tegucigalpa", "San Pedro Sula", "La Ceiba", "Choloma"],
+    "home": {
+      "title": "Infraestructura Tecnológica en Honduras | WAKE SOLUTIONS",
+      "description": "Automatización, software empresarial e IA para empresas en Honduras. Orden operativo para negocios en Tegucigalpa, San Pedro Sula y todo el país.",
+      "keywords": "software empresarial Honduras, automatización Tegucigalpa, infraestructura tecnológica San Pedro Sula, transformación digital Honduras, WAKE Solutions",
+      "heroTag": "Honduras",
+      "heroSubtitle": "Acompañamos a empresas hondureñas a centralizar operaciones, reducir fricción administrativa e integrar software e IA con foco en resultados medibles.",
+      "focusTitle": "Tecnología pensada para operar en Honduras",
+      "focusBody": "Desde comercios y clínicas hasta equipos administrativos en Tegucigalpa y San Pedro Sula: diseñamos sistemas que se adaptan a la realidad operativa local, con soporte cercano y despliegue sin interrumpir el día a día.",
+      "focusPoints": [
+        "Implementación gradual sin frenar ventas ni atención al cliente",
+        "Procesos claros para inventarios, facturación y reportes",
+        "Acompañamiento en español con contexto de negocio centroamericano"
+      ]
+    },
+    "health": {
+      "title": "Software para Clínicas en Honduras | WAKE HEALTH",
+      "description": "Sistema médico para clínicas y consultorios en Honduras: citas, expediente digital, facturación y control operativo. Ideal para Tegucigalpa, SPS y el interior.",
+      "keywords": "software clínicas Honduras, expediente clínico Tegucigalpa, agenda médica San Pedro Sula, sistema para doctores Honduras, WAKE Health",
+      "heroTag": "Clínicas en Honduras",
+      "heroSubtitle": "Organiza pacientes, citas e historial clínico en un solo sistema pensado para la operación real de clínicas hondureñas.",
+      "focusTitle": "Control clínico sin depender del papel",
+      "focusBody": "WAKE Health ayuda a consultorios y clínicas en Honduras a dejar Excel y agendas físicas: menos citas perdidas, historial más rápido y mejor visibilidad de ingresos.",
+      "focusPoints": [
+        "Agenda médica con menos cruces de horarios",
+        "Expediente digital accesible desde consultorio o recepción",
+        "Facturación y reportes para decidir con datos reales"
+      ]
+    }
+  },
+  {
+    "slug": "guatemala",
+    "market": "latam",
+    "locale": "es",
+    "name": "Guatemala",
+    "hreflang": "es-GT",
+    "cities": ["Ciudad de Guatemala", "Quetzaltenango", "Mixco", "Villa Nueva"],
+    "home": {
+      "title": "Infraestructura Tecnológica en Guatemala | WAKE SOLUTIONS",
+      "description": "Software, automatización e infraestructura digital para empresas en Guatemala. Escala operaciones con orden y métricas claras en Ciudad de Guatemala y más.",
+      "keywords": "software empresarial Guatemala, automatización Ciudad de Guatemala, transformación digital Guatemala, infraestructura IT Guatemala, WAKE Solutions",
+      "heroTag": "Guatemala",
+      "heroSubtitle": "Construimos bases tecnológicas para empresas guatemaltecas que necesitan centralizar procesos y crecer con menos caos operativo.",
+      "focusTitle": "Orden operativo para empresas en Guatemala",
+      "focusBody": "Trabajamos con equipos que operan en Ciudad de Guatemala y el interior: sistematizamos ventas, logística y administración para que la tecnología acompañe el ritmo del negocio.",
+      "focusPoints": [
+        "Arquitecturas simples de mantener y escalar",
+        "Automatización de tareas repetitivas en administración",
+        "Integración de herramientas existentes sin reiniciar todo"
+      ]
+    },
+    "health": {
+      "title": "Software para Clínicas en Guatemala | WAKE HEALTH",
+      "description": "WAKE Health para clínicas en Guatemala: pacientes, citas, historial y finanzas en una sola plataforma. Pensado para consultorios en Ciudad de Guatemala y regiones.",
+      "keywords": "software clínicas Guatemala, expediente clínico Ciudad de Guatemala, agenda médica Guatemala, sistema médico Guatemala, WAKE Health",
+      "heroTag": "Clínicas en Guatemala",
+      "heroSubtitle": "Centraliza la operación de tu clínica guatemalteca: menos desorden en citas, historial más ágil y control financiero claro.",
+      "focusTitle": "Una clínica más ordenada, paciente a paciente",
+      "focusBody": "Para consultorios y centros médicos en Guatemala que quieren profesionalizar la atención sin complicar al equipo con software difícil.",
+      "focusPoints": [
+        "Flujo de cita → consulta → historial en un solo lugar",
+        "Menos dependencia de papel y archivos dispersos",
+        "Visibilidad de ocupación e ingresos por periodo"
+      ]
+    }
+  },
+  {
+    "slug": "el-salvador",
+    "market": "latam",
+    "locale": "es",
+    "name": "El Salvador",
+    "hreflang": "es-SV",
+    "cities": ["San Salvador", "Santa Ana", "San Miguel", "Soyapango"],
+    "home": {
+      "title": "Infraestructura Tecnológica en El Salvador | WAKE SOLUTIONS",
+      "description": "Automatización y software empresarial para compañías en El Salvador. Mejora control operativo en San Salvador y a nivel nacional con WAKE SOLUTIONS.",
+      "keywords": "software empresarial El Salvador, automatización San Salvador, transformación digital El Salvador, WAKE Solutions Centroamérica",
+      "heroTag": "El Salvador",
+      "heroSubtitle": "Ayudamos a empresas salvadoreñas a ordenar operaciones con software centralizado, automatización e infraestructura lista para crecer.",
+      "focusTitle": "Menos fricción operativa en El Salvador",
+      "focusBody": "Diseñamos e implementamos sistemas alineados a equipos en San Salvador y otras ciudades: menos tareas manuales, más control y mejor seguimiento de resultados.",
+      "focusPoints": [
+        "Digitalización de procesos administrativos clave",
+        "Reportes claros para dirección y operaciones",
+        "Soporte cercano durante implementación y adopción"
+      ]
+    },
+    "health": {
+      "title": "Software para Clínicas en El Salvador | WAKE HEALTH",
+      "description": "Sistema para clínicas y consultorios en El Salvador. Agenda, expediente digital y control de ingresos con WAKE Health.",
+      "keywords": "software clínicas El Salvador, expediente clínico San Salvador, agenda médica El Salvador, WAKE Health",
+      "heroTag": "Clínicas en El Salvador",
+      "heroSubtitle": "Da estructura a tu clínica en El Salvador: citas organizadas, historial disponible y finanzas más claras.",
+      "focusTitle": "Atención clínica con control diario",
+      "focusBody": "WAKE Health se adapta a consultorios salvadoreños que necesitan orden sin perder agilidad en recepción y consulta.",
+      "focusPoints": [
+        "Agenda compartida entre recepción y médicos",
+        "Historial clínico digital seguro y rápido",
+        "Mejor seguimiento de pagos y servicios"
+      ]
+    }
+  },
+  {
+    "slug": "costa-rica",
+    "market": "latam",
+    "locale": "es",
+    "name": "Costa Rica",
+    "hreflang": "es-CR",
+    "cities": ["San José", "Alajuela", "Cartago", "Heredia"],
+    "home": {
+      "title": "Infraestructura Tecnológica en Costa Rica | WAKE SOLUTIONS",
+      "description": "Software e infraestructura digital para empresas en Costa Rica. Automatiza operaciones y escala con orden en San José y el Valle Central.",
+      "keywords": "software empresarial Costa Rica, automatización San José, transformación digital Costa Rica, WAKE Solutions",
+      "heroTag": "Costa Rica",
+      "heroSubtitle": "Impulsamos empresas costarricenses con sistemas centralizados, automatización e integración de IA orientada a eficiencia.",
+      "focusTitle": "Crecimiento digital con foco operativo",
+      "focusBody": "Para organizaciones en Costa Rica que ya operan rápido y necesitan tecnología que acompañe sin agregar complejidad innecesaria.",
+      "focusPoints": [
+        "Priorización de procesos con mayor retorno",
+        "Implementación modular por áreas del negocio",
+        "Capacitación práctica para adopción real del equipo"
+      ]
+    },
+    "health": {
+      "title": "Software para Clínicas en Costa Rica | WAKE HEALTH",
+      "description": "WAKE Health para clínicas en Costa Rica: pacientes, citas, historial y facturación en una plataforma moderna y fácil de usar.",
+      "keywords": "software clínicas Costa Rica, expediente clínico San José, agenda médica Costa Rica, WAKE Health",
+      "heroTag": "Clínicas en Costa Rica",
+      "heroSubtitle": "Eleva la operación de tu clínica costarricense con un sistema completo, claro y listo para el día a día.",
+      "focusTitle": "Experiencia de paciente + control interno",
+      "focusBody": "Reduce tiempos de espera administrativa y mejora la continuidad del historial clínico en consultorios de San José y alrededores.",
+      "focusPoints": [
+        "Flujo clínico más predecible",
+        "Datos centralizados para seguimiento",
+        "Planes flexibles según tamaño de clínica"
+      ]
+    }
+  },
+  {
+    "slug": "panama",
+    "market": "latam",
+    "locale": "es",
+    "name": "Panamá",
+    "hreflang": "es-PA",
+    "cities": ["Ciudad de Panamá", "San Miguelito", "Colón", "David"],
+    "home": {
+      "title": "Infraestructura Tecnológica en Panamá | WAKE SOLUTIONS",
+      "description": "Automatización y software empresarial para negocios en Panamá. Orden operativo e infraestructura digital para crecer con control.",
+      "keywords": "software empresarial Panamá, automatización Ciudad de Panamá, transformación digital Panamá, WAKE Solutions",
+      "heroTag": "Panamá",
+      "heroSubtitle": "Ayudamos a empresas panameñas a sistematizar operaciones críticas y construir una base tecnológica confiable.",
+      "focusTitle": "Operación ordenada en un mercado dinámico",
+      "focusBody": "En Panamá la velocidad importa: implementamos herramientas que dan visibilidad financiera y operativa sin frenar al equipo.",
+      "focusPoints": [
+        "Centralización de información de negocio",
+        "Automatización de flujos administrativos",
+        "Escalabilidad para equipos en expansión"
+      ]
+    },
+    "health": {
+      "title": "Software para Clínicas en Panamá | WAKE HEALTH",
+      "description": "Sistema clínico para Panamá: agenda, expediente digital, facturación y módulos de apoyo para clínicas y consultorios.",
+      "keywords": "software clínicas Panamá, expediente clínico Ciudad de Panamá, agenda médica Panamá, WAKE Health",
+      "heroTag": "Clínicas en Panamá",
+      "heroSubtitle": "Mantén tu clínica panameña bajo control con un sistema unificado para pacientes, citas y operación diaria.",
+      "focusTitle": "Más control, menos trabajo manual",
+      "focusBody": "Diseñado para clínicas que atienden alto volumen y necesitan trazabilidad clínica y administrativa sin fricción.",
+      "focusPoints": [
+        "Agenda eficiente para múltiples profesionales",
+        "Historial clínico disponible cuando se necesita",
+        "Mejor lectura de ingresos y servicios"
+      ]
+    }
+  },
+  {
+    "slug": "mexico",
+    "market": "latam",
+    "locale": "es",
+    "name": "México",
+    "hreflang": "es-MX",
+    "cities": ["Ciudad de México", "Guadalajara", "Monterrey", "Puebla"],
+    "home": {
+      "title": "Infraestructura Tecnológica en México | WAKE SOLUTIONS",
+      "description": "Software, automatización e infraestructura digital para empresas en México. Escala con orden operativo en CDMX, Guadalajara, Monterrey y más.",
+      "keywords": "software empresarial México, automatización CDMX, transformación digital México, infraestructura tecnológica Guadalajara Monterrey, WAKE Solutions",
+      "heroTag": "México",
+      "heroSubtitle": "Construimos infraestructura tecnológica para empresas mexicanas que buscan menos caos operativo y más capacidad de ejecución.",
+      "focusTitle": "Tecnología para operar a escala en México",
+      "focusBody": "Ya sea en CDMX, Guadalajara o Monterrey: ayudamos a unificar procesos, automatizar tareas repetitivas y dar claridad a la operación.",
+      "focusPoints": [
+        "Enfoque en ROI y eficiencia de costes",
+        "Integración con procesos reales del negocio",
+        "Hoja de ruta tecnológica por etapas"
+      ]
+    },
+    "health": {
+      "title": "Software para Clínicas en México | WAKE HEALTH",
+      "description": "Software médico para clínicas en México: pacientes, citas, expediente electrónico y facturación. Ideal para consultorios en CDMX y principales ciudades.",
+      "keywords": "software clínicas México, expediente clínico CDMX, agenda médica Guadalajara, sistema para doctores México, WAKE Health",
+      "heroTag": "Clínicas en México",
+      "heroSubtitle": "Digitaliza tu clínica en México con un sistema completo para citas, historial y control financiero.",
+      "focusTitle": "Expediente y agenda sin fricción",
+      "focusBody": "WAKE Health ayuda a clínicas mexicanas a profesionalizar la operación diaria y mejorar la experiencia del paciente con procesos claros.",
+      "focusPoints": [
+        "Gestión multiusuario para recepción y médicos",
+        "Historial clínico digital consultable en segundos",
+        "Reportes para administración y crecimiento"
+      ]
+    }
+  },
+  {
+    "slug": "colombia",
+    "market": "latam",
+    "locale": "es",
+    "name": "Colombia",
+    "hreflang": "es-CO",
+    "cities": ["Bogotá", "Medellín", "Cali", "Barranquilla"],
+    "home": {
+      "title": "Infraestructura Tecnológica en Colombia | WAKE SOLUTIONS",
+      "description": "Automatización y software empresarial para compañías en Colombia. Orden operativo e infraestructura digital en Bogotá, Medellín, Cali y más.",
+      "keywords": "software empresarial Colombia, automatización Bogotá, transformación digital Medellín, WAKE Solutions Colombia",
+      "heroTag": "Colombia",
+      "heroSubtitle": "Acompañamos a empresas colombianas a sistematizar operaciones y construir tecnología útil, medible y sostenible.",
+      "focusTitle": "Ejecución limpia para equipos en Colombia",
+      "focusBody": "Priorizamos implementaciones prácticas: menos herramientas dispersas, más control central y procesos que el equipo sí adopta.",
+      "focusPoints": [
+        "Diagnóstico operativo antes de construir",
+        "Automatización de cuellos de botella reales",
+        "Soporte continuo post-implementación"
+      ]
+    },
+    "health": {
+      "title": "Software para Clínicas en Colombia | WAKE HEALTH",
+      "description": "WAKE Health para clínicas en Colombia: agenda médica, historial clínico, facturación y operación unificada para consultorios modernos.",
+      "keywords": "software clínicas Colombia, expediente clínico Bogotá, agenda médica Medellín, sistema médico Colombia, WAKE Health",
+      "heroTag": "Clínicas en Colombia",
+      "heroSubtitle": "Organiza tu clínica en Colombia con un sistema claro para pacientes, citas y continuidad clínica.",
+      "focusTitle": "Operación clínica con visibilidad total",
+      "focusBody": "Deja atrás procesos fragmentados. WAKE Health concentra lo esencial para que médicos y administración trabajen alineados.",
+      "focusPoints": [
+        "Menos pérdida de información entre turnos",
+        "Agenda y expediente conectados",
+        "Base sólida para crecer el consultorio"
+      ]
+    }
+  },
+  {
+    "slug": "peru",
+    "market": "latam",
+    "locale": "es",
+    "name": "Perú",
+    "hreflang": "es-PE",
+    "cities": ["Lima", "Arequipa", "Trujillo", "Cusco"],
+    "home": {
+      "title": "Infraestructura Tecnológica en Perú | WAKE SOLUTIONS",
+      "description": "Software e infraestructura digital para empresas en Perú. Automatiza y ordena operaciones en Lima y principales ciudades con WAKE SOLUTIONS.",
+      "keywords": "software empresarial Perú, automatización Lima, transformación digital Perú, WAKE Solutions",
+      "heroTag": "Perú",
+      "heroSubtitle": "Ayudamos a empresas peruanas a reducir caos operativo con software centralizado, automatización e infraestructura escalable.",
+      "focusTitle": "Sistemas que acompañan el crecimiento en Perú",
+      "focusBody": "Implementaciones enfocadas en claridad: menos dependencia de hojas de cálculo y más control de procesos críticos del negocio.",
+      "focusPoints": [
+        "Centralización de información operativa",
+        "Automatización de tareas administrativas",
+        "Arquitectura lista para crecer por etapas"
+      ]
+    },
+    "health": {
+      "title": "Software para Clínicas en Perú | WAKE HEALTH",
+      "description": "Sistema para clínicas y consultorios en Perú. Citas, expediente digital y control financiero con WAKE Health.",
+      "keywords": "software clínicas Perú, expediente clínico Lima, agenda médica Perú, WAKE Health",
+      "heroTag": "Clínicas en Perú",
+      "heroSubtitle": "Pon orden en tu clínica peruana: pacientes, citas e historial en una sola plataforma.",
+      "focusTitle": "Continuidad clínica sin fricción",
+      "focusBody": "WAKE Health facilita el día a día de consultorios en Lima y otras ciudades con flujos simples y control operativo.",
+      "focusPoints": [
+        "Agenda médica organizada",
+        "Historial clínico digital",
+        "Mejor seguimiento de ingresos"
+      ]
+    }
+  },
+  {
+    "slug": "republica-dominicana",
+    "market": "latam",
+    "locale": "es",
+    "name": "República Dominicana",
+    "hreflang": "es-DO",
+    "cities": ["Santo Domingo", "Santiago", "La Romana", "Punta Cana"],
+    "home": {
+      "title": "Infraestructura Tecnológica en República Dominicana | WAKE SOLUTIONS",
+      "description": "Automatización y software empresarial para negocios en República Dominicana. Orden operativo en Santo Domingo, Santiago y más.",
+      "keywords": "software empresarial República Dominicana, automatización Santo Domingo, transformación digital RD, WAKE Solutions",
+      "heroTag": "República Dominicana",
+      "heroSubtitle": "Construimos bases tecnológicas para empresas dominicanas que quieren escalar con control y menos fricción manual.",
+      "focusTitle": "Tecnología útil para operar mejor en RD",
+      "focusBody": "Nos enfocamos en resultados prácticos: procesos claros, sistemas adoptables y visibilidad para tomar decisiones.",
+      "focusPoints": [
+        "Implementación sin interrumpir operación",
+        "Automatización de tareas repetitivas",
+        "Acompañamiento cercano al equipo"
+      ]
+    },
+    "health": {
+      "title": "Software para Clínicas en República Dominicana | WAKE HEALTH",
+      "description": "WAKE Health para clínicas en República Dominicana: agenda, expediente digital y control de la operación clínica diaria.",
+      "keywords": "software clínicas República Dominicana, expediente clínico Santo Domingo, agenda médica RD, WAKE Health",
+      "heroTag": "Clínicas en República Dominicana",
+      "heroSubtitle": "Organiza tu clínica en RD con un sistema completo para citas, pacientes y seguimiento clínico.",
+      "focusTitle": "Más orden en recepción y consulta",
+      "focusBody": "Ideal para consultorios dominicanos que necesitan dejar el desorden de papel y mejorar el control diario.",
+      "focusPoints": [
+        "Citas mejor coordinadas",
+        "Historial clínico accesible",
+        "Visibilidad de servicios e ingresos"
+      ]
+    }
+  },
+  {
+    "slug": "ecuador",
+    "market": "latam",
+    "locale": "es",
+    "name": "Ecuador",
+    "hreflang": "es-EC",
+    "cities": ["Quito", "Guayaquil", "Cuenca", "Ambato"],
+    "home": {
+      "title": "Infraestructura Tecnológica en Ecuador | WAKE SOLUTIONS",
+      "description": "Software y automatización para empresas en Ecuador. Infraestructura digital para orden operativo en Quito, Guayaquil y más.",
+      "keywords": "software empresarial Ecuador, automatización Quito, transformación digital Guayaquil, WAKE Solutions",
+      "heroTag": "Ecuador",
+      "heroSubtitle": "Ayudamos a empresas ecuatorianas a centralizar procesos y construir sistemas que reduzcan caos y mejoren ejecución.",
+      "focusTitle": "Operación digital con foco en adopción",
+      "focusBody": "Implementamos tecnología que el equipo puede usar desde el primer día, con claridad de procesos y soporte continuo.",
+      "focusPoints": [
+        "Priorización de procesos de alto impacto",
+        "Sistemas simples de operar",
+        "Mejora continua post-lanzamiento"
+      ]
+    },
+    "health": {
+      "title": "Software para Clínicas en Ecuador | WAKE HEALTH",
+      "description": "Sistema médico para clínicas en Ecuador. Pacientes, citas, historial y facturación con WAKE Health.",
+      "keywords": "software clínicas Ecuador, expediente clínico Quito, agenda médica Guayaquil, WAKE Health",
+      "heroTag": "Clínicas en Ecuador",
+      "heroSubtitle": "Digitaliza la operación de tu clínica en Ecuador y mantén pacientes, citas e historial bajo control.",
+      "focusTitle": "Clínica ordenada, atención más fluida",
+      "focusBody": "WAKE Health ayuda a consultorios ecuatorianos a reducir errores administrativos y mejorar continuidad de atención.",
+      "focusPoints": [
+        "Agenda y recepción alineadas",
+        "Expediente digital centralizado",
+        "Mejor control de la operación diaria"
+      ]
+    }
+  },
+  {
+    "slug": "texas",
+    "market": "us",
+    "locale": "en",
+    "name": "Texas",
+    "hreflang": "en-US",
+    "cities": ["Houston", "Dallas", "Austin", "San Antonio"],
+    "home": {
+      "title": "Business Tech Infrastructure in Texas | WAKE SOLUTIONS",
+      "description": "Automation, software systems, and digital infrastructure for growing companies in Texas. Operate with more order across Houston, Dallas, Austin, and San Antonio.",
+      "keywords": "business automation Texas, enterprise software Houston, digital transformation Dallas, IT infrastructure Austin, WAKE Solutions Texas",
+      "heroTag": "Texas",
+      "heroSubtitle": "We help Texas companies reduce operational chaos with centralized software, automation, and practical AI-enabled workflows.",
+      "focusTitle": "Built for fast-moving Texas operations",
+      "focusBody": "From Houston clinics and service businesses to Dallas and Austin teams: we implement systems that improve control without slowing daily work.",
+      "focusPoints": [
+        "Clear process mapping before implementation",
+        "Automation focused on repetitive admin work",
+        "Scalable systems for multi-location growth"
+      ]
+    },
+    "health": {
+      "title": "Clinic Management Software in Texas | WAKE HEALTH",
+      "description": "WAKE Health for Texas clinics: scheduling, digital records, billing workflows, and day-to-day operational control for practices in Houston, Dallas, Austin, and beyond.",
+      "keywords": "clinic software Texas, EHR Houston, medical scheduling Dallas, practice management Austin, WAKE Health Texas",
+      "heroTag": "Clinics in Texas",
+      "heroSubtitle": "Run your Texas clinic with one system for patients, appointments, records, and operational visibility.",
+      "focusTitle": "Less front-desk chaos, better clinical continuity",
+      "focusBody": "Designed for busy practices that need reliable scheduling, faster chart access, and clearer financial visibility.",
+      "focusPoints": [
+        "Smarter appointment coordination",
+        "Digital records available when staff need them",
+        "Clearer view of services and revenue"
+      ]
+    }
+  },
+  {
+    "slug": "california",
+    "market": "us",
+    "locale": "en",
+    "name": "California",
+    "hreflang": "en-US",
+    "cities": ["Los Angeles", "San Francisco", "San Diego", "San Jose"],
+    "home": {
+      "title": "Business Tech Infrastructure in California | WAKE SOLUTIONS",
+      "description": "Software systems and automation for California companies. Build operational order across Los Angeles, San Francisco, San Diego, and San Jose.",
+      "keywords": "business automation California, enterprise software Los Angeles, digital transformation San Francisco, WAKE Solutions California",
+      "heroTag": "California",
+      "heroSubtitle": "We help California teams systematize operations with centralized tools, automation, and implementation that teams actually adopt.",
+      "focusTitle": "Operational clarity for California growth",
+      "focusBody": "Whether you run services in LA or product/ops teams in the Bay Area, we focus on practical systems that reduce friction and improve execution.",
+      "focusPoints": [
+        "Less tool sprawl, more process ownership",
+        "Automation where it saves real hours",
+        "Roadmaps tied to measurable outcomes"
+      ]
+    },
+    "health": {
+      "title": "Clinic Management Software in California | WAKE HEALTH",
+      "description": "Clinic software for California practices: appointments, digital charts, billing visibility, and streamlined operations with WAKE Health.",
+      "keywords": "clinic software California, medical scheduling Los Angeles, EHR San Diego, practice management San Francisco, WAKE Health",
+      "heroTag": "Clinics in California",
+      "heroSubtitle": "Give your California practice a cleaner operating system for patients, visits, and records.",
+      "focusTitle": "Modern clinic ops without complexity overload",
+      "focusBody": "WAKE Health helps California clinics replace scattered spreadsheets and paper workflows with one dependable platform.",
+      "focusPoints": [
+        "Unified scheduling and patient flow",
+        "Faster access to clinical history",
+        "Better admin visibility day to day"
+      ]
+    }
+  },
+  {
+    "slug": "florida",
+    "market": "us",
+    "locale": "en",
+    "name": "Florida",
+    "hreflang": "en-US",
+    "cities": ["Miami", "Orlando", "Tampa", "Jacksonville"],
+    "home": {
+      "title": "Business Tech Infrastructure in Florida | WAKE SOLUTIONS",
+      "description": "Automation and software infrastructure for Florida businesses. Improve operational control in Miami, Orlando, Tampa, and Jacksonville.",
+      "keywords": "business automation Florida, enterprise software Miami, digital transformation Orlando, WAKE Solutions Florida",
+      "heroTag": "Florida",
+      "heroSubtitle": "We help Florida companies build reliable tech foundations—centralized systems, automation, and cleaner operational workflows.",
+      "focusTitle": "Systems that keep pace with Florida demand",
+      "focusBody": "From Miami service operations to statewide teams: we implement technology that improves coordination and reduces manual follow-up.",
+      "focusPoints": [
+        "Centralized operational visibility",
+        "Fewer repetitive admin tasks",
+        "Implementation support in English and Spanish contexts"
+      ]
+    },
+    "health": {
+      "title": "Clinic Management Software in Florida | WAKE HEALTH",
+      "description": "WAKE Health for Florida clinics and practices: scheduling, digital records, and operational control for Miami, Orlando, Tampa, and beyond.",
+      "keywords": "clinic software Florida, medical scheduling Miami, EHR Orlando, practice management Tampa, WAKE Health Florida",
+      "heroTag": "Clinics in Florida",
+      "heroSubtitle": "Organize your Florida clinic with one platform for appointments, charts, and daily operations.",
+      "focusTitle": "Better patient flow across busy days",
+      "focusBody": "Built for clinics that need dependable scheduling and quick clinical context without juggling multiple disconnected tools.",
+      "focusPoints": [
+        "Reduced appointment conflicts",
+        "Digital records in one place",
+        "Clearer operational reporting"
+      ]
+    }
+  },
+  {
+    "slug": "new-york",
+    "market": "us",
+    "locale": "en",
+    "name": "New York",
+    "hreflang": "en-US",
+    "cities": ["New York City", "Buffalo", "Rochester", "Albany"],
+    "home": {
+      "title": "Business Tech Infrastructure in New York | WAKE SOLUTIONS",
+      "description": "Software systems and automation for New York companies. Reduce operational friction in NYC and across the state with WAKE SOLUTIONS.",
+      "keywords": "business automation New York, enterprise software NYC, digital transformation New York, WAKE Solutions",
+      "heroTag": "New York",
+      "heroSubtitle": "We help New York teams replace operational chaos with structured systems, automation, and measurable process improvements.",
+      "focusTitle": "High-pressure operations need clean systems",
+      "focusBody": "In New York, speed matters. We implement practical infrastructure that improves coordination without adding unnecessary complexity.",
+      "focusPoints": [
+        "Fast diagnosis of operational bottlenecks",
+        "Automation for repetitive workflows",
+        "Systems designed for real team adoption"
+      ]
+    },
+    "health": {
+      "title": "Clinic Management Software in New York | WAKE HEALTH",
+      "description": "Clinic software for New York practices: appointments, digital records, and day-to-day management with WAKE Health.",
+      "keywords": "clinic software New York, medical scheduling NYC, EHR New York, practice management software, WAKE Health",
+      "heroTag": "Clinics in New York",
+      "heroSubtitle": "Keep your New York practice organized with unified scheduling, records, and operational visibility.",
+      "focusTitle": "Reliable clinic operations under volume",
+      "focusBody": "WAKE Health supports practices that need consistency across reception, providers, and follow-up workflows.",
+      "focusPoints": [
+        "Stronger appointment control",
+        "Faster chart retrieval",
+        "Cleaner admin and billing visibility"
+      ]
+    }
+  },
+  {
+    "slug": "illinois",
+    "market": "us",
+    "locale": "en",
+    "name": "Illinois",
+    "hreflang": "en-US",
+    "cities": ["Chicago", "Aurora", "Naperville", "Rockford"],
+    "home": {
+      "title": "Business Tech Infrastructure in Illinois | WAKE SOLUTIONS",
+      "description": "Automation and digital infrastructure for Illinois companies. Build operational order in Chicago and statewide with WAKE SOLUTIONS.",
+      "keywords": "business automation Illinois, enterprise software Chicago, digital transformation Illinois, WAKE Solutions",
+      "heroTag": "Illinois",
+      "heroSubtitle": "We help Illinois businesses systematize operations with centralized software and automation that improves day-to-day execution.",
+      "focusTitle": "Practical systems for Midwest operations",
+      "focusBody": "From Chicago service firms to growing statewide teams, we focus on clear processes and tools your staff can sustain.",
+      "focusPoints": [
+        "Operational audit before tooling decisions",
+        "Automation with measurable time savings",
+        "Support through rollout and training"
+      ]
+    },
+    "health": {
+      "title": "Clinic Management Software in Illinois | WAKE HEALTH",
+      "description": "WAKE Health for Illinois clinics: scheduling, digital clinical records, and operational control for Chicago-area and statewide practices.",
+      "keywords": "clinic software Illinois, medical scheduling Chicago, EHR Illinois, practice management Chicago, WAKE Health",
+      "heroTag": "Clinics in Illinois",
+      "heroSubtitle": "Run a cleaner clinic operation in Illinois with one system for patients, visits, and records.",
+      "focusTitle": "Consistency from front desk to follow-up",
+      "focusBody": "Help your Illinois practice reduce missed details and keep clinical and admin workflows aligned.",
+      "focusPoints": [
+        "Shared scheduling visibility",
+        "Digital history when it matters",
+        "Better operational reporting"
+      ]
+    }
+  },
+  {
+    "slug": "arizona",
+    "market": "us",
+    "locale": "en",
+    "name": "Arizona",
+    "hreflang": "en-US",
+    "cities": ["Phoenix", "Tucson", "Mesa", "Chandler"],
+    "home": {
+      "title": "Business Tech Infrastructure in Arizona | WAKE SOLUTIONS",
+      "description": "Software and automation for Arizona companies. Improve operational control across Phoenix, Tucson, and growing metro areas.",
+      "keywords": "business automation Arizona, enterprise software Phoenix, digital transformation Tucson, WAKE Solutions Arizona",
+      "heroTag": "Arizona",
+      "heroSubtitle": "We help Arizona teams build reliable tech foundations—less manual coordination, more operational clarity.",
+      "focusTitle": "Grow in Arizona with systems that scale",
+      "focusBody": "Implementations focused on adoption: clear workflows, practical automation, and infrastructure that supports expansion.",
+      "focusPoints": [
+        "Centralized process visibility",
+        "Reduced spreadsheet dependency",
+        "Stage-based digital transformation"
+      ]
+    },
+    "health": {
+      "title": "Clinic Management Software in Arizona | WAKE HEALTH",
+      "description": "Clinic software for Arizona practices: appointments, digital records, and operations management with WAKE Health.",
+      "keywords": "clinic software Arizona, medical scheduling Phoenix, EHR Tucson, practice management Arizona, WAKE Health",
+      "heroTag": "Clinics in Arizona",
+      "heroSubtitle": "Organize your Arizona clinic with unified patient scheduling, charts, and operational control.",
+      "focusTitle": "A calmer front desk and clearer charts",
+      "focusBody": "WAKE Health helps Arizona clinics replace fragmented tools with one dependable operating layer.",
+      "focusPoints": [
+        "Fewer scheduling conflicts",
+        "Faster clinical context in visits",
+        "Clearer service and revenue tracking"
+      ]
+    }
+  },
+  {
+    "slug": "georgia",
+    "market": "us",
+    "locale": "en",
+    "name": "Georgia",
+    "hreflang": "en-US",
+    "cities": ["Atlanta", "Savannah", "Augusta", "Columbus"],
+    "home": {
+      "title": "Business Tech Infrastructure in Georgia | WAKE SOLUTIONS",
+      "description": "Automation and software infrastructure for Georgia businesses. Build operational order in Atlanta and across the state.",
+      "keywords": "business automation Georgia, enterprise software Atlanta, digital transformation Georgia, WAKE Solutions",
+      "heroTag": "Georgia",
+      "heroSubtitle": "We help Georgia companies reduce operational friction with centralized systems and automation that teams can sustain.",
+      "focusTitle": "Clean execution for growing Georgia teams",
+      "focusBody": "Practical implementations for Atlanta and statewide operations: less chaos, better follow-through, clearer metrics.",
+      "focusPoints": [
+        "Process-first technology decisions",
+        "Automation of repetitive admin work",
+        "Training that drives real adoption"
+      ]
+    },
+    "health": {
+      "title": "Clinic Management Software in Georgia | WAKE HEALTH",
+      "description": "WAKE Health for Georgia clinics: scheduling, digital records, and practice operations for Atlanta and statewide providers.",
+      "keywords": "clinic software Georgia, medical scheduling Atlanta, EHR Georgia, practice management Atlanta, WAKE Health",
+      "heroTag": "Clinics in Georgia",
+      "heroSubtitle": "Keep your Georgia practice organized with one platform for appointments, patients, and records.",
+      "focusTitle": "Stronger clinic rhythm every day",
+      "focusBody": "Designed for practices that need predictable scheduling and reliable clinical information at the point of care.",
+      "focusPoints": [
+        "Coordinated appointment workflows",
+        "Digital charts in one system",
+        "Better operational visibility"
+      ]
+    }
+  },
+  {
+    "slug": "north-carolina",
+    "market": "us",
+    "locale": "en",
+    "name": "North Carolina",
+    "hreflang": "en-US",
+    "cities": ["Charlotte", "Raleigh", "Durham", "Greensboro"],
+    "home": {
+      "title": "Business Tech Infrastructure in North Carolina | WAKE SOLUTIONS",
+      "description": "Software systems and automation for North Carolina companies. Improve operations in Charlotte, Raleigh, Durham, and beyond.",
+      "keywords": "business automation North Carolina, enterprise software Charlotte, digital transformation Raleigh, WAKE Solutions",
+      "heroTag": "North Carolina",
+      "heroSubtitle": "We help North Carolina teams systematize operations with practical software infrastructure and automation.",
+      "focusTitle": "Operational order for Research Triangle and beyond",
+      "focusBody": "Clear systems for growing companies: less manual coordination, better data visibility, and staged implementation.",
+      "focusPoints": [
+        "Actionable operational diagnostics",
+        "Automation where ROI is clear",
+        "Support through rollout"
+      ]
+    },
+    "health": {
+      "title": "Clinic Management Software in North Carolina | WAKE HEALTH",
+      "description": "Clinic software for North Carolina practices: appointments, digital records, and daily operations with WAKE Health.",
+      "keywords": "clinic software North Carolina, medical scheduling Charlotte, EHR Raleigh, practice management Durham, WAKE Health",
+      "heroTag": "Clinics in North Carolina",
+      "heroSubtitle": "Run your North Carolina clinic with unified scheduling, charts, and operational control.",
+      "focusTitle": "Simple systems clinicians and staff can trust",
+      "focusBody": "WAKE Health reduces fragmentation so reception and providers share the same operational source of truth.",
+      "focusPoints": [
+        "Shared appointment visibility",
+        "Faster record access",
+        "Cleaner admin workflows"
+      ]
+    }
+  },
+  {
+    "slug": "new-jersey",
+    "market": "us",
+    "locale": "en",
+    "name": "New Jersey",
+    "hreflang": "en-US",
+    "cities": ["Newark", "Jersey City", "Paterson", "Elizabeth"],
+    "home": {
+      "title": "Business Tech Infrastructure in New Jersey | WAKE SOLUTIONS",
+      "description": "Automation and digital infrastructure for New Jersey companies. Build operational clarity across Newark, Jersey City, and statewide teams.",
+      "keywords": "business automation New Jersey, enterprise software Newark, digital transformation New Jersey, WAKE Solutions",
+      "heroTag": "New Jersey",
+      "heroSubtitle": "We help New Jersey businesses replace fragmented workflows with centralized systems and practical automation.",
+      "focusTitle": "Systems for dense, high-activity operations",
+      "focusBody": "Implementations focused on reliability: fewer dropped handoffs, clearer ownership, and better day-to-day control.",
+      "focusPoints": [
+        "Centralized operational data",
+        "Automation of repetitive follow-ups",
+        "Adoption-focused rollout plans"
+      ]
+    },
+    "health": {
+      "title": "Clinic Management Software in New Jersey | WAKE HEALTH",
+      "description": "WAKE Health for New Jersey clinics: scheduling, digital records, and practice operations in one platform.",
+      "keywords": "clinic software New Jersey, medical scheduling Newark, EHR Jersey City, practice management New Jersey, WAKE Health",
+      "heroTag": "Clinics in New Jersey",
+      "heroSubtitle": "Organize your New Jersey practice with one system for patients, appointments, and clinical history.",
+      "focusTitle": "Tighter coordination between desk and providers",
+      "focusBody": "Help your clinic reduce missed details and keep patient flow predictable during busy periods.",
+      "focusPoints": [
+        "Improved scheduling control",
+        "Digital charts ready at visit time",
+        "Better operational reporting"
+      ]
+    }
+  },
+  {
+    "slug": "washington",
+    "market": "us",
+    "locale": "en",
+    "name": "Washington",
+    "hreflang": "en-US",
+    "cities": ["Seattle", "Spokane", "Tacoma", "Bellevue"],
+    "home": {
+      "title": "Business Tech Infrastructure in Washington | WAKE SOLUTIONS",
+      "description": "Software systems and automation for Washington state companies. Improve operational order in Seattle, Bellevue, Tacoma, and beyond.",
+      "keywords": "business automation Washington, enterprise software Seattle, digital transformation Bellevue, WAKE Solutions Washington",
+      "heroTag": "Washington",
+      "heroSubtitle": "We help Washington teams build clean operational infrastructure with centralized software and automation.",
+      "focusTitle": "Reliable systems for product and service teams",
+      "focusBody": "Practical implementations for Seattle-area and statewide organizations that need clarity without tooling overload.",
+      "focusPoints": [
+        "Process clarity before platform choices",
+        "Automation tied to measurable outcomes",
+        "Sustainable systems for growing teams"
+      ]
+    },
+    "health": {
+      "title": "Clinic Management Software in Washington | WAKE HEALTH",
+      "description": "Clinic software for Washington practices: appointments, digital records, and operational control with WAKE Health.",
+      "keywords": "clinic software Washington, medical scheduling Seattle, EHR Tacoma, practice management Bellevue, WAKE Health",
+      "heroTag": "Clinics in Washington",
+      "heroSubtitle": "Keep your Washington clinic organized with unified scheduling, charts, and daily operations.",
+      "focusTitle": "Calm operations, better continuity of care",
+      "focusBody": "WAKE Health helps Washington clinics maintain clean patient workflows and reliable clinical information access.",
+      "focusPoints": [
+        "Coordinated appointments",
+        "Centralized digital records",
+        "Clearer practice visibility"
+      ]
+    }
+  }
+]

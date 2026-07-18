@@ -1,0 +1,72 @@
+---
+import Container from '../ui/Container.astro';
+import MonoTag from '../ui/MonoTag.astro';
+import type { GeoRegion, GeoPageKind } from '../../data/geo';
+import { getGeoPath, latamRegions, usRegions } from '../../data/geo';
+
+interface Props {
+  region: GeoRegion;
+  kind: GeoPageKind;
+}
+
+const { region, kind } = Astro.props;
+const copy = kind === 'home' ? region.home : region.health;
+const related =
+  region.locale === 'es'
+    ? latamRegions.filter((r) => r.slug !== region.slug).slice(0, 6)
+    : usRegions.filter((r) => r.slug !== region.slug).slice(0, 6);
+
+const citiesLabel = region.locale === 'es' ? 'Ciudades foco' : 'Focus cities';
+const relatedLabel =
+  region.locale === 'es' ? 'También operamos cobertura en' : 'Also covering';
+---
+
+<section class="border-t border-wake-border-subtle py-32 max-lg:py-20">
+  <Container>
+    <MonoTag>{region.name}</MonoTag>
+    <h2
+      class="mb-2 text-[clamp(2rem,4vw,2.75rem)] font-semibold leading-[1.15] tracking-tight text-wake-text"
+    >
+      {copy.focusTitle}
+    </h2>
+    <p class="mb-10 max-w-[680px] text-[17px] text-wake-muted">{copy.focusBody}</p>
+
+    <div class="mb-12 grid gap-6 sm:grid-cols-3">
+      {
+        copy.focusPoints.map((point) => (
+          <div class="rounded-xl border border-wake-border bg-white p-6">
+            <div class="mb-3 h-2 w-8 rounded bg-wake-accent" />
+            <p class="text-sm leading-relaxed text-wake-muted">{point}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="rounded-xl border border-wake-border bg-wake-subtle p-6 md:p-8">
+      <p class="mb-3 font-mono text-[11px] uppercase tracking-wider text-wake-light">
+        {citiesLabel}
+      </p>
+      <p class="text-sm text-wake-text">
+        {region.cities.join(' · ')}
+      </p>
+    </div>
+
+    {
+      related.length > 0 && (
+        <div class="mt-12">
+          <p class="mb-4 text-[13px] font-semibold text-wake-text">{relatedLabel}</p>
+          <div class="flex flex-wrap gap-2">
+            {related.map((r) => (
+              <a
+                href={getGeoPath(kind, r)}
+                class="rounded-md border border-wake-border bg-white px-3 py-1.5 text-[13px] text-wake-muted no-underline transition hover:border-wake-text hover:text-wake-text"
+              >
+                {r.name}
+              </a>
+            ))}
+          </div>
+        </div>
+      )
+    }
+  </Container>
+</section>

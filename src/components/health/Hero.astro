@@ -7,11 +7,15 @@ import { t, type Locale } from '../../i18n';
 
 interface Props {
   locale: Locale;
+  tag?: string;
+  subtitle?: string;
 }
 
-const { locale } = Astro.props;
+const { locale, tag, subtitle } = Astro.props;
 const dict = t(locale);
 const wa = whatsappUrl(dict.health.hero.whatsappMsg);
+const heroTag = tag ?? dict.health.hero.tag;
+const heroSubtitle = subtitle ?? dict.health.hero.subtitle;
 ---
 
 <section
@@ -20,7 +24,7 @@ const wa = whatsappUrl(dict.health.hero.whatsappMsg);
 >
   <Container class="grid items-center gap-16 lg:grid-cols-[1.1fr_0.9fr]">
     <div>
-      <MonoTag>{dict.health.hero.tag}</MonoTag>
+      <MonoTag>{heroTag}</MonoTag>
       <h1
         class="mb-4 text-[clamp(2.75rem,5vw,4rem)] font-semibold leading-[1.05] tracking-[-0.04em] text-wake-text"
       >
@@ -39,7 +43,7 @@ const wa = whatsappUrl(dict.health.hero.whatsappMsg);
         </strong>
       </h1>
       <p class="mb-8 max-w-[520px] text-lg font-light leading-relaxed text-wake-muted">
-        {dict.health.hero.subtitle}
+        {heroSubtitle}
       </p>
       <div class="flex flex-wrap gap-4">
         <Button href={wa} target="_blank" rel="noopener noreferrer">

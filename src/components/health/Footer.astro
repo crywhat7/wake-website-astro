@@ -1,6 +1,7 @@
 ---
 import Container from '../ui/Container.astro';
 import LanguageSwitcher from '../ui/LanguageSwitcher.astro';
+import GeoLinks from '../geo/GeoLinks.astro';
 import { SITE } from '../../data/site';
 import { t, getLocalizedPath, type Locale } from '../../i18n';
 
@@ -16,7 +17,7 @@ const homePath = getLocalizedPath('home', locale);
 <footer class="border-t border-wake-border bg-white pb-8 pt-16">
   <Container>
     <div
-      class="grid gap-8 border-b border-wake-border-subtle pb-16 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]"
+      class="grid gap-8 border-b border-wake-border-subtle pb-16 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1fr]"
     >
       <div>
         <a
@@ -56,6 +57,7 @@ const homePath = getLocalizedPath('home', locale);
           </li>
         </ul>
       </div>
+      <GeoLinks locale={locale} kind="health" />
       <div>
         <h5 class="mb-4 text-[13px] font-semibold text-wake-text">{dict.health.footer.legal}</h5>
         <ul class="flex list-none flex-col gap-2">

@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://wake.solutions/</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es-HN" href="https://wake.solutions/"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wake.solutions/"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/en</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es-HN" href="https://wake.solutions/"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wake.solutions/"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/health</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es-HN" href="https://wake.solutions/health"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/health"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wake.solutions/health"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/en/health</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es-HN" href="https://wake.solutions/health"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/health"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wake.solutions/health"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/honduras</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-HN" href="https://wake.solutions/honduras"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://wake.solutions/honduras"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/health/honduras</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-HN" href="https://wake.solutions/health/honduras"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://wake.solutions/health/honduras"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/guatemala</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-GT" href="https://wake.solutions/guatemala"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://wake.solutions/guatemala"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/health/guatemala</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-GT" href="https://wake.solutions/health/guatemala"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://wake.solutions/health/guatemala"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/el-salvador</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-SV" href="https://wake.solutions/el-salvador"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://wake.solutions/el-salvador"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/health/el-salvador</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-SV" href="https://wake.solutions/health/el-salvador"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://wake.solutions/health/el-salvador"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/costa-rica</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-CR" href="https://wake.solutions/costa-rica"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://wake.solutions/costa-rica"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/health/costa-rica</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-CR" href="https://wake.solutions/health/costa-rica"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://wake.solutions/health/costa-rica"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/panama</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-PA" href="https://wake.solutions/panama"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://wake.solutions/panama"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/health/panama</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-PA" href="https://wake.solutions/health/panama"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://wake.solutions/health/panama"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/mexico</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://wake.solutions/mexico"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://wake.solutions/mexico"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/health/mexico</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://wake.solutions/health/mexico"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://wake.solutions/health/mexico"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/colombia</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-CO" href="https://wake.solutions/colombia"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://wake.solutions/colombia"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/health/colombia</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-CO" href="https://wake.solutions/health/colombia"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://wake.solutions/health/colombia"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/peru</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-PE" href="https://wake.solutions/peru"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://wake.solutions/peru"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/health/peru</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-PE" href="https://wake.solutions/health/peru"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://wake.solutions/health/peru"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/republica-dominicana</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-DO" href="https://wake.solutions/republica-dominicana"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://wake.solutions/republica-dominicana"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/health/republica-dominicana</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-DO" href="https://wake.solutions/health/republica-dominicana"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://wake.solutions/health/republica-dominicana"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/ecuador</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-EC" href="https://wake.solutions/ecuador"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://wake.solutions/ecuador"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/health/ecuador</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-EC" href="https://wake.solutions/health/ecuador"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://wake.solutions/health/ecuador"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/en/texas</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/texas"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wake.solutions/en/texas"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/en/health/texas</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/health/texas"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wake.solutions/en/health/texas"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/en/california</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/california"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wake.solutions/en/california"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/en/health/california</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/health/california"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wake.solutions/en/health/california"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/en/florida</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/florida"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wake.solutions/en/florida"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/en/health/florida</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/health/florida"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wake.solutions/en/health/florida"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/en/new-york</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/new-york"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wake.solutions/en/new-york"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/en/health/new-york</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/health/new-york"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wake.solutions/en/health/new-york"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/en/illinois</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/illinois"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wake.solutions/en/illinois"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/en/health/illinois</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/health/illinois"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wake.solutions/en/health/illinois"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/en/arizona</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/arizona"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wake.solutions/en/arizona"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/en/health/arizona</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/health/arizona"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wake.solutions/en/health/arizona"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/en/georgia</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/georgia"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wake.solutions/en/georgia"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/en/health/georgia</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/health/georgia"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wake.solutions/en/health/georgia"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/en/north-carolina</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/north-carolina"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wake.solutions/en/north-carolina"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/en/health/north-carolina</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/health/north-carolina"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wake.solutions/en/health/north-carolina"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/en/new-jersey</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/new-jersey"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wake.solutions/en/new-jersey"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/en/health/new-jersey</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/health/new-jersey"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wake.solutions/en/health/new-jersey"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/en/washington</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/washington"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wake.solutions/en/washington"/>
+  </url>
+  <url>
+    <loc>https://wake.solutions/en/health/washington</loc>
+    <lastmod>2026-07-18T15:20:21.256Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/health/washington"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wake.solutions/en/health/washington"/>
+  </url>
+</urlset>

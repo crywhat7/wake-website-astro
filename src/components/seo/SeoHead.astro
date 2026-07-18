@@ -16,6 +16,11 @@ interface Props {
   keywords: string;
   image?: string;
   type?: 'website' | 'product';
+  /** Override canonical path for geo/landing pages */
+  canonicalPath?: string;
+  placename?: string;
+  geoRegionCode?: string;
+  hreflang?: string;
 }
 
 const {
@@ -26,14 +31,25 @@ const {
   keywords,
   image = SITE.assets.healthLogoSvg,
   type = 'website',
+  canonicalPath: canonicalPathProp,
+  placename,
+  geoRegionCode,
+  hreflang,
 } = Astro.props;
 
 const siteUrl = (Astro.site?.href ?? SITE.url).replace(/\/$/, '') + '/';
-const canonicalPath = getLocalizedPath(page, locale);
+const canonicalPath = canonicalPathProp ?? getLocalizedPath(page, locale);
 const canonical = new URL(canonicalPath, siteUrl).href;
-const alternates = getAlternateUrls(page, siteUrl);
-const xDefault = new URL(getLocalizedPath(page, 'es'), siteUrl).href;
-const geoRegion = locale === 'es' ? SITE.location.geoRegionEs : SITE.location.geoRegionEn;
+const alternates = canonicalPathProp
+  ? []
+  : getAlternateUrls(page, siteUrl);
+const xDefault = canonicalPathProp
+  ? canonical
+  : new URL(getLocalizedPath(page, 'es'), siteUrl).href;
+const geoRegion =
+  geoRegionCode ??
+  (locale === 'es' ? SITE.location.geoRegionEs : SITE.location.geoRegionEn);
+const place = placename ?? SITE.location.country;
 ---
 
 <title>{title}</title>
@@ -48,24 +64,36 @@ const geoRegion = locale === 'es' ? SITE.location.geoRegionEs : SITE.location.ge
 <meta name="publisher" content={SITE.name} />
 <link rel="canonical" href={canonical} />
 
-{/* Hreflang: language + regional + x-default */}
-{alternates.map(({ href, hreflang }) => (
-  <link rel="alternate" hreflang={hreflang} href={href} />
-))}
-{alternates.map(({ href, locale: loc }) => (
-  <link rel="alternate" hreflang={loc} href={href} />
-))}
-<link rel="alternate" hreflang="x-default" href={xDefault} />
-{/* Extra regional Spanish signals for LATAM markets → Spanish URL */}
-<link rel="alternate" hreflang="es-MX" href={xDefault} />
-<link rel="alternate" hreflang="es-GT" href={xDefault} />
-<link rel="alternate" hreflang="es-SV" href={xDefault} />
-<link rel="alternate" hreflang="es-CR" href={xDefault} />
-<link rel="alternate" hreflang="es-PA" href={xDefault} />
-<link rel="alternate" hreflang="es-CO" href={xDefault} />
-<link rel="alternate" hreflang="es-US" href={xDefault} />
+{
+  !canonicalPathProp && (
+    <>
+      {alternates.map(({ href, hreflang: hl }) => (
+        <link rel="alternate" hreflang={hl} href={href} />
+      ))}
+      {alternates.map(({ href, locale: loc }) => (
+        <link rel="alternate" hreflang={loc} href={href} />
+      ))}
+      <link rel="alternate" hreflang="x-default" href={xDefault} />
+      <link rel="alternate" hreflang="es-MX" href={xDefault} />
+      <link rel="alternate" hreflang="es-GT" href={xDefault} />
+      <link rel="alternate" hreflang="es-SV" href={xDefault} />
+      <link rel="alternate" hreflang="es-CR" href={xDefault} />
+      <link rel="alternate" hreflang="es-PA" href={xDefault} />
+      <link rel="alternate" hreflang="es-CO" href={xDefault} />
+      <link rel="alternate" hreflang="es-US" href={xDefault} />
+    </>
+  )
+}
 
-{/* Open Graph */}
+{
+  canonicalPathProp && hreflang && (
+    <>
+      <link rel="alternate" hreflang={hreflang} href={canonical} />
+      <link rel="alternate" hreflang={locale} href={canonical} />
+    </>
+  )
+}
+
 <meta property="og:type" content={type} />
 <meta property="og:site_name" content={SITE.name} />
 <meta property="og:title" content={title} />
@@ -79,24 +107,19 @@ const geoRegion = locale === 'es' ? SITE.location.geoRegionEs : SITE.location.ge
   content={locale === 'es' ? 'en_US' : 'es_HN'}
 />
 
-{/* Twitter */}
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={image} />
 
-{/* Geo / market targeting */}
 <meta name="geo.region" content={geoRegion} />
-<meta name="geo.placename" content={SITE.location.country} />
+<meta name="geo.placename" content={place} />
 <meta name="ICBM" content="14.0723, -87.1921" />
 <meta name="language" content={locale === 'es' ? 'Spanish' : 'English'} />
 <meta name="coverage" content="Honduras, Central America, Latin America, United States" />
-<meta name="target" content="all" />
-<meta name="audience" content="all" />
 <meta name="distribution" content="global" />
 <meta name="rating" content="general" />
 <meta name="revisit-after" content="3 days" />
 
-{/* Theme */}
 <meta name="theme-color" content="#0c0c0d" />
 <meta name="msapplication-TileColor" content="#0c0c0d" />
