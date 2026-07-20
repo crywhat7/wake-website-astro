@@ -3,7 +3,7 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://wake.solutions/</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="es-HN" href="https://wake.solutions/"/>
@@ -12,7 +12,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/en</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="es-HN" href="https://wake.solutions/"/>
@@ -21,7 +21,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/health</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="es-HN" href="https://wake.solutions/health"/>
@@ -30,7 +30,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/en/health</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="es-HN" href="https://wake.solutions/health"/>
@@ -39,7 +39,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/blog</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="es-HN" href="https://wake.solutions/blog"/>
@@ -48,7 +48,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/en/blog</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="es-HN" href="https://wake.solutions/blog"/>
@@ -57,7 +57,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/legal</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="es-HN" href="https://wake.solutions/legal"/>
@@ -66,7 +66,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/en/legal</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="es-HN" href="https://wake.solutions/legal"/>
@@ -75,7 +75,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/honduras</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es-HN" href="https://wake.solutions/honduras"/>
@@ -83,7 +83,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/health/honduras</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es-HN" href="https://wake.solutions/health/honduras"/>
@@ -91,7 +91,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/guatemala</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es-GT" href="https://wake.solutions/guatemala"/>
@@ -99,7 +99,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/health/guatemala</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es-GT" href="https://wake.solutions/health/guatemala"/>
@@ -107,7 +107,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/el-salvador</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es-SV" href="https://wake.solutions/el-salvador"/>
@@ -115,7 +115,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/health/el-salvador</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es-SV" href="https://wake.solutions/health/el-salvador"/>
@@ -123,7 +123,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/costa-rica</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es-CR" href="https://wake.solutions/costa-rica"/>
@@ -131,7 +131,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/health/costa-rica</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es-CR" href="https://wake.solutions/health/costa-rica"/>
@@ -139,7 +139,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/panama</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es-PA" href="https://wake.solutions/panama"/>
@@ -147,7 +147,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/health/panama</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es-PA" href="https://wake.solutions/health/panama"/>
@@ -155,7 +155,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/mexico</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://wake.solutions/mexico"/>
@@ -163,7 +163,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/health/mexico</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://wake.solutions/health/mexico"/>
@@ -171,7 +171,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/colombia</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es-CO" href="https://wake.solutions/colombia"/>
@@ -179,7 +179,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/health/colombia</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es-CO" href="https://wake.solutions/health/colombia"/>
@@ -187,7 +187,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/peru</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es-PE" href="https://wake.solutions/peru"/>
@@ -195,7 +195,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/health/peru</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es-PE" href="https://wake.solutions/health/peru"/>
@@ -203,7 +203,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/republica-dominicana</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es-DO" href="https://wake.solutions/republica-dominicana"/>
@@ -211,7 +211,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/health/republica-dominicana</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es-DO" href="https://wake.solutions/health/republica-dominicana"/>
@@ -219,7 +219,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/ecuador</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es-EC" href="https://wake.solutions/ecuador"/>
@@ -227,7 +227,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/health/ecuador</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es-EC" href="https://wake.solutions/health/ecuador"/>
@@ -235,7 +235,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/en/texas</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/texas"/>
@@ -243,7 +243,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/en/health/texas</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/health/texas"/>
@@ -251,7 +251,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/en/california</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/california"/>
@@ -259,7 +259,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/en/health/california</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/health/california"/>
@@ -267,7 +267,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/en/florida</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/florida"/>
@@ -275,7 +275,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/en/health/florida</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/health/florida"/>
@@ -283,7 +283,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/en/new-york</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/new-york"/>
@@ -291,7 +291,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/en/health/new-york</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/health/new-york"/>
@@ -299,7 +299,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/en/illinois</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/illinois"/>
@@ -307,7 +307,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/en/health/illinois</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/health/illinois"/>
@@ -315,7 +315,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/en/arizona</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/arizona"/>
@@ -323,7 +323,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/en/health/arizona</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/health/arizona"/>
@@ -331,7 +331,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/en/georgia</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/georgia"/>
@@ -339,7 +339,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/en/health/georgia</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/health/georgia"/>
@@ -347,7 +347,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/en/north-carolina</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/north-carolina"/>
@@ -355,7 +355,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/en/health/north-carolina</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/health/north-carolina"/>
@@ -363,7 +363,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/en/new-jersey</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/new-jersey"/>
@@ -371,7 +371,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/en/health/new-jersey</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/health/new-jersey"/>
@@ -379,7 +379,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/en/washington</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/washington"/>
@@ -387,7 +387,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/en/health/washington</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://wake.solutions/en/health/washington"/>
@@ -395,7 +395,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/blog/sistema-para-clinicas-orden-operativo</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="es-HN" href="https://wake.solutions/blog/sistema-para-clinicas-orden-operativo"/>
@@ -404,7 +404,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/en/blog/sistema-para-clinicas-orden-operativo</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="es-HN" href="https://wake.solutions/blog/sistema-para-clinicas-orden-operativo"/>
@@ -413,7 +413,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/blog/soluciones-tecnologicas-empresas-clinicas</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="es-HN" href="https://wake.solutions/blog/soluciones-tecnologicas-empresas-clinicas"/>
@@ -422,7 +422,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/en/blog/soluciones-tecnologicas-empresas-clinicas</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="es-HN" href="https://wake.solutions/blog/soluciones-tecnologicas-empresas-clinicas"/>
@@ -431,7 +431,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/comparar/wake-health-vs-excel</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es-HN" href="https://wake.solutions/comparar/wake-health-vs-excel"/>
@@ -440,7 +440,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/en/compare/wake-health-vs-excel</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es-HN" href="https://wake.solutions/comparar/wake-health-vs-excel"/>
@@ -449,7 +449,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/comparar/wake-health-vs-paper</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es-HN" href="https://wake.solutions/comparar/wake-health-vs-paper"/>
@@ -458,7 +458,7 @@
   </url>
   <url>
     <loc>https://wake.solutions/en/compare/wake-health-vs-paper</loc>
-    <lastmod>2026-07-20T16:45:39.068Z</lastmod>
+    <lastmod>2026-07-20T16:49:00.859Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es-HN" href="https://wake.solutions/comparar/wake-health-vs-paper"/>
