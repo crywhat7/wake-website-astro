@@ -2,7 +2,7 @@ export const SITE = {
   name: 'WAKE SOLUTIONS',
   healthName: 'WAKE HEALTH',
   url: 'https://wake.solutions',
-  email: 'ventas@wake.solution',
+  email: 'ventas@wake.solutions',
   whatsapp: '50433292869',
   whatsappDisplay: '+504 3329-2869',
   location: {

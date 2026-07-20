@@ -12,6 +12,8 @@ interface Props {
 const { locale } = Astro.props;
 const dict = t(locale);
 const healthPath = getLocalizedPath('health', locale);
+const legalPath = getLocalizedPath('legal', locale);
+const blogPath = getLocalizedPath('blog', locale);
 ---
 
 <footer class="border-t border-wake-border bg-white pb-8 pt-16">
@@ -55,6 +57,11 @@ const healthPath = getLocalizedPath('health', locale);
               >WAKE Health</a
             >
           </li>
+          <li>
+            <a href={blogPath} class="text-[13px] text-wake-muted no-underline hover:text-wake-text"
+              >{dict.home.nav.blog}</a
+            >
+          </li>
         </ul>
       </div>
       <GeoLinks locale={locale} kind="home" />
@@ -62,17 +69,23 @@ const healthPath = getLocalizedPath('health', locale);
         <h5 class="mb-4 text-[13px] font-semibold text-wake-text">{dict.home.footer.legal}</h5>
         <ul class="flex list-none flex-col gap-2">
           <li>
-            <a href="/legal" class="text-[13px] text-wake-muted no-underline hover:text-wake-text"
+            <a
+              href={`${legalPath}#terms`}
+              class="text-[13px] text-wake-muted no-underline hover:text-wake-text"
               >{dict.home.footer.terms}</a
             >
           </li>
           <li>
-            <a href="/legal" class="text-[13px] text-wake-muted no-underline hover:text-wake-text"
+            <a
+              href={`${legalPath}#privacy`}
+              class="text-[13px] text-wake-muted no-underline hover:text-wake-text"
               >{dict.home.footer.privacy}</a
             >
           </li>
           <li>
-            <a href="/legal" class="text-[13px] text-wake-muted no-underline hover:text-wake-text"
+            <a
+              href={`${legalPath}#refund`}
+              class="text-[13px] text-wake-muted no-underline hover:text-wake-text"
               >{dict.home.footer.refund}</a
             >
           </li>

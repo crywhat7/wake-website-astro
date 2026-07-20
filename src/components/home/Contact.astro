@@ -11,25 +11,42 @@ interface Props {
 
 const { locale } = Astro.props;
 const dict = t(locale);
+const contact = dict.home.contact;
 ---
 
 <section id="contact" class="border-t border-wake-border-subtle py-32 max-lg:py-20">
   <Container class="grid gap-16 lg:grid-cols-[0.8fr_1.2fr]">
     <div>
-      <MonoTag>{dict.home.contact.tag}</MonoTag>
+      <MonoTag>{contact.tag}</MonoTag>
       <h2
         class="mb-2 text-[clamp(2rem,4vw,2.75rem)] font-semibold leading-[1.15] tracking-tight text-wake-text"
       >
-        {dict.home.contact.title}
+        {contact.title}
       </h2>
-      <p class="max-w-[600px] text-[17px] text-wake-muted">{dict.home.contact.subtitle}</p>
+      <p class="max-w-[600px] text-[17px] text-wake-muted">{contact.subtitle}</p>
     </div>
-    <form id="contactForm" class="flex flex-col gap-4" data-email={SITE.email} data-subject={dict.home.contact.mailSubject}>
+    <form
+      id="contactForm"
+      class="flex flex-col gap-4"
+      data-email={SITE.email}
+      data-subject={contact.mailSubject}
+      data-sending={contact.sending}
+      data-success={contact.success}
+      data-error={contact.error}
+      data-submit-label={contact.submit}
+    >
+      {/* Honeypot anti-spam */}
+      <input
+        type="text"
+        name="_gotcha"
+        tabindex="-1"
+        autocomplete="off"
+        class="absolute -left-[9999px] h-0 w-0 opacity-0"
+        aria-hidden="true"
+      />
       <div class="grid gap-4 sm:grid-cols-2">
         <div class="flex flex-col gap-1.5">
-          <label for="name" class="text-xs font-medium text-wake-muted"
-            >{dict.home.contact.name}</label
-          >
+          <label for="name" class="text-xs font-medium text-wake-muted">{contact.name}</label>
           <input
             type="text"
             id="name"
@@ -39,9 +56,7 @@ const dict = t(locale);
           />
         </div>
         <div class="flex flex-col gap-1.5">
-          <label for="company" class="text-xs font-medium text-wake-muted"
-            >{dict.home.contact.company}</label
-          >
+          <label for="company" class="text-xs font-medium text-wake-muted">{contact.company}</label>
           <input
             type="text"
             id="company"
@@ -52,9 +67,7 @@ const dict = t(locale);
       </div>
       <div class="grid gap-4 sm:grid-cols-2">
         <div class="flex flex-col gap-1.5">
-          <label for="email" class="text-xs font-medium text-wake-muted"
-            >{dict.home.contact.email}</label
-          >
+          <label for="email" class="text-xs font-medium text-wake-muted">{contact.email}</label>
           <input
             type="email"
             id="email"
@@ -64,9 +77,7 @@ const dict = t(locale);
           />
         </div>
         <div class="flex flex-col gap-1.5">
-          <label for="phone" class="text-xs font-medium text-wake-muted"
-            >{dict.home.contact.phone}</label
-          >
+          <label for="phone" class="text-xs font-medium text-wake-muted">{contact.phone}</label>
           <input
             type="tel"
             id="phone"
@@ -76,37 +87,93 @@ const dict = t(locale);
         </div>
       </div>
       <div class="flex flex-col gap-1.5">
-        <label for="message" class="text-xs font-medium text-wake-muted"
-          >{dict.home.contact.message}</label
-        >
+        <label for="message" class="text-xs font-medium text-wake-muted">{contact.message}</label>
         <textarea
           id="message"
           name="message"
           rows="4"
+          required
           class="min-h-[100px] resize-y rounded-lg border border-wake-border bg-white px-3.5 py-2.5 text-sm text-wake-text transition focus:border-wake-text focus:shadow-[0_0_0_1px_#0c0c0d] focus:outline-none"
         ></textarea>
       </div>
-      <Button type="submit" class="mt-2 self-start !px-6 !py-3">{dict.home.contact.submit}</Button>
+      <p id="contactStatus" class="hidden text-sm" role="status" aria-live="polite"></p>
+      <Button type="submit" id="contactSubmit" class="mt-2 self-start !px-6 !py-3">
+        {contact.submit}
+      </Button>
     </form>
   </Container>
 </section>
 
 <script>
   const form = document.getElementById('contactForm') as HTMLFormElement | null;
-  form?.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const email = form.dataset.email ?? '';
-    const subjectBase = form.dataset.subject ?? '';
-    const name = (document.getElementById('name') as HTMLInputElement).value;
-    const company = (document.getElementById('company') as HTMLInputElement).value;
-    const userEmail = (document.getElementById('email') as HTMLInputElement).value;
-    const phone = (document.getElementById('phone') as HTMLInputElement).value;
-    const message = (document.getElementById('message') as HTMLTextAreaElement).value;
+  const statusEl = document.getElementById('contactStatus');
+  const submitBtn = document.getElementById('contactSubmit') as HTMLButtonElement | null;
 
-    const mailto = `mailto:${email}?subject=${encodeURIComponent(`${subjectBase} - ${name}`)}&body=${encodeURIComponent(
-      `Nombre: ${name}\nEmpresa: ${company}\nEmail: ${userEmail}\nTeléfono: ${phone}\n\nMensaje:\n${message}`,
-    )}`;
-    window.open(mailto);
-    form.reset();
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!form || !submitBtn) return;
+
+    const toEmail = form.dataset.email ?? '';
+    const subjectBase = form.dataset.subject ?? 'Contacto WAKE';
+    const sendingLabel = form.dataset.sending ?? '…';
+    const successLabel = form.dataset.success ?? 'OK';
+    const errorLabel = form.dataset.error ?? 'Error';
+    const submitLabel = form.dataset.submitLabel ?? 'Send';
+
+    const honeypot = (form.querySelector('[name="_gotcha"]') as HTMLInputElement | null)?.value;
+    if (honeypot) return;
+
+    const name = (document.getElementById('name') as HTMLInputElement).value.trim();
+    const company = (document.getElementById('company') as HTMLInputElement).value.trim();
+    const userEmail = (document.getElementById('email') as HTMLInputElement).value.trim();
+    const phone = (document.getElementById('phone') as HTMLInputElement).value.trim();
+    const message = (document.getElementById('message') as HTMLTextAreaElement).value.trim();
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = sendingLabel;
+    if (statusEl) {
+      statusEl.className = 'text-sm text-wake-muted';
+      statusEl.textContent = sendingLabel;
+      statusEl.classList.remove('hidden');
+    }
+
+    try {
+      const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(toEmail)}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          company,
+          email: userEmail,
+          phone,
+          message,
+          _subject: `${subjectBase} - ${name}`,
+          _template: 'table',
+          _captcha: 'false',
+          _replyto: userEmail,
+        }),
+      });
+
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = (await res.json()) as { success?: string | boolean };
+      if (!data.success) throw new Error('FormSubmit rejected');
+
+      form.reset();
+      if (statusEl) {
+        statusEl.className = 'text-sm text-emerald-700';
+        statusEl.textContent = successLabel;
+      }
+    } catch {
+      if (statusEl) {
+        statusEl.className = 'text-sm text-red-600';
+        statusEl.textContent = errorLabel;
+      }
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = submitLabel;
+    }
   });
 </script>

@@ -14,12 +14,21 @@ const localeBcp47 = {
 const corePaths = {
   home: { es: '/', en: '/en' },
   health: { es: '/health', en: '/en/health' },
+  blog: { es: '/blog', en: '/en/blog' },
+  legal: { es: '/legal', en: '/en/legal' },
 };
 
 const coreMeta = {
   home: { changefreq: 'weekly', priority: '1.0' },
   health: { changefreq: 'weekly', priority: '0.9' },
+  blog: { changefreq: 'weekly', priority: '0.85' },
+  legal: { changefreq: 'yearly', priority: '0.5' },
 };
+
+const blogSlugs = [
+  'sistema-para-clinicas-orden-operativo',
+  'soluciones-tecnologicas-empresas-clinicas',
+];
 
 function absoluteUrl(pathname) {
   return new URL(pathname, `${SITE}/`).href;
@@ -72,6 +81,18 @@ function buildSitemap() {
       ].join('\n');
       entries.push(urlEntry(loc, 'weekly', '0.8', lastmod, alternates));
     }
+  }
+
+  for (const slug of blogSlugs) {
+    const esPath = `/blog/${slug}`;
+    const enPath = `/en/blog/${slug}`;
+    const alternates = [
+      `    <xhtml:link rel="alternate" hreflang="es-HN" href="${absoluteUrl(esPath)}"/>`,
+      `    <xhtml:link rel="alternate" hreflang="en-US" href="${absoluteUrl(enPath)}"/>`,
+      `    <xhtml:link rel="alternate" hreflang="x-default" href="${absoluteUrl(esPath)}"/>`,
+    ].join('\n');
+    entries.push(urlEntry(absoluteUrl(esPath), 'monthly', '0.75', lastmod, alternates));
+    entries.push(urlEntry(absoluteUrl(enPath), 'monthly', '0.75', lastmod, alternates));
   }
 
   return `<?xml version="1.0" encoding="UTF-8"?>

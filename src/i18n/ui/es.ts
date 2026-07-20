@@ -7,6 +7,147 @@ export const es = {
     openMenu: 'Abrir menú',
     closeMenu: 'Cerrar menú',
     learnMore: 'Saber más',
+    blog: 'Blog',
+  },
+  blog: {
+    tag: 'Recursos',
+    title: 'Blog WAKE',
+    subtitle:
+      'Guías prácticas sobre sistemas para clínicas, automatización y soluciones tecnológicas en Latinoamérica y Estados Unidos.',
+    seo: {
+      title: 'Blog WAKE | Software clínico, automatización y soluciones tecnológicas',
+      description:
+        'Artículos sobre sistemas para clínicas, infraestructura tecnológica y automatización para empresas en Honduras, LATAM y USA.',
+      keywords:
+        'blog software clínicas, automatización LATAM, soluciones tecnológicas empresas, WAKE Health, WAKE Solutions',
+    },
+  },
+  legal: {
+    tag: 'Legal',
+    title: 'Políticas legales',
+    subtitle: 'Transparencia, privacidad y seguridad para nuestros usuarios.',
+    updated: 'Última actualización: Mayo 2026',
+    backHome: 'Volver al inicio',
+    seo: {
+      title: 'Políticas Legales | WAKE SOLUTIONS',
+      description:
+        'Términos y condiciones, política de privacidad y política de reembolso de WAKE Solutions y WAKE Health.',
+      keywords:
+        'términos WAKE Solutions, política de privacidad, reembolso, cancelación, legal Wake Health',
+    },
+    sections: [
+      {
+        id: 'terms',
+        title: '1. Términos y Condiciones',
+        blocks: [
+          {
+            heading: 'Uso del servicio',
+            paragraphs: [
+              'Los servicios digitales proporcionados por Wake Solutions están diseñados para apoyar la gestión, organización y operación de negocios mediante herramientas tecnológicas accesibles desde internet.',
+            ],
+          },
+          {
+            heading: 'Acceso y cuentas',
+            paragraphs: [
+              'El usuario es responsable de mantener la confidencialidad de sus credenciales y del uso realizado desde su cuenta.',
+            ],
+          },
+          {
+            heading: 'Disponibilidad del servicio',
+            paragraphs: [
+              'Nos esforzamos por mantener nuestros servicios disponibles de forma continua; sin embargo, pueden existir interrupciones temporales por mantenimiento o fallas técnicas.',
+            ],
+          },
+          {
+            heading: 'Propiedad intelectual',
+            paragraphs: [
+              'Todo el contenido, software, diseño, estructura y marcas pertenecen a Wake Solutions.',
+            ],
+          },
+          {
+            heading: 'Uso indebido',
+            paragraphs: [],
+            list: [
+              'Actividades ilícitas',
+              'Intentos de vulnerar la seguridad',
+              'Copiar o modificar el software sin autorización',
+              'Uso malicioso de la plataforma',
+            ],
+          },
+          {
+            heading: 'Limitación de responsabilidad',
+            paragraphs: [
+              'Wake Solutions no será responsable por pérdidas indirectas derivadas del uso incorrecto del sistema.',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'privacy',
+        title: '2. Política de Privacidad',
+        blocks: [
+          {
+            heading: 'Información recopilada',
+            paragraphs: [],
+            list: [
+              'Nombre',
+              'Correo electrónico',
+              'Número telefónico',
+              'Información empresarial',
+              'Datos generados dentro del sistema',
+            ],
+          },
+          {
+            heading: 'Uso de la información',
+            paragraphs: [
+              'La información recopilada se utiliza para brindar acceso al sistema, soporte técnico y mejorar la experiencia del usuario.',
+            ],
+          },
+          {
+            heading: 'Protección de datos',
+            paragraphs: [
+              'Implementamos medidas técnicas y administrativas orientadas a proteger la información de accesos no autorizados.',
+            ],
+          },
+          {
+            heading: 'Cookies',
+            paragraphs: [
+              'Nuestros servicios pueden utilizar cookies para mejorar la navegación y experiencia del usuario.',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'refund',
+        title: '3. Política de Reembolso y Cancelación',
+        blocks: [
+          {
+            heading: 'Período de garantía',
+            paragraphs: [
+              'Los usuarios podrán solicitar reembolso durante los primeros 3 días calendario posteriores a la contratación inicial.',
+            ],
+          },
+          {
+            heading: 'Cancelación',
+            paragraphs: [
+              'El usuario puede cancelar el servicio en cualquier momento para evitar futuros cobros.',
+            ],
+          },
+          {
+            heading: 'Servicios personalizados',
+            paragraphs: [
+              'Desarrollos a medida o configuraciones especiales pueden no ser elegibles para reembolso.',
+            ],
+          },
+          {
+            heading: 'Suspensión del servicio',
+            paragraphs: [
+              'Wake Solutions podrá suspender el acceso por incumplimiento de términos o uso indebido.',
+            ],
+          },
+        ],
+      },
+    ],
   },
   home: {
     seo: {
@@ -24,6 +165,7 @@ export const es = {
       pricing: 'Planes',
       contact: 'Contacto',
       cta: 'Consultoría',
+      blog: 'Blog',
     },
     hero: {
       tag: 'Infraestructura del Crecimiento',
@@ -201,6 +343,9 @@ export const es = {
       phone: 'Teléfono de contacto',
       message: 'Mensaje u objetivos operativos',
       submit: 'Enviar consulta',
+      sending: 'Enviando…',
+      success: 'Mensaje enviado. Te contactaremos pronto.',
+      error: 'No se pudo enviar. Intenta de nuevo o escríbenos a ventas@wake.solutions.',
       mailSubject: 'Solicitud de Infraestructura Tecnológica',
     },
     footer: {

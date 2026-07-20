@@ -164,7 +164,9 @@ const faq =
 const graph =
   page === 'home'
     ? [organization, website, professionalService]
-    : [organization, website, softwareApplication, faq].filter(Boolean);
+    : page === 'health'
+      ? [organization, website, softwareApplication, faq].filter(Boolean)
+      : [organization, website];
 
 const jsonLd = {
   '@context': 'https://schema.org',

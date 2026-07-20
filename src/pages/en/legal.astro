@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../../components/layout/BaseLayout.astro';
+import LegalHeader from '../../components/legal/LegalHeader.astro';
+import LegalContent from '../../components/legal/LegalContent.astro';
+import Footer from '../../components/home/Footer.astro';
+import { t, type Locale } from '../../i18n';
+
+const locale: Locale = 'en';
+const dict = t(locale);
+---
+
+<BaseLayout
+  locale={locale}
+  page="legal"
+  title={dict.legal.seo.title}
+  description={dict.legal.seo.description}
+  keywords={dict.legal.seo.keywords}
+  theme="home"
+  canonicalPath="/en/legal"
+>
+  <LegalHeader locale={locale} />
+  <LegalContent locale={locale} />
+  <Footer locale={locale} />
+</BaseLayout>

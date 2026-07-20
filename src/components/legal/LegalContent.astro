@@ -1,0 +1,68 @@
+---
+import Container from '../ui/Container.astro';
+import MonoTag from '../ui/MonoTag.astro';
+import Button from '../ui/Button.astro';
+import { getLocalizedPath, t, type Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+const homePath = getLocalizedPath('home', locale);
+const legal = dict.legal;
+---
+
+<main class="pb-24 pt-[calc(4rem+5rem)]">
+  <Container class="max-w-[760px]">
+    <MonoTag>{legal.tag}</MonoTag>
+    <h1
+      class="mb-3 text-[clamp(2rem,4vw,2.75rem)] font-semibold leading-[1.15] tracking-tight text-wake-text"
+    >
+      {legal.title}
+    </h1>
+    <p class="mb-3 max-w-[640px] text-[17px] text-wake-muted">{legal.subtitle}</p>
+    <p class="mb-12 font-mono text-[12px] text-wake-light">{legal.updated}</p>
+
+    <nav class="mb-12 flex flex-wrap gap-3 border-b border-wake-border pb-8">
+      {
+        legal.sections.map((section) => (
+          <a
+            href={`#${section.id}`}
+            class="rounded-md border border-wake-border px-3 py-1.5 text-[13px] text-wake-muted no-underline transition hover:border-wake-text/20 hover:text-wake-text"
+          >
+            {section.title.replace(/^\d+\.\s*/, '')}
+          </a>
+        ))
+      }
+    </nav>
+
+    {
+      legal.sections.map((section) => (
+        <section id={section.id} class="mb-14 scroll-mt-28">
+          <h2 class="mb-6 text-xl font-semibold tracking-tight text-wake-text">{section.title}</h2>
+          {section.blocks.map((block) => (
+            <div class="mb-8">
+              <h3 class="mb-2 text-base font-semibold text-wake-text">{block.heading}</h3>
+              {block.paragraphs.map((p) => (
+                <p class="mb-3 text-[15px] leading-relaxed text-wake-muted">{p}</p>
+              ))}
+              {'list' in block && block.list ? (
+                <ul class="mb-3 list-disc space-y-2 pl-5 text-[15px] leading-relaxed text-wake-muted">
+                  {block.list.map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+              ) : null}
+            </div>
+          ))}
+        </section>
+      ))
+    }
+
+    <div class="mt-8">
+      <Button href={homePath} variant="secondary">{legal.backHome}</Button>
+    </div>
+  </Container>
+</main>

@@ -1,0 +1,41 @@
+---
+import Container from '../ui/Container.astro';
+import LanguageSwitcher from '../ui/LanguageSwitcher.astro';
+import { getLocalizedPath, t, type Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+const homePath = getLocalizedPath('home', locale);
+const healthPath = getLocalizedPath('health', locale);
+const blogPath = getLocalizedPath('blog', locale);
+---
+
+<header
+  class="fixed top-0 left-0 z-50 w-full border-b border-wake-border/50 bg-white/80 backdrop-blur-md"
+>
+  <Container class="flex h-16 items-center justify-between">
+    <a
+      href={homePath}
+      class="flex items-center gap-1.5 text-base font-bold tracking-tight text-wake-text no-underline"
+    >
+      WAKE SOLUTIONS
+      <span class="inline-block h-2 w-2 rounded-full bg-wake-text"></span>
+    </a>
+    <nav class="hidden items-center gap-8 md:flex">
+      <a href={homePath} class="text-[13.5px] text-wake-muted no-underline hover:text-wake-text"
+        >{dict.common.company}</a
+      >
+      <a href={healthPath} class="text-[13.5px] text-wake-muted no-underline hover:text-wake-text"
+        >WAKE Health</a
+      >
+      <a href={blogPath} class="text-[13.5px] text-wake-muted no-underline hover:text-wake-text"
+        >{dict.common.blog}</a
+      >
+    </nav>
+    <LanguageSwitcher locale={locale} page="legal" />
+  </Container>
+</header>

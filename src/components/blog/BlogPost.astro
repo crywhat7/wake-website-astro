@@ -1,0 +1,69 @@
+---
+import Container from '../ui/Container.astro';
+import Button from '../ui/Button.astro';
+import MonoTag from '../ui/MonoTag.astro';
+import type { BlogLocale, BlogPost } from '../../data/blog';
+import { getBlogPath, getPostLocale } from '../../data/blog';
+import { getLocalizedPath } from '../../i18n';
+
+interface Props {
+  locale: BlogLocale;
+  post: BlogPost;
+}
+
+const { locale, post } = Astro.props;
+const copy = getPostLocale(post, locale);
+const healthPath = getLocalizedPath('health', locale);
+const homePath = getLocalizedPath('home', locale);
+const blogPath = getBlogPath(locale);
+const otherPostsPath = blogPath;
+---
+
+<article class="pb-24 pt-[calc(4rem+4rem)]">
+  <Container class="max-w-[760px]">
+    <MonoTag>{post.category[locale]}</MonoTag>
+    <h1
+      class="mb-4 text-[clamp(2rem,4vw,2.75rem)] font-semibold leading-[1.15] tracking-tight text-wake-text"
+    >
+      {copy.title}
+    </h1>
+    <p class="mb-3 text-[17px] text-wake-muted">{copy.excerpt}</p>
+    <p class="mb-12 font-mono text-[12px] text-wake-light">
+      {copy.dateLabel} · {copy.readingTime}
+    </p>
+
+    {
+      copy.sections.map((section) => (
+        <section class="mb-10">
+          <h2 class="mb-3 text-xl font-semibold tracking-tight text-wake-text">
+            {section.heading}
+          </h2>
+          {section.paragraphs.map((p) => (
+            <p class="mb-4 text-[15px] leading-relaxed text-wake-muted">{p}</p>
+          ))}
+        </section>
+      ))
+    }
+
+    <div class="mt-16 rounded-xl border border-wake-border bg-wake-subtle p-8">
+      <h2 class="mb-2 text-xl font-semibold text-wake-text">{copy.ctaTitle}</h2>
+      <p class="mb-6 text-sm text-wake-muted">{copy.ctaBody}</p>
+      <div class="flex flex-wrap gap-3">
+        <Button href={locale === 'es' && post.slug.includes('soluciones') ? homePath : healthPath}>
+          {copy.ctaPrimary}
+        </Button>
+        {
+          post.slug.includes('soluciones') || post.slug.includes('tecnologicas') ? (
+            <Button href={healthPath} variant="secondary">
+              {copy.ctaSecondary}
+            </Button>
+          ) : (
+            <Button href={otherPostsPath} variant="secondary">
+              {copy.ctaSecondary}
+            </Button>
+          )
+        }
+      </div>
+    </div>
+  </Container>
+</article>

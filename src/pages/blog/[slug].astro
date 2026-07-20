@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../components/layout/BaseLayout.astro';
+import BlogHeader from '../../components/blog/BlogHeader.astro';
+import BlogPostView from '../../components/blog/BlogPost.astro';
+import Footer from '../../components/home/Footer.astro';
+import { posts, getBlogPath, getPostLocale } from '../../data/blog';
+import type { Locale } from '../../i18n';
+
+export function getStaticPaths() {
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const locale: Locale = 'es';
+const { post } = Astro.props;
+const copy = getPostLocale(post, locale);
+---
+
+<BaseLayout
+  locale={locale}
+  page="blog"
+  title={`${copy.title} | WAKE Blog`}
+  description={copy.description}
+  keywords={copy.keywords}
+  theme="home"
+  canonicalPath={getBlogPath(locale, post.slug)}
+  hreflang="es-HN"
+>
+  <BlogHeader locale={locale} postSlug={post.slug} />
+  <main>
+    <BlogPostView locale={locale} post={post} />
+  </main>
+  <Footer locale={locale} />
+</BaseLayout>

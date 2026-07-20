@@ -11,9 +11,11 @@ interface Props {
   locale: Locale;
   page: PageKey;
   class?: string;
+  /** Optional per-locale href overrides (e.g. same blog post in both languages) */
+  hrefs?: Partial<Record<Locale, string>>;
 }
 
-const { locale, page, class: className = '' } = Astro.props;
+const { locale, page, class: className = '', hrefs } = Astro.props;
 ---
 
 <nav
@@ -23,7 +25,7 @@ const { locale, page, class: className = '' } = Astro.props;
   {
     locales.map((loc) => (
       <a
-        href={getLocalizedPath(page, loc)}
+        href={hrefs?.[loc] ?? getLocalizedPath(page, loc)}
         hreflang={loc}
         lang={loc}
         class:list={[

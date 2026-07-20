@@ -46,6 +46,11 @@ const healthPath = getLocalizedPath('health', locale);
         >{dict.home.nav.contact}</a
       >
       <a
+        href={locale === 'es' ? '/blog' : '/en/blog'}
+        class="text-[13.5px] text-wake-muted no-underline hover:text-wake-text"
+        >{dict.home.nav.blog}</a
+      >
+      <a
         href={healthPath}
         class="text-[13.5px] text-wake-muted no-underline hover:text-wake-text md:hidden"
         >WAKE Health</a

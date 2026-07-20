@@ -9,6 +9,147 @@ export const en: Dictionary = {
     openMenu: 'Open menu',
     closeMenu: 'Close menu',
     learnMore: 'Learn more',
+    blog: 'Blog',
+  },
+  blog: {
+    tag: 'Resources',
+    title: 'WAKE Blog',
+    subtitle:
+      'Practical guides on clinic systems, automation, and technology solutions across Latin America and the United States.',
+    seo: {
+      title: 'WAKE Blog | Clinic software, automation, and tech solutions',
+      description:
+        'Articles on clinic systems, technology infrastructure, and business automation for Honduras, LATAM, and the USA.',
+      keywords:
+        'clinic software blog, business automation LATAM USA, technology solutions, WAKE Health, WAKE Solutions',
+    },
+  },
+  legal: {
+    tag: 'Legal',
+    title: 'Legal policies',
+    subtitle: 'Transparency, privacy, and security for our users.',
+    updated: 'Last updated: May 2026',
+    backHome: 'Back to home',
+    seo: {
+      title: 'Legal Policies | WAKE SOLUTIONS',
+      description:
+        'Terms of service, privacy policy, and refund policy for WAKE Solutions and WAKE Health.',
+      keywords:
+        'WAKE Solutions terms, privacy policy, refund policy, cancellation, Wake Health legal',
+    },
+    sections: [
+      {
+        id: 'terms',
+        title: '1. Terms and Conditions',
+        blocks: [
+          {
+            heading: 'Use of the service',
+            paragraphs: [
+              'The digital services provided by Wake Solutions are designed to support business management, organization, and operations through technology tools accessible online.',
+            ],
+          },
+          {
+            heading: 'Access and accounts',
+            paragraphs: [
+              'Users are responsible for keeping their credentials confidential and for all activity carried out from their account.',
+            ],
+          },
+          {
+            heading: 'Service availability',
+            paragraphs: [
+              'We strive to keep our services available continuously; however, temporary interruptions may occur due to maintenance or technical issues.',
+            ],
+          },
+          {
+            heading: 'Intellectual property',
+            paragraphs: [
+              'All content, software, design, structure, and trademarks belong to Wake Solutions.',
+            ],
+          },
+          {
+            heading: 'Misuse',
+            paragraphs: [],
+            list: [
+              'Illegal activities',
+              'Attempts to breach security',
+              'Copying or modifying the software without authorization',
+              'Malicious use of the platform',
+            ],
+          },
+          {
+            heading: 'Limitation of liability',
+            paragraphs: [
+              'Wake Solutions will not be liable for indirect losses resulting from incorrect use of the system.',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'privacy',
+        title: '2. Privacy Policy',
+        blocks: [
+          {
+            heading: 'Information collected',
+            paragraphs: [],
+            list: [
+              'Name',
+              'Email address',
+              'Phone number',
+              'Business information',
+              'Data generated within the system',
+            ],
+          },
+          {
+            heading: 'Use of information',
+            paragraphs: [
+              'Collected information is used to provide system access, technical support, and improve the user experience.',
+            ],
+          },
+          {
+            heading: 'Data protection',
+            paragraphs: [
+              'We implement technical and administrative measures intended to protect information from unauthorized access.',
+            ],
+          },
+          {
+            heading: 'Cookies',
+            paragraphs: [
+              'Our services may use cookies to improve navigation and the user experience.',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'refund',
+        title: '3. Refund and Cancellation Policy',
+        blocks: [
+          {
+            heading: 'Guarantee period',
+            paragraphs: [
+              'Users may request a refund within the first 3 calendar days after the initial subscription.',
+            ],
+          },
+          {
+            heading: 'Cancellation',
+            paragraphs: [
+              'Users may cancel the service at any time to avoid future charges.',
+            ],
+          },
+          {
+            heading: 'Custom services',
+            paragraphs: [
+              'Custom developments or special configurations may not be eligible for a refund.',
+            ],
+          },
+          {
+            heading: 'Service suspension',
+            paragraphs: [
+              'Wake Solutions may suspend access for terms violations or misuse.',
+            ],
+          },
+        ],
+      },
+    ],
   },
   home: {
     seo: {
@@ -26,6 +167,7 @@ export const en: Dictionary = {
       pricing: 'Pricing',
       contact: 'Contact',
       cta: 'Consulting',
+      blog: 'Blog',
     },
     hero: {
       tag: 'Growth Infrastructure',
@@ -203,6 +345,9 @@ export const en: Dictionary = {
       phone: 'Phone',
       message: 'Message or operational goals',
       submit: 'Send inquiry',
+      sending: 'Sending…',
+      success: 'Message sent. We’ll get back to you soon.',
+      error: 'Could not send. Try again or email ventas@wake.solutions.',
       mailSubject: 'Technology Infrastructure Request',
     },
     footer: {

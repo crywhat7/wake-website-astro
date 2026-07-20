@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../../../components/layout/BaseLayout.astro';
+import BlogHeader from '../../../components/blog/BlogHeader.astro';
+import Footer from '../../../components/home/Footer.astro';
+import Container from '../../../components/ui/Container.astro';
+import MonoTag from '../../../components/ui/MonoTag.astro';
+import { posts, getBlogPath, getPostLocale } from '../../../data/blog';
+import { t, type Locale } from '../../../i18n';
+
+const locale: Locale = 'en';
+const dict = t(locale);
+---
+
+<BaseLayout
+  locale={locale}
+  page="blog"
+  title={dict.blog.seo.title}
+  description={dict.blog.seo.description}
+  keywords={dict.blog.seo.keywords}
+  theme="home"
+  canonicalPath="/en/blog"
+>
+  <BlogHeader locale={locale} />
+  <main class="pb-24 pt-[calc(4rem+5rem)]">
+    <Container>
+      <MonoTag>{dict.blog.tag}</MonoTag>
+      <h1
+        class="mb-3 text-[clamp(2rem,4vw,2.75rem)] font-semibold leading-[1.15] tracking-tight text-wake-text"
+      >
+        {dict.blog.title}
+      </h1>
+      <p class="mb-16 max-w-[640px] text-[17px] text-wake-muted">{dict.blog.subtitle}</p>
+
+      <div class="grid gap-6 md:grid-cols-2">
+        {
+          posts.map((post) => {
+            const copy = getPostLocale(post, locale);
+            return (
+              <a
+                href={getBlogPath(locale, post.slug)}
+                class="group rounded-xl border border-wake-border bg-white p-6 no-underline transition hover:border-wake-text/20 hover:shadow-[0_10px_30px_rgba(0,0,0,0.04)]"
+              >
+                <span class="mb-3 inline-block font-mono text-[11px] uppercase tracking-wider text-wake-light">
+                  {post.category.en}
+                </span>
+                <h2 class="mb-2 text-lg font-semibold tracking-tight text-wake-text">
+                  {copy.title}
+                </h2>
+                <p class="mb-4 text-sm leading-relaxed text-wake-muted">{copy.excerpt}</p>
+                <span class="font-mono text-[12px] text-wake-light">
+                  {copy.dateLabel} · {copy.readingTime}
+                </span>
+              </a>
+            );
+          })
+        }
+      </div>
+    </Container>
+  </main>
+  <Footer locale={locale} />
+</BaseLayout>
