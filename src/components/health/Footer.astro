@@ -62,6 +62,20 @@ const blogPath = getLocalizedPath('blog', locale);
               >{dict.common.blog}</a
             >
           </li>
+          <li>
+            <a
+              href={locale === 'es' ? '/comparar/wake-health-vs-excel' : '/en/compare/wake-health-vs-excel'}
+              class="text-[13px] text-wake-muted no-underline hover:text-wake-text"
+              >{locale === 'es' ? 'vs Excel' : 'vs Excel'}</a
+            >
+          </li>
+          <li>
+            <a
+              href={locale === 'es' ? '/comparar/wake-health-vs-paper' : '/en/compare/wake-health-vs-paper'}
+              class="text-[13px] text-wake-muted no-underline hover:text-wake-text"
+              >{locale === 'es' ? 'vs Papel' : 'vs Paper'}</a
+            >
+          </li>
         </ul>
       </div>
       <GeoLinks locale={locale} kind="health" />

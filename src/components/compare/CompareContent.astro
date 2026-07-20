@@ -1,0 +1,93 @@
+---
+import Container from '../ui/Container.astro';
+import MonoTag from '../ui/MonoTag.astro';
+import Button from '../ui/Button.astro';
+import Breadcrumbs from '../ui/Breadcrumbs.astro';
+import type { ComparePage } from '../../data/compare';
+import { getCompareLocale, getComparePath } from '../../data/compare';
+import { getLocalizedPath, t, type Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+  page: ComparePage;
+}
+
+const { locale, page } = Astro.props;
+const dict = t(locale);
+const copy = getCompareLocale(page, locale);
+const homePath = getLocalizedPath('home', locale);
+const healthPath = getLocalizedPath('health', locale);
+const otherPath = getComparePath(locale, page.otherSlug);
+const crumbs = [
+  { label: dict.common.home, href: homePath },
+  { label: 'WAKE Health', href: healthPath },
+  { label: copy.tag },
+];
+---
+
+<main class="pb-24 pt-[calc(4rem+5rem)]">
+  <Container class="max-w-[860px]">
+    <Breadcrumbs items={crumbs} />
+    <MonoTag>{copy.tag}</MonoTag>
+    <h1
+      class="mb-3 text-[clamp(2rem,4vw,2.75rem)] font-semibold leading-[1.15] tracking-tight text-wake-text"
+    >
+      {copy.title.replace(/\s\|.*/, '')}
+    </h1>
+    <p class="mb-10 max-w-[640px] text-[17px] text-wake-muted">{copy.subtitle}</p>
+
+    {
+      copy.intro.map((p) => (
+        <p class="mb-4 text-[15px] leading-relaxed text-wake-muted">{p}</p>
+      ))
+    }
+
+    <div class="my-12 overflow-x-auto rounded-xl border border-wake-border">
+      <table class="w-full min-w-[640px] border-collapse text-left text-sm">
+        <thead>
+          <tr class="border-b border-wake-border bg-wake-subtle">
+            <th class="px-4 py-3 font-semibold text-wake-text">{locale === 'es' ? 'Criterio' : 'Criterion'}</th>
+            <th class="px-4 py-3 font-semibold text-wake-text">{copy.alternativeLabel}</th>
+            <th class="px-4 py-3 font-semibold text-wake-text">{copy.wakeLabel}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            copy.rows.map((row) => (
+              <tr class="border-b border-wake-border-subtle align-top last:border-0">
+                <td class="px-4 py-3 font-medium text-wake-text">{row.criterion}</td>
+                <td class="px-4 py-3 text-wake-muted">{row.alternative}</td>
+                <td class="px-4 py-3 text-wake-muted">{row.wake}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+
+    {
+      copy.sections.map((section) => (
+        <section class="mb-10">
+          <h2 class="mb-3 text-xl font-semibold tracking-tight text-wake-text">{section.heading}</h2>
+          {section.paragraphs.map((p) => (
+            <p class="mb-4 text-[15px] leading-relaxed text-wake-muted">{p}</p>
+          ))}
+        </section>
+      ))
+    }
+
+    <div class="mt-12 rounded-xl border border-wake-border bg-wake-subtle p-8">
+      <h2 class="mb-2 text-xl font-semibold text-wake-text">{copy.verdictTitle}</h2>
+      <p class="mb-6 text-sm text-wake-muted">{copy.verdictBody}</p>
+      <div class="flex flex-wrap gap-3">
+        <Button href={healthPath}>{copy.ctaPrimary}</Button>
+        <Button href={otherPath} variant="secondary">{copy.ctaSecondary}</Button>
+      </div>
+      <p class="mt-4 text-xs text-wake-light">
+        <a href={otherPath} class="text-wake-muted no-underline hover:text-wake-text"
+          >{copy.otherCompareLabel}</a
+        >
+      </p>
+    </div>
+  </Container>
+</main>

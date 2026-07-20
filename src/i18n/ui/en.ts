@@ -10,6 +10,7 @@ export const en: Dictionary = {
     closeMenu: 'Close menu',
     learnMore: 'Learn more',
     blog: 'Blog',
+    home: 'Home',
   },
   blog: {
     tag: 'Resources',

@@ -8,6 +8,7 @@ export const es = {
     closeMenu: 'Cerrar menú',
     learnMore: 'Saber más',
     blog: 'Blog',
+    home: 'Inicio',
   },
   blog: {
     tag: 'Recursos',

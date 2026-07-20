@@ -2,9 +2,11 @@
 import Container from '../ui/Container.astro';
 import Button from '../ui/Button.astro';
 import MonoTag from '../ui/MonoTag.astro';
+import Breadcrumbs from '../ui/Breadcrumbs.astro';
 import type { BlogLocale, BlogPost } from '../../data/blog';
 import { getBlogPath, getPostLocale } from '../../data/blog';
-import { getLocalizedPath } from '../../i18n';
+import { getLocalizedPath, t } from '../../i18n';
+import { SITE } from '../../data/site';
 
 interface Props {
   locale: BlogLocale;
@@ -12,15 +14,41 @@ interface Props {
 }
 
 const { locale, post } = Astro.props;
+const dict = t(locale);
 const copy = getPostLocale(post, locale);
 const healthPath = getLocalizedPath('health', locale);
 const homePath = getLocalizedPath('home', locale);
 const blogPath = getBlogPath(locale);
 const otherPostsPath = blogPath;
+const siteUrl = SITE.url.replace(/\/$/, '');
+const postUrl = new URL(getBlogPath(locale, post.slug), `${siteUrl}/`).href;
+
+const crumbs = [
+  { label: dict.common.home, href: homePath },
+  { label: dict.common.blog, href: blogPath },
+  { label: copy.title },
+];
+
+const articleLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: copy.title,
+  description: copy.description,
+  datePublished: post.published,
+  inLanguage: locale === 'es' ? 'es-HN' : 'en-US',
+  author: { '@type': 'Organization', name: SITE.name },
+  publisher: {
+    '@type': 'Organization',
+    name: SITE.name,
+    logo: { '@type': 'ImageObject', url: SITE.assets.healthLogoSvg },
+  },
+  mainEntityOfPage: postUrl,
+};
 ---
 
 <article class="pb-24 pt-[calc(4rem+4rem)]">
   <Container class="max-w-[760px]">
+    <Breadcrumbs items={crumbs} />
     <MonoTag>{post.category[locale]}</MonoTag>
     <h1
       class="mb-4 text-[clamp(2rem,4vw,2.75rem)] font-semibold leading-[1.15] tracking-tight text-wake-text"
@@ -66,4 +94,5 @@ const otherPostsPath = blogPath;
       </div>
     </div>
   </Container>
+  <script type="application/ld+json" set:html={JSON.stringify(articleLd)} />
 </article>

@@ -1,0 +1,41 @@
+# WAKE SOLUTIONS
+
+> Technology infrastructure and clinic software (WAKE Health) for businesses and medical practices across Honduras, Latin America, and the United States.
+
+WAKE SOLUTIONS builds operational technology: automation, systematization, and software. WAKE Health is the clinic management product (patients, scheduling, clinical records, billing).
+
+## Primary pages
+
+- [Home (ES)](https://wake.solutions/): Corporate site in Spanish
+- [Home (EN)](https://wake.solutions/en): Corporate site in English
+- [WAKE Health (ES)](https://wake.solutions/health): Clinic software product page
+- [WAKE Health (EN)](https://wake.solutions/en/health): Clinic software product page (EN)
+- [Blog (ES)](https://wake.solutions/blog): Guides on clinic systems and tech solutions
+- [Blog (EN)](https://wake.solutions/en/blog): Same blog in English
+- [Legal (ES)](https://wake.solutions/legal): Terms, privacy, refund policy
+- [Legal (EN)](https://wake.solutions/en/legal): Legal policies in English
+
+## Comparisons
+
+- [WAKE Health vs Excel (ES)](https://wake.solutions/comparar/wake-health-vs-excel)
+- [WAKE Health vs Excel (EN)](https://wake.solutions/en/compare/wake-health-vs-excel)
+- [WAKE Health vs paper (ES)](https://wake.solutions/comparar/wake-health-vs-paper)
+- [WAKE Health vs paper (EN)](https://wake.solutions/en/compare/wake-health-vs-paper)
+
+## Blog posts
+
+- [Clinic system / operational order (ES)](https://wake.solutions/blog/sistema-para-clinicas-orden-operativo)
+- [Clinic system / operational order (EN)](https://wake.solutions/en/blog/sistema-para-clinicas-orden-operativo)
+- [Tech solutions for businesses & clinics (ES)](https://wake.solutions/blog/soluciones-tecnologicas-empresas-clinicas)
+- [Tech solutions for businesses & clinics (EN)](https://wake.solutions/en/blog/soluciones-tecnologicas-empresas-clinicas)
+
+## Contact
+
+- Website: https://wake.solutions
+- Email: ventas@wake.solutions
+- WhatsApp: +504 3329-2869
+
+## Optional
+
+- [Sitemap](https://wake.solutions/sitemap.xml)
+- [robots.txt](https://wake.solutions/robots.txt)

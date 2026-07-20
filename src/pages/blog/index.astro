@@ -4,11 +4,13 @@ import BlogHeader from '../../components/blog/BlogHeader.astro';
 import Footer from '../../components/home/Footer.astro';
 import Container from '../../components/ui/Container.astro';
 import MonoTag from '../../components/ui/MonoTag.astro';
+import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
 import { posts, getBlogPath, getPostLocale } from '../../data/blog';
-import { t, type Locale } from '../../i18n';
+import { t, getLocalizedPath, type Locale } from '../../i18n';
 
 const locale: Locale = 'es';
 const dict = t(locale);
+const homePath = getLocalizedPath('home', locale);
 ---
 
 <BaseLayout
@@ -23,6 +25,12 @@ const dict = t(locale);
   <BlogHeader locale={locale} />
   <main class="pb-24 pt-[calc(4rem+5rem)]">
     <Container>
+      <Breadcrumbs
+        items={[
+          { label: dict.common.home, href: homePath },
+          { label: dict.common.blog },
+        ]}
+      />
       <MonoTag>{dict.blog.tag}</MonoTag>
       <h1
         class="mb-3 text-[clamp(2rem,4vw,2.75rem)] font-semibold leading-[1.15] tracking-tight text-wake-text"
