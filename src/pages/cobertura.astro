@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../components/layout/BaseLayout.astro';
+import LandingHeader from '../components/landing/LandingHeader.astro';
+import CoverageHub from '../components/geo/CoverageHub.astro';
+import LandingFooter from '../components/landing/LandingFooter.astro';
+import { cities, regionsForLocale } from '../data/geo';
+import type { Locale } from '../i18n';
+
+const locale: Locale = 'es';
+const countryCount = regionsForLocale(locale).length;
+const cityCount = cities.filter((c) => c.region.locale === 'es').length;
+---
+
+<BaseLayout
+  locale={locale}
+  page="home"
+  title="Cobertura en Latinoamérica y España | WAKE SOLUTIONS"
+  description={`Software empresarial y clínico en ${countryCount} países y ${cityCount} ciudades de Latinoamérica y España. Encuentra la página de tu país o ciudad.`}
+  keywords="cobertura WAKE Solutions, software empresarial Latinoamérica, software clínico LATAM, WAKE Health países, tecnología Centroamérica"
+  theme="home"
+  canonicalPath="/cobertura"
+  alternates={[
+    { hreflang: 'es', href: '/cobertura' },
+    { hreflang: 'en', href: '/en/coverage' },
+  ]}
+>
+  <LandingHeader locale={locale} hrefs={{ es: '/cobertura', en: '/en/coverage' }} />
+  <CoverageHub locale={locale} />
+  <LandingFooter locale={locale} />
+</BaseLayout>

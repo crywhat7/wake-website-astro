@@ -16,6 +16,8 @@ interface Props {
   placename?: string;
   geoRegionCode?: string;
   hreflang?: string;
+  alternates?: Array<{ hreflang: string; href: string }>;
+  noindex?: boolean;
 }
 
 const {
@@ -30,6 +32,8 @@ const {
   placename,
   geoRegionCode,
   hreflang,
+  alternates,
+  noindex,
 } = Astro.props;
 
 const fontHref =
@@ -69,6 +73,8 @@ const htmlLang = hreflang ?? (locale === 'es' ? 'es-HN' : 'en-US');
       placename={placename}
       geoRegionCode={geoRegionCode}
       hreflang={hreflang}
+      alternates={alternates}
+      noindex={noindex}
     />
     <JsonLd locale={locale} page={page} />
   </head>

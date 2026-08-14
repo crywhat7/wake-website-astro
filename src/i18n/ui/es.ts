@@ -1,3 +1,5 @@
+import { PRICING, healthPriceLabel } from '../../data/constants';
+
 export const es = {
   common: {
     company: 'WAKE SOLUTIONS',
@@ -27,7 +29,7 @@ export const es = {
     tag: 'Legal',
     title: 'Políticas legales',
     subtitle: 'Transparencia, privacidad y seguridad para nuestros usuarios.',
-    updated: 'Última actualización: Mayo 2026',
+    updated: 'Última actualización: Agosto 2026',
     backHome: 'Volver al inicio',
     seo: {
       title: 'Políticas Legales | WAKE SOLUTIONS',
@@ -119,31 +121,94 @@ export const es = {
         ],
       },
       {
-        id: 'refund',
-        title: '3. Política de Reembolso y Cancelación',
+        id: 'health-terms',
+        title: '3. Términos y Condiciones de WAKE HEALTH',
         blocks: [
           {
-            heading: 'Período de garantía',
+            heading: 'Objeto del servicio',
             paragraphs: [
-              'Los usuarios podrán solicitar reembolso durante los primeros 3 días calendario posteriores a la contratación inicial.',
+              'WAKE HEALTH es una plataforma de gestión clínica ofrecida por Wake Solutions bajo modalidad de suscripción mensual. Permite administrar pacientes, citas, expediente clínico, facturación y módulos operativos relacionados.',
+              'WAKE HEALTH es una herramienta administrativa y de apoyo. No sustituye el juicio clínico del profesional de la salud ni constituye un dispositivo médico, y sus funciones asistidas por inteligencia artificial son sugerencias de apoyo cuya validación final corresponde siempre al profesional tratante.',
+            ],
+          },
+          {
+            heading: 'Cuentas y perfiles de usuario',
+            paragraphs: [
+              'La clínica contratante es responsable de crear, administrar y revocar los accesos de su personal. Cada usuario debe contar con credenciales individuales e intransferibles; el uso compartido de cuentas es responsabilidad exclusiva de la clínica.',
+            ],
+          },
+          {
+            heading: 'Datos de pacientes y confidencialidad',
+            paragraphs: [
+              'La clínica contratante es la responsable del tratamiento de los datos de sus pacientes y declara contar con el consentimiento y la base legal necesarios para registrarlos en la plataforma. Wake Solutions actúa como encargado del tratamiento y procesa dicha información únicamente para prestar el servicio.',
+              'Wake Solutions no vende ni comercializa información clínica de pacientes, y aplica medidas técnicas y administrativas orientadas a proteger la confidencialidad de los registros.',
+            ],
+          },
+          {
+            heading: 'Suscripción, facturación y renovación',
+            paragraphs: [
+              'La suscripción de WAKE HEALTH se cobra de forma mensual y se renueva automáticamente hasta que el usuario la cancele. Los pagos se procesan a través de nuestro proveedor de pagos autorizado.',
+              'Los precios pueden actualizarse; cualquier cambio se notificará con antelación razonable y aplicará a partir del siguiente ciclo de facturación.',
+            ],
+          },
+          {
+            heading: 'Disponibilidad, respaldos y soporte',
+            paragraphs: [
+              'El servicio se presta en modalidad web y puede requerir ventanas de mantenimiento. Se realizan respaldos periódicos de la información, sin que ello constituya una garantía absoluta de recuperación ante eventos de fuerza mayor.',
+              'La clínica puede solicitar una exportación de su información mientras la suscripción se encuentre activa.',
+            ],
+          },
+          {
+            heading: 'Uso aceptable',
+            paragraphs: [],
+            list: [
+              'No registrar información falsa o de pacientes inexistentes',
+              'No utilizar la plataforma para fines distintos a la gestión clínica',
+              'No intentar acceder a datos de otras clínicas o cuentas',
+              'No revender, replicar ni realizar ingeniería inversa del sistema',
+            ],
+          },
+          {
+            heading: 'Terminación',
+            paragraphs: [
+              'La clínica puede cancelar en cualquier momento desde su cuenta o solicitándolo por los canales oficiales. Wake Solutions podrá suspender o terminar el acceso ante incumplimiento de estos términos, uso indebido o falta de pago.',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'refund',
+        title: '4. Política de Prueba, Cancelación y Reembolso',
+        blocks: [
+          {
+            heading: `Prueba gratuita de ${PRICING.trialDays} días`,
+            paragraphs: [
+              `En lugar de un período de reembolso, ofrecemos una prueba gratuita de ${PRICING.trialDays} días para que evalúes el sistema completo antes de pagar. Durante la prueba tienes acceso a la plataforma sin costo y sin compromiso.`,
+              'Recomendamos usar esos días para validar el sistema con tu equipo real de trabajo: agenda, expediente y facturación.',
+            ],
+          },
+          {
+            heading: 'No hay reembolsos',
+            paragraphs: [
+              `Los pagos de suscripción no son reembolsables. Al existir un período de prueba gratuita previo de ${PRICING.trialDays} días, no se emiten devoluciones totales ni parciales una vez procesado un cobro, incluidos los casos de falta de uso del servicio durante el ciclo pagado.`,
             ],
           },
           {
             heading: 'Cancelación',
             paragraphs: [
-              'El usuario puede cancelar el servicio en cualquier momento para evitar futuros cobros.',
+              'Puedes cancelar la suscripción en cualquier momento para evitar cobros futuros. La cancelación detiene la renovación automática y el servicio permanece activo hasta el final del ciclo ya pagado.',
             ],
           },
           {
             heading: 'Servicios personalizados',
             paragraphs: [
-              'Desarrollos a medida o configuraciones especiales pueden no ser elegibles para reembolso.',
+              'Los desarrollos a medida, integraciones especiales, migraciones de datos y capacitaciones presenciales se cotizan por separado y no son elegibles para reembolso.',
             ],
           },
           {
             heading: 'Suspensión del servicio',
             paragraphs: [
-              'Wake Solutions podrá suspender el acceso por incumplimiento de términos o uso indebido.',
+              'Wake Solutions podrá suspender el acceso por incumplimiento de términos, uso indebido o falta de pago, sin que ello genere derecho a reembolso.',
             ],
           },
         ],
@@ -253,9 +318,42 @@ export const es = {
       healthDesc:
         'El sistema integral unificado para optimizar el control absoluto de pacientes, flujos de citas médicas, agendas dinámicas e historiales clínicos confidenciales bajo máxima seguridad estructural.',
       healthCta: 'Explorar WAKE Health',
-      patientsLabel: 'PACIENTES ACTIVOS',
-      patientsCount: '1,240',
       logoAlt: 'WAKE Health — software para clínicas en Honduras y LATAM',
+      featuresTitle: 'Lo que trae el sistema',
+      illustrationNote:
+        'Ilustración de la interfaz. Las cifras mostradas son de ejemplo y no representan datos reales de pacientes.',
+      features: [
+        {
+          icon: 'fa-notes-medical',
+          title: 'Historial Clínico',
+          desc: 'Expediente digital por paciente: diagnósticos, recetas y exámenes disponibles en segundos durante la consulta.',
+        },
+        {
+          icon: 'fa-brain',
+          title: 'Diagnóstico con IA',
+          desc: 'Sugerencias clínicas asistidas por inteligencia artificial para reducir el margen de error y agilizar la consulta.',
+        },
+        {
+          icon: 'fa-truck-medical',
+          title: 'Atención directa de emergencias',
+          desc: 'Botón de atención inmediata que salta el proceso administrativo cuando cada segundo cuenta.',
+        },
+        {
+          icon: 'fa-calendar-check',
+          title: 'Agenda médica',
+          desc: 'Calendario compartido entre recepción y médicos, con estados de cita y menos horarios cruzados.',
+        },
+        {
+          icon: 'fa-file-invoice-dollar',
+          title: 'Facturación y caja',
+          desc: 'Cobros, servicios y cierre de caja conectados al expediente, con reportes de ingresos por periodo.',
+        },
+        {
+          icon: 'fa-mobile-screen',
+          title: 'Multidispositivo',
+          desc: 'La misma información desde computadora, tablet o celular, con respaldos automáticos en la nube.',
+        },
+      ],
     },
     about: {
       tag: 'Manifiesto',
@@ -307,11 +405,11 @@ export const es = {
       title: 'Todo lo que tu clínica necesita.',
       subtitle:
         'Una plataforma completa para gestionar pacientes, citas y operaciones sin complicaciones.',
-      badge: 'Prueba gratuita 3 días',
+      badge: `Prueba gratuita ${PRICING.trialDays} días`,
       planName: 'Wake Health',
       planDesc:
         'Software clínico todo incluido para médicos y clínicas que buscan digitalizar su operación.',
-      price: 'US$29',
+      price: healthPriceLabel,
       period: '/mes',
       featuresLeft: [
         'Expediente clínico digital',
@@ -329,7 +427,7 @@ export const es = {
         'Actualizaciones incluidas',
         'Soporte asistido por IA',
       ],
-      trialTitle: 'Empieza gratis durante 3 días',
+      trialTitle: `Empieza gratis durante ${PRICING.trialDays} días`,
       trialNote: 'Sin tarjeta de crédito. Sin compromiso.',
       cta: 'Comenzar prueba gratuita',
     },
@@ -358,7 +456,9 @@ export const es = {
       locationText: 'Honduras & Centroamérica',
       terms: 'Términos de Servicio',
       privacy: 'Política de Privacidad',
-      refund: 'Política de Reembolso',
+      refund: 'Prueba y Reembolso',
+      healthTerms: 'Términos WAKE HEALTH',
+      social: 'Síguenos',
       rights: '© 2026 WAKE SOLUTIONS. Todos los derechos reservados.',
     },
   },
@@ -469,48 +569,42 @@ export const es = {
       },
     },
     pricing: {
-      tag: 'Planes',
-      title: 'Planes diseñados para tu crecimiento',
-      subtitle: 'Elige el plan que se adapta al tamaño y ritmo de tu clínica.',
-      recommended: 'RECOMENDADO',
+      tag: 'Plan único',
+      title: 'Todo lo que tu clínica necesita.',
+      subtitle:
+        'Una plataforma completa para gestionar pacientes, citas y operaciones sin complicaciones.',
+      badge: `Prueba gratuita ${PRICING.trialDays} días`,
+      planName: 'Wake Health',
+      planDesc:
+        'Software clínico todo incluido para médicos y clínicas que buscan digitalizar su operación.',
+      price: healthPriceLabel,
       period: '/mes',
-      choose: 'Elegir Plan',
+      featuresLeft: [
+        'Expediente clínico digital',
+        'Agenda de citas',
+        'Historial médico',
+        'Recetas digitales',
+        'Facturación y caja',
+        'Inventario médico',
+      ],
+      featuresRight: [
+        'Reportes inteligentes',
+        'Multiusuario',
+        'Acceso desde cualquier dispositivo',
+        'Copias de seguridad automáticas',
+        'Actualizaciones incluidas',
+        'Soporte asistido por IA',
+      ],
+      trialTitle: `Empieza gratis durante ${PRICING.trialDays} días`,
+      trialNote: 'Sin tarjeta de crédito. Sin compromiso.',
+      cta: 'Comenzar prueba gratuita',
       start: 'Comenzar Ahora',
       quote: 'Solicitar Cotización',
-      basic: {
-        name: 'Básico',
-        price: '$9.99',
-        features: [
-          'Hasta 500 pacientes',
-          'Agenda Médica',
-          'Expediente Clínico',
-          'Soporte por Email',
-        ],
-      },
-      plus: {
-        name: 'Plus',
-        price: '$17.99',
-        features: [
-          'Pacientes Ilimitados',
-          'Módulo de Laboratorio',
-          'Facturación y Contabilidad',
-          'Soporte Prioritario 24/7',
-          'Diagnósticos con IA',
-        ],
-      },
-      business: {
-        name: 'Business',
-        price: 'Cotizar',
-        note: 'Para clínicas grandes o redes hospitalarias que necesitan una solución a medida.',
-        features: [
-          'Multi-sucursales',
-          'Integración API personalizada',
-          'Servidor Dedicado',
-          'Capacitación presencial',
-        ],
-        whatsappMsg:
-          'Hola! Necesito una cotización para el Plan Business de Wake Health',
-      },
+      enterpriseTitle: '¿Clínica grande o red hospitalaria?',
+      enterpriseNote:
+        'Si necesitas multi-sucursales, integración por API, servidor dedicado o capacitación presencial, armamos una propuesta a la medida.',
+      enterpriseWhatsappMsg:
+        'Hola! Necesito una cotización a la medida para mi red de clínicas con Wake Health',
     },
     cta: {
       tag: 'Siguiente paso',
@@ -531,7 +625,9 @@ export const es = {
       copy: '© 2026 WAKE HEALTH. Todos los derechos reservados.',
       terms: 'Términos de Servicio',
       privacy: 'Política de Privacidad',
-      refund: 'Política de Reembolso',
+      refund: 'Prueba y Reembolso',
+      healthTerms: 'Términos WAKE HEALTH',
+      social: 'Síguenos',
       backHome: 'WAKE SOLUTIONS',
     },
   },

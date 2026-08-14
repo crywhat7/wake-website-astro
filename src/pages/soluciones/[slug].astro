@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../components/layout/BaseLayout.astro';
+import LandingHeader from '../../components/landing/LandingHeader.astro';
+import LandingBody from '../../components/landing/LandingBody.astro';
+import LandingFooter from '../../components/landing/LandingFooter.astro';
+import FaqJsonLd from '../../components/seo/FaqJsonLd.astro';
+import { buildLandingCopy, getLandingPath, seedsForKind } from '../../data/landings';
+import type { Locale } from '../../i18n';
+
+const kind = 'sector' as const;
+
+export function getStaticPaths() {
+  return seedsForKind('sector').map((seed) => ({
+    params: { slug: seed.slug },
+    props: { seed },
+  }));
+}
+
+const locale: Locale = 'es';
+const { seed } = Astro.props;
+const copy = buildLandingCopy(seed, locale);
+---
+
+<BaseLayout
+  locale={locale}
+  page="home"
+  title={copy.title}
+  description={copy.description}
+  keywords={copy.keywords}
+  theme="home"
+  canonicalPath={getLandingPath(kind, locale, seed.slug)}
+  alternates={[
+    { hreflang: 'es', href: getLandingPath(kind, 'es', seed.slug) },
+    { hreflang: 'en', href: getLandingPath(kind, 'en', seed.slug) },
+  ]}
+>
+  <LandingHeader
+    locale={locale}
+    hrefs={{
+      es: getLandingPath(kind, 'es', seed.slug),
+      en: getLandingPath(kind, 'en', seed.slug),
+    }}
+  />
+  <LandingBody seed={seed} locale={locale} />
+  <LandingFooter locale={locale} />
+  <FaqJsonLd items={copy.faq} />
+</BaseLayout>

@@ -1,0 +1,63 @@
+---
+import Container from '../ui/Container.astro';
+import LanguageSwitcher from '../ui/LanguageSwitcher.astro';
+import { getLocalizedPath, t, type Locale } from '../../i18n';
+import { getHubPath } from '../../data/landings';
+
+interface Props {
+  locale: Locale;
+  /** Same page in the other language, when it exists */
+  hrefs?: Partial<Record<Locale, string>>;
+}
+
+const { locale, hrefs } = Astro.props;
+const dict = t(locale);
+const homePath = getLocalizedPath('home', locale);
+const healthPath = getLocalizedPath('health', locale);
+const blogPath = getLocalizedPath('blog', locale);
+
+const links = [
+  { href: homePath, label: dict.common.company },
+  { href: healthPath, label: 'WAKE Health' },
+  {
+    href: getHubPath('specialty', locale),
+    label: locale === 'es' ? 'Especialidades' : 'Specialties',
+  },
+  {
+    href: getHubPath('feature', locale),
+    label: locale === 'es' ? 'Funciones' : 'Features',
+  },
+  {
+    href: getHubPath('sector', locale),
+    label: locale === 'es' ? 'Sectores' : 'Industries',
+  },
+  { href: blogPath, label: dict.common.blog },
+];
+---
+
+<header
+  class="fixed top-0 left-0 z-50 w-full border-b border-wake-border/50 bg-white/80 backdrop-blur-md"
+>
+  <Container class="flex h-16 items-center justify-between gap-4">
+    <a
+      href={homePath}
+      class="flex shrink-0 items-center gap-1.5 text-base font-bold tracking-tight text-wake-text no-underline"
+    >
+      WAKE SOLUTIONS
+      <span class="inline-block h-2 w-2 rounded-full bg-wake-text"></span>
+    </a>
+    <nav class="hidden items-center gap-6 lg:flex">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            class="text-[13.5px] text-wake-muted no-underline hover:text-wake-text"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+    <LanguageSwitcher locale={locale} page="home" hrefs={hrefs} />
+  </Container>
+</header>

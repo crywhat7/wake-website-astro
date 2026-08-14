@@ -1,0 +1,86 @@
+---
+import Container from '../ui/Container.astro';
+import MonoTag from '../ui/MonoTag.astro';
+import Breadcrumbs from '../ui/Breadcrumbs.astro';
+import { getLocalizedPath, type Locale } from '../../i18n';
+import {
+  getHubCopy,
+  getHubPath,
+  getLandingPath,
+  seedsForKind,
+  type LandingKind,
+} from '../../data/landings';
+
+interface Props {
+  kind: LandingKind;
+  locale: Locale;
+}
+
+const { kind, locale } = Astro.props;
+const copy = getHubCopy(kind, locale);
+const seeds = seedsForKind(kind);
+const homePath = getLocalizedPath('home', locale);
+
+const otherHubs = (['specialty', 'feature', 'sector'] as LandingKind[])
+  .filter((k) => k !== kind)
+  .map((k) => ({ path: getHubPath(k, locale), label: getHubCopy(k, locale).tag }));
+---
+
+<main class="pt-[calc(4rem+3rem)] pb-24">
+  <Container>
+    <Breadcrumbs
+      items={[
+        { label: locale === 'es' ? 'Inicio' : 'Home', href: homePath },
+        { label: copy.tag },
+      ]}
+    />
+
+    <MonoTag>{copy.tag}</MonoTag>
+    <h1
+      class="mb-4 max-w-[820px] text-[clamp(2.25rem,4.5vw,3.25rem)] font-semibold leading-[1.08] tracking-[-0.03em] text-wake-text"
+    >
+      {copy.h1}
+    </h1>
+    <p class="mb-16 max-w-[720px] text-[17px] leading-relaxed text-wake-muted">{copy.intro}</p>
+
+    <h2 class="mb-6 font-mono text-[11px] tracking-[0.14em] text-wake-light uppercase">
+      {copy.listTitle}
+    </h2>
+    <ul class="grid list-none gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        seeds.map((seed) => {
+          const c = locale === 'es' ? seed.es : seed.en;
+          return (
+            <li>
+              <a
+                href={getLandingPath(seed.kind, locale, seed.slug)}
+                class="flex h-full flex-col rounded-xl border border-wake-border bg-white p-6 no-underline transition hover:border-wake-text hover:shadow-[0_10px_30px_rgba(0,0,0,0.03)]"
+              >
+                <span class="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-md bg-wake-accent/40 text-wake-text">
+                  <i class={`fa-solid ${seed.icon} text-sm`} />
+                </span>
+                <h3 class="mb-1.5 text-[16px] font-semibold tracking-tight text-wake-text">
+                  {c.name}
+                </h3>
+                <p class="text-[13.5px] leading-relaxed text-wake-muted">{c.points[0]}</p>
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+
+    <div class="mt-16 flex flex-wrap gap-2">
+      {
+        otherHubs.map((hub) => (
+          <a
+            href={hub.path}
+            class="rounded-md border border-wake-border bg-white px-4 py-2 text-[13px] text-wake-muted no-underline transition hover:border-wake-text hover:text-wake-text"
+          >
+            {hub.label}
+          </a>
+        ))
+      }
+    </div>
+  </Container>
+</main>

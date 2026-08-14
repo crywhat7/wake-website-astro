@@ -3,6 +3,7 @@ import BaseLayout from '../../components/layout/BaseLayout.astro';
 import BlogHeader from '../../components/blog/BlogHeader.astro';
 import BlogPostView from '../../components/blog/BlogPost.astro';
 import Footer from '../../components/home/Footer.astro';
+import ArticleJsonLd from '../../components/seo/ArticleJsonLd.astro';
 import { posts, getBlogPath, getPostLocale } from '../../data/blog';
 import type { Locale } from '../../i18n';
 
@@ -33,4 +34,13 @@ const copy = getPostLocale(post, locale);
     <BlogPostView locale={locale} post={post} />
   </main>
   <Footer locale={locale} />
+  <ArticleJsonLd
+    locale={locale}
+    headline={copy.title}
+    description={copy.description}
+    keywords={copy.keywords}
+    published={post.published}
+    path={getBlogPath(locale, post.slug)}
+    section={post.category[locale]}
+  />
 </BaseLayout>

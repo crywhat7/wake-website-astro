@@ -30,17 +30,10 @@ const heroSubtitle = subtitle ?? dict.health.hero.subtitle;
       >
         {dict.health.hero.titleBefore}
         {' '}
-        <strong
-          class="bg-gradient-to-r from-black to-wake-accent-dark bg-clip-text font-semibold text-transparent"
-        >
-          {dict.health.hero.chaos}
-        </strong>{dict.health.hero.titleMid}
+        <strong class="wake-gradient-text font-semibold">{dict.health.hero.chaos}</strong
+        >{dict.health.hero.titleMid}
         {' '}
-        <strong
-          class="bg-gradient-to-r from-black to-wake-accent-dark bg-clip-text font-semibold text-transparent"
-        >
-          {dict.health.hero.control}
-        </strong>
+        <strong class="wake-gradient-text font-semibold">{dict.health.hero.control}</strong>
       </h1>
       <p class="mb-8 max-w-[520px] text-lg font-light leading-relaxed text-wake-muted">
         {heroSubtitle}
@@ -70,7 +63,7 @@ const heroSubtitle = subtitle ?? dict.health.hero.subtitle;
       class="relative mx-auto flex w-full max-w-[540px] items-center justify-center lg:order-none max-lg:order-first"
     >
       <div
-        class="relative w-full overflow-hidden rounded-xl border border-wake-border bg-white p-4 shadow-[0_20px_40px_rgba(0,0,0,0.03)]"
+        class="relative w-full rounded-xl border border-wake-border bg-white p-4 shadow-[0_20px_40px_rgba(0,0,0,0.03)]"
       >
         <div class="mb-4 flex gap-1.5 border-b border-wake-border-subtle pb-2">
           <div class="h-2 w-2 rounded-full bg-wake-border"></div>

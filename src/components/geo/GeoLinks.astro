@@ -9,6 +9,8 @@ interface Props {
 
 const { locale, kind } = Astro.props;
 const regions = locale === 'es' ? latamRegions : usRegions;
+const coveragePath = locale === 'es' ? '/cobertura' : '/en/coverage';
+const coverageLabel = locale === 'es' ? 'Ver toda la cobertura' : 'See all coverage';
 const title =
   locale === 'es'
     ? kind === 'home'
@@ -34,6 +36,14 @@ const title =
             </a>
           </li>
         ))}
+        <li>
+          <a
+            href={coveragePath}
+            class="text-[13px] font-medium text-wake-text no-underline hover:underline"
+          >
+            {coverageLabel} →
+          </a>
+        </li>
       </ul>
     </div>
   )

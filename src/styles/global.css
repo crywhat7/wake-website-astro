@@ -39,3 +39,50 @@
     outline-offset: 2px;
   }
 }
+
+@layer components {
+  /*
+   * Texto con degradado recortado.
+   *
+   * Tailwind `bg-clip-text text-transparent` no basta: sin
+   * `-webkit-text-fill-color` varios navegadores (Safari, WebKit móvil y
+   * Chrome cuando el degradado no ha pintado aún) dejan el texto invisible y
+   * se ve el rectángulo del degradado. `inline-block` evita además que el
+   * fragmento se parta y el degradado se reinicie en cada línea.
+   */
+  .wake-gradient-text {
+    display: inline-block;
+    background-image: linear-gradient(
+      90deg,
+      var(--color-wake-text) 0%,
+      #067a52 55%,
+      var(--color-wake-accent-dark) 100%
+    );
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    padding-bottom: 0.06em;
+  }
+
+  /* Si el navegador no soporta el recorte, se muestra el texto en sólido. */
+  @supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+    .wake-gradient-text {
+      background-image: none;
+      -webkit-text-fill-color: currentColor;
+      color: var(--color-wake-text);
+    }
+  }
+
+  @media (prefers-contrast: more) {
+    .wake-gradient-text {
+      background-image: none;
+      -webkit-text-fill-color: currentColor;
+      color: var(--color-wake-text);
+    }
+  }
+}

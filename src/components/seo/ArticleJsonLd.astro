@@ -1,0 +1,55 @@
+---
+import { SITE } from '../../data/site';
+import type { Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+  headline: string;
+  description: string;
+  keywords: string;
+  /** ISO date, e.g. "2026-07-18" */
+  published: string;
+  /** Canonical path of this article */
+  path: string;
+  image?: string;
+  section?: string;
+}
+
+const {
+  locale,
+  headline,
+  description,
+  keywords,
+  published,
+  path,
+  image = SITE.assets.healthLogoSvg,
+  section,
+} = Astro.props;
+
+const siteUrl = (Astro.site?.href ?? SITE.url).replace(/\/$/, '');
+const url = new URL(path, `${siteUrl}/`).href;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  '@id': `${url}#article`,
+  mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+  headline,
+  description,
+  keywords,
+  image,
+  datePublished: published,
+  dateModified: published,
+  inLanguage: locale === 'es' ? 'es-HN' : 'en-US',
+  ...(section ? { articleSection: section } : {}),
+  author: { '@type': 'Organization', name: SITE.name, url: siteUrl },
+  publisher: {
+    '@type': 'Organization',
+    name: SITE.name,
+    url: siteUrl,
+    logo: { '@type': 'ImageObject', url: SITE.assets.healthLogoSvg },
+  },
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

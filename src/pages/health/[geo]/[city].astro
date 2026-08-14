@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../../../components/layout/BaseLayout.astro';
+import Header from '../../../components/health/Header.astro';
+import Hero from '../../../components/health/Hero.astro';
+import Breadcrumbs from '../../../components/ui/Breadcrumbs.astro';
+import Container from '../../../components/ui/Container.astro';
+import CityFocus from '../../../components/geo/CityFocus.astro';
+import FaqJsonLd from '../../../components/seo/FaqJsonLd.astro';
+import Problems from '../../../components/health/Problems.astro';
+import Solution from '../../../components/health/Solution.astro';
+import Modules from '../../../components/health/Modules.astro';
+import Gallery from '../../../components/health/Gallery.astro';
+import Pricing from '../../../components/health/Pricing.astro';
+import CTA from '../../../components/health/CTA.astro';
+import Footer from '../../../components/health/Footer.astro';
+import { SITE } from '../../../data/site';
+import { buildCityCopy } from '../../../data/city-copy';
+import { cities, getCityPath, getGeoPath } from '../../../data/geo';
+import type { Locale } from '../../../i18n';
+
+export function getStaticPaths() {
+  return cities
+    .filter((city) => city.region.locale === 'es')
+    .map((city) => ({
+      params: { geo: city.region.slug, city: city.slug },
+      props: { city },
+    }));
+}
+
+const locale: Locale = 'es';
+const { city } = Astro.props;
+const copy = buildCityCopy(city, 'health');
+---
+
+<BaseLayout
+  locale={locale}
+  page="health"
+  title={copy.title}
+  description={copy.description}
+  keywords={copy.keywords}
+  image={SITE.assets.gallery[0].src}
+  theme="home"
+  canonicalPath={getCityPath('health', city)}
+  placename={`${city.name}, ${city.region.name}`}
+  geoRegionCode={city.region.hreflang.replace('es-', '')}
+  hreflang={city.region.hreflang}
+>
+  <Header locale={locale} />
+  <main>
+    <Container class="pt-[calc(4rem+2rem)]">
+      <Breadcrumbs
+        items={[
+          { label: 'WAKE Health', href: '/health' },
+          { label: city.region.name, href: getGeoPath('health', city.region) },
+          { label: city.name },
+        ]}
+      />
+    </Container>
+    <Hero locale={locale} tag={copy.heroTag} subtitle={copy.heroSubtitle} />
+    <CityFocus city={city} kind="health" />
+    <Problems locale={locale} />
+    <Solution locale={locale} />
+    <Modules locale={locale} />
+    <Gallery locale={locale} />
+    <Pricing locale={locale} />
+    <CTA locale={locale} />
+  </main>
+  <Footer locale={locale} />
+  <FaqJsonLd items={copy.faq} />
+
+  <script is:inline src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+  <script is:inline define:vars={{ token: SITE.paddle.token }}>
+    if (typeof Paddle !== 'undefined') {
+      Paddle.Setup({ token });
+    }
+  </script>
+</BaseLayout>

@@ -1,0 +1,94 @@
+---
+import Container from '../ui/Container.astro';
+import MonoTag from '../ui/MonoTag.astro';
+import { getCityPath, getGeoPath, siblingCities } from '../../data/geo';
+import type { GeoCity, GeoPageKind } from '../../data/geo';
+import { buildCityCopy } from '../../data/city-copy';
+
+interface Props {
+  city: GeoCity;
+  kind: GeoPageKind;
+}
+
+const { city, kind } = Astro.props;
+const copy = buildCityCopy(city, kind);
+const siblings = siblingCities(city);
+const regionPath = getGeoPath(kind, city.region);
+const faqLabel = city.region.locale === 'es' ? 'Preguntas frecuentes' : 'FAQ';
+---
+
+<section class="border-t border-wake-border-subtle py-32 max-lg:py-20">
+  <Container>
+    <MonoTag>{city.name}</MonoTag>
+    <h2
+      class="mb-2 text-[clamp(2rem,4vw,2.75rem)] font-semibold leading-[1.15] tracking-tight text-wake-text"
+    >
+      {copy.focusTitle}
+    </h2>
+    <p class="mb-10 max-w-[680px] text-[17px] text-wake-muted">{copy.focusBody}</p>
+
+    <div class="mb-16 grid gap-6 sm:grid-cols-3">
+      {
+        copy.focusPoints.map((point) => (
+          <div class="rounded-xl border border-wake-border bg-white p-6">
+            <div class="mb-3 h-2 w-8 rounded bg-wake-accent" />
+            <p class="text-sm leading-relaxed text-wake-muted">{point}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mb-16 grid gap-12 lg:grid-cols-2">
+      {
+        copy.sections.map((section) => (
+          <div>
+            <h3 class="mb-3 text-xl font-semibold tracking-tight text-wake-text">
+              {section.heading}
+            </h3>
+            {section.paragraphs.map((p) => (
+              <p class="mb-3 text-[15px] leading-relaxed text-wake-muted">{p}</p>
+            ))}
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mb-16">
+      <h3 class="mb-6 text-xl font-semibold tracking-tight text-wake-text">{faqLabel}</h3>
+      <div class="grid gap-4 md:grid-cols-2">
+        {
+          copy.faq.map((item) => (
+            <div class="rounded-xl border border-wake-border bg-wake-subtle p-6">
+              <h4 class="mb-2 text-[15px] font-semibold text-wake-text">{item.q}</h4>
+              <p class="text-[14px] leading-relaxed text-wake-muted">{item.a}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="rounded-xl border border-wake-border bg-white p-6 md:p-8">
+      <p class="mb-4 font-mono text-[11px] tracking-wider text-wake-light uppercase">
+        {copy.citiesLabel} — {copy.countryLabel}
+      </p>
+      <div class="flex flex-wrap gap-2">
+        <a
+          href={regionPath}
+          class="rounded-md border border-wake-text bg-wake-text px-3 py-1.5 text-[13px] text-white no-underline transition hover:bg-zinc-800"
+        >
+          {copy.relatedLabel}
+        </a>
+        {
+          siblings.map((sibling) => (
+            <a
+              href={getCityPath(kind, sibling)}
+              class="rounded-md border border-wake-border bg-white px-3 py-1.5 text-[13px] text-wake-muted no-underline transition hover:border-wake-text hover:text-wake-text"
+            >
+              {sibling.name}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </Container>
+</section>
