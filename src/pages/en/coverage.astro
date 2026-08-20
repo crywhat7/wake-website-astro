@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../components/layout/BaseLayout.astro';
+import LandingHeader from '../../components/landing/LandingHeader.astro';
+import CoverageHub from '../../components/geo/CoverageHub.astro';
+import LandingFooter from '../../components/landing/LandingFooter.astro';
+import { cities, regionsForLocale } from '../../data/geo';
+import type { Locale } from '../../i18n';
+
+const locale: Locale = 'en';
+const stateCount = regionsForLocale(locale).length;
+const cityCount = cities.filter((c) => c.region.locale === 'en').length;
+---
+
+<BaseLayout
+  locale={locale}
+  page="home"
+  title="Coverage across the United States | WAKE SOLUTIONS"
+  description={`Business and clinic software across ${stateCount} states and ${cityCount} cities in the United States. Find the page for your state or city.`}
+  keywords="WAKE Solutions coverage, business software United States, clinic software USA, WAKE Health states, technology consulting USA"
+  theme="home"
+  canonicalPath="/en/coverage"
+  alternates={[
+    { hreflang: 'es', href: '/cobertura' },
+    { hreflang: 'en', href: '/en/coverage' },
+  ]}
+>
+  <LandingHeader locale={locale} hrefs={{ es: '/cobertura', en: '/en/coverage' }} />
+  <CoverageHub locale={locale} />
+  <LandingFooter locale={locale} />
+</BaseLayout>

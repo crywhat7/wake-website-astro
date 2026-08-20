@@ -1,3 +1,4 @@
+import { PRICING, healthPriceLabel } from '../../data/constants';
 import type { Dictionary } from './es';
 
 export const en: Dictionary = {
@@ -29,7 +30,7 @@ export const en: Dictionary = {
     tag: 'Legal',
     title: 'Legal policies',
     subtitle: 'Transparency, privacy, and security for our users.',
-    updated: 'Last updated: May 2026',
+    updated: 'Last updated: August 2026',
     backHome: 'Back to home',
     seo: {
       title: 'Legal Policies | WAKE SOLUTIONS',
@@ -121,31 +122,94 @@ export const en: Dictionary = {
         ],
       },
       {
-        id: 'refund',
-        title: '3. Refund and Cancellation Policy',
+        id: 'health-terms',
+        title: '3. WAKE HEALTH Terms and Conditions',
         blocks: [
           {
-            heading: 'Guarantee period',
+            heading: 'Purpose of the service',
             paragraphs: [
-              'Users may request a refund within the first 3 calendar days after the initial subscription.',
+              'WAKE HEALTH is a clinic management platform offered by Wake Solutions under a monthly subscription. It covers patients, appointments, clinical records, billing, and related operational modules.',
+              'WAKE HEALTH is an administrative and support tool. It does not replace the clinical judgment of a healthcare professional and is not a medical device; its AI-assisted features are supporting suggestions whose final validation always rests with the treating professional.',
+            ],
+          },
+          {
+            heading: 'Accounts and user profiles',
+            paragraphs: [
+              'The contracting clinic is responsible for creating, managing, and revoking staff access. Each user must have individual, non-transferable credentials; shared accounts are the clinic’s sole responsibility.',
+            ],
+          },
+          {
+            heading: 'Patient data and confidentiality',
+            paragraphs: [
+              'The contracting clinic is the controller of its patients’ data and confirms it has the consent and legal basis required to record them on the platform. Wake Solutions acts as a processor and handles that information solely to deliver the service.',
+              'Wake Solutions does not sell or trade patient clinical information, and applies technical and administrative measures aimed at protecting the confidentiality of records.',
+            ],
+          },
+          {
+            heading: 'Subscription, billing, and renewal',
+            paragraphs: [
+              'The WAKE HEALTH subscription is billed monthly and renews automatically until the user cancels. Payments are processed through our authorized payment provider.',
+              'Prices may be updated; any change will be announced with reasonable notice and applies from the next billing cycle.',
+            ],
+          },
+          {
+            heading: 'Availability, backups, and support',
+            paragraphs: [
+              'The service is delivered over the web and may require maintenance windows. Periodic backups are performed, which does not constitute an absolute guarantee of recovery in force-majeure events.',
+              'A clinic may request an export of its information while the subscription is active.',
+            ],
+          },
+          {
+            heading: 'Acceptable use',
+            paragraphs: [],
+            list: [
+              'Do not record false information or non-existent patients',
+              'Do not use the platform for purposes other than clinical management',
+              'Do not attempt to access data from other clinics or accounts',
+              'Do not resell, replicate, or reverse-engineer the system',
+            ],
+          },
+          {
+            heading: 'Termination',
+            paragraphs: [
+              'A clinic may cancel at any time from its account or through official channels. Wake Solutions may suspend or terminate access for breach of these terms, misuse, or non-payment.',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'refund',
+        title: '4. Trial, Cancellation, and Refund Policy',
+        blocks: [
+          {
+            heading: `${PRICING.trialDays}-day free trial`,
+            paragraphs: [
+              `Instead of a refund window, we offer a ${PRICING.trialDays}-day free trial so you can evaluate the full system before paying. During the trial you get access to the platform at no cost and with no commitment.`,
+              'We recommend using those days to validate the system with your actual team: scheduling, records, and billing.',
+            ],
+          },
+          {
+            heading: 'No refunds',
+            paragraphs: [
+              `Subscription payments are non-refundable. Because a ${PRICING.trialDays}-day free trial is provided beforehand, no full or partial refunds are issued once a charge has been processed, including cases where the service was not used during the paid cycle.`,
             ],
           },
           {
             heading: 'Cancellation',
             paragraphs: [
-              'Users may cancel the service at any time to avoid future charges.',
+              'You may cancel your subscription at any time to avoid future charges. Cancellation stops automatic renewal, and the service stays active until the end of the cycle already paid for.',
             ],
           },
           {
             heading: 'Custom services',
             paragraphs: [
-              'Custom developments or special configurations may not be eligible for a refund.',
+              'Custom development, special integrations, data migrations, and on-site training are quoted separately and are not eligible for a refund.',
             ],
           },
           {
             heading: 'Service suspension',
             paragraphs: [
-              'Wake Solutions may suspend access for terms violations or misuse.',
+              'Wake Solutions may suspend access for breach of terms, misuse, or non-payment, without this creating any right to a refund.',
             ],
           },
         ],
@@ -281,9 +345,42 @@ export const en: Dictionary = {
       healthDesc:
         'The unified system to optimize absolute control of patients, appointment flows, dynamic schedules, and confidential clinical records under maximum structural security.',
       healthCta: 'Explore WAKE Health',
-      patientsLabel: 'ACTIVE PATIENTS',
-      patientsCount: '1,240',
       logoAlt: 'WAKE Health — clinic software for Honduras and LATAM',
+      featuresTitle: 'What the system includes',
+      illustrationNote:
+        'Interface illustration. Any figures shown are examples and do not represent real patient data.',
+      features: [
+        {
+          icon: 'fa-notes-medical',
+          title: 'Clinical Records',
+          desc: 'Digital chart per patient: diagnoses, prescriptions, and lab results available in seconds during the visit.',
+        },
+        {
+          icon: 'fa-brain',
+          title: 'AI-assisted Diagnosis',
+          desc: 'Clinical suggestions powered by artificial intelligence to reduce error margin and speed up consultations.',
+        },
+        {
+          icon: 'fa-truck-medical',
+          title: 'Direct Emergency Care',
+          desc: 'An immediate-care button that skips administrative steps when every second counts.',
+        },
+        {
+          icon: 'fa-calendar-check',
+          title: 'Medical Scheduling',
+          desc: 'A shared calendar for front desk and physicians, with appointment states and fewer conflicts.',
+        },
+        {
+          icon: 'fa-file-invoice-dollar',
+          title: 'Billing and Cash',
+          desc: 'Charges, services, and daily close connected to the chart, with revenue reports by period.',
+        },
+        {
+          icon: 'fa-mobile-screen',
+          title: 'Multi-device',
+          desc: 'The same information from desktop, tablet, or phone, with automatic cloud backups.',
+        },
+      ],
     },
     about: {
       tag: 'Manifesto',
@@ -335,11 +432,11 @@ export const en: Dictionary = {
       title: 'Everything your clinic needs.',
       subtitle:
         'A complete platform to manage patients, appointments, and operations without complexity.',
-      badge: '3-day free trial',
+      badge: `${PRICING.trialDays}-day free trial`,
       planName: 'Wake Health',
       planDesc:
         'All-in-one clinical software for doctors and clinics ready to digitize operations.',
-      price: 'US$29',
+      price: healthPriceLabel,
       period: '/mo',
       featuresLeft: [
         'Digital clinical records',
@@ -357,7 +454,7 @@ export const en: Dictionary = {
         'Updates included',
         'AI-assisted support',
       ],
-      trialTitle: 'Start free for 3 days',
+      trialTitle: `Start free for ${PRICING.trialDays} days`,
       trialNote: 'No credit card. No commitment.',
       cta: 'Create my free account',
       ctaNote: 'Takes you straight to account creation. No form in between.',
@@ -447,7 +544,9 @@ export const en: Dictionary = {
       locationText: 'Honduras & Central America',
       terms: 'Terms of Service',
       privacy: 'Privacy Policy',
-      refund: 'Refund Policy',
+      refund: 'Trial & Refunds',
+      healthTerms: 'WAKE HEALTH Terms',
+      social: 'Follow us',
       rights: '© 2026 WAKE SOLUTIONS. All rights reserved.',
     },
   },
@@ -556,48 +655,42 @@ export const en: Dictionary = {
       },
     },
     pricing: {
-      tag: 'Pricing',
-      title: 'Plans designed for your growth',
-      subtitle: 'Choose the plan that fits the size and pace of your clinic.',
-      recommended: 'RECOMMENDED',
+      tag: 'Single plan',
+      title: 'Everything your clinic needs.',
+      subtitle:
+        'A complete platform to manage patients, appointments, and operations without complexity.',
+      badge: `${PRICING.trialDays}-day free trial`,
+      planName: 'Wake Health',
+      planDesc:
+        'All-in-one clinical software for doctors and clinics ready to digitize operations.',
+      price: healthPriceLabel,
       period: '/mo',
-      choose: 'Choose Plan',
+      featuresLeft: [
+        'Digital clinical records',
+        'Appointment scheduling',
+        'Medical history',
+        'Digital prescriptions',
+        'Billing and cash',
+        'Medical inventory',
+      ],
+      featuresRight: [
+        'Smart reports',
+        'Multi-user',
+        'Access from any device',
+        'Automatic backups',
+        'Updates included',
+        'AI-assisted support',
+      ],
+      trialTitle: `Start free for ${PRICING.trialDays} days`,
+      trialNote: 'No credit card. No commitment.',
+      cta: 'Start free trial',
       start: 'Start Now',
       quote: 'Request Quote',
-      basic: {
-        name: 'Basic',
-        price: '$9.99',
-        features: [
-          'Up to 500 patients',
-          'Medical scheduling',
-          'Clinical records',
-          'Email support',
-        ],
-      },
-      plus: {
-        name: 'Plus',
-        price: '$17.99',
-        features: [
-          'Unlimited patients',
-          'Laboratory module',
-          'Billing and accounting',
-          '24/7 priority support',
-          'AI diagnoses',
-        ],
-      },
-      business: {
-        name: 'Business',
-        price: 'Custom',
-        note: 'For large clinics or hospital networks that need a tailored solution.',
-        features: [
-          'Multi-branch',
-          'Custom API integration',
-          'Dedicated server',
-          'On-site training',
-        ],
-        whatsappMsg:
-          'Hi! I need a quote for the Wake Health Business Plan',
-      },
+      enterpriseTitle: 'Large clinic or hospital network?',
+      enterpriseNote:
+        'If you need multi-branch, custom API integration, a dedicated server, or on-site training, we put together a tailored proposal.',
+      enterpriseWhatsappMsg:
+        'Hi! I need a custom quote for my clinic network with Wake Health',
     },
     cta: {
       tag: 'Next step',
@@ -617,7 +710,9 @@ export const en: Dictionary = {
       copy: '© 2026 WAKE HEALTH. All rights reserved.',
       terms: 'Terms of Service',
       privacy: 'Privacy Policy',
-      refund: 'Refund Policy',
+      refund: 'Trial & Refunds',
+      healthTerms: 'WAKE HEALTH Terms',
+      social: 'Follow us',
       backHome: 'WAKE SOLUTIONS',
     },
   },

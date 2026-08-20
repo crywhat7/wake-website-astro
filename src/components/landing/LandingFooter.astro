@@ -1,0 +1,144 @@
+---
+import Container from '../ui/Container.astro';
+import LanguageSwitcher from '../ui/LanguageSwitcher.astro';
+import SocialLinks from '../ui/SocialLinks.astro';
+import { SITE } from '../../data/site';
+import { getLocalizedPath, t, type Locale } from '../../i18n';
+import { getHubCopy, getHubPath, seedsForKind } from '../../data/landings';
+import { getGeoPath, regionsForLocale } from '../../data/geo';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+const homePath = getLocalizedPath('home', locale);
+const healthPath = getLocalizedPath('health', locale);
+const blogPath = getLocalizedPath('blog', locale);
+const legalPath = getLocalizedPath('legal', locale);
+
+const columns = [
+  {
+    title: getHubCopy('specialty', locale).tag,
+    links: [
+      { href: getHubPath('specialty', locale), label: getHubCopy('specialty', locale).listTitle },
+      ...seedsForKind('specialty')
+        .slice(0, 6)
+        .map((s) => ({
+          href: `${getHubPath('specialty', locale)}/${s.slug}`,
+          label: locale === 'es' ? s.es.name : s.en.name,
+        })),
+    ],
+  },
+  {
+    title: getHubCopy('feature', locale).tag,
+    links: [
+      { href: getHubPath('feature', locale), label: getHubCopy('feature', locale).listTitle },
+      ...seedsForKind('feature')
+        .slice(0, 6)
+        .map((s) => ({
+          href: `${getHubPath('feature', locale)}/${s.slug}`,
+          label: locale === 'es' ? s.es.name : s.en.name,
+        })),
+    ],
+  },
+  {
+    title: getHubCopy('sector', locale).tag,
+    links: [
+      { href: getHubPath('sector', locale), label: getHubCopy('sector', locale).listTitle },
+      ...seedsForKind('sector')
+        .slice(0, 6)
+        .map((s) => ({
+          href: `${getHubPath('sector', locale)}/${s.slug}`,
+          label: locale === 'es' ? s.es.name : s.en.name,
+        })),
+    ],
+  },
+  {
+    title: locale === 'es' ? 'Cobertura' : 'Coverage',
+    links: regionsForLocale(locale)
+      .slice(0, 7)
+      .map((region) => ({
+        href: getGeoPath('health', region),
+        label: region.name,
+      })),
+  },
+];
+---
+
+<footer class="border-t border-wake-border bg-white pt-16 pb-8">
+  <Container>
+    <div class="grid gap-8 border-b border-wake-border-subtle pb-16 sm:grid-cols-2 lg:grid-cols-5">
+      <div>
+        <a
+          href={homePath}
+          class="flex items-center gap-1.5 text-base font-bold tracking-tight text-wake-text no-underline"
+        >
+          WAKE SOLUTIONS
+          <span class="inline-block h-2 w-2 rounded-full bg-wake-text"></span>
+        </a>
+        <p class="mt-2 max-w-[240px] text-[13.5px] text-wake-muted">{dict.home.footer.brand}</p>
+        <LanguageSwitcher locale={locale} page="home" class="mt-4" />
+        <ul class="mt-6 flex list-none flex-col gap-2">
+          <li>
+            <a href={healthPath} class="text-[13px] text-wake-muted no-underline hover:text-wake-text"
+              >WAKE Health</a
+            >
+          </li>
+          <li>
+            <a href={blogPath} class="text-[13px] text-wake-muted no-underline hover:text-wake-text"
+              >{dict.common.blog}</a
+            >
+          </li>
+          <li>
+            <a
+              href={`${legalPath}#health-terms`}
+              class="text-[13px] text-wake-muted no-underline hover:text-wake-text"
+              >{dict.home.footer.healthTerms}</a
+            >
+          </li>
+          <li>
+            <a
+              href={`${legalPath}#refund`}
+              class="text-[13px] text-wake-muted no-underline hover:text-wake-text"
+              >{dict.home.footer.refund}</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      {
+        columns.map((column) => (
+          <div>
+            <h2 class="mb-4 text-[13px] font-semibold text-wake-text">{column.title}</h2>
+            <ul class="flex list-none flex-col gap-2">
+              {column.links.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    class="text-[13px] text-wake-muted no-underline hover:text-wake-text"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="flex flex-wrap items-center justify-between gap-4 pt-8">
+      <p class="text-xs text-wake-light">
+        {dict.home.footer.rights} · <a href={`mailto:${SITE.email}`} class="text-wake-muted no-underline">{SITE.email}</a>
+      </p>
+      <div class="flex items-center gap-3">
+        <span class="font-mono text-[11px] tracking-[0.12em] text-wake-light uppercase"
+          >{dict.home.footer.social}</span
+        >
+        <SocialLinks />
+      </div>
+    </div>
+  </Container>
+</footer>

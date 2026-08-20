@@ -32,9 +32,7 @@ const heroShot = SITE.assets.gallery[0].src;
       >
         {dict.home.hero.titleBefore}
         <br />
-        <strong
-          class="bg-gradient-to-r from-black to-wake-accent-dark bg-clip-text font-semibold text-transparent"
-        >
+        <strong class="wake-gradient-text font-semibold">
           {dict.home.hero.titleAccent}
         </strong>
       </h1>
@@ -53,7 +51,7 @@ const heroShot = SITE.assets.gallery[0].src;
       <p class="mt-4 text-[13px] text-wake-light">{dict.home.hero.note}</p>
     </div>
 
-    <div class="relative mx-auto flex w-full max-w-[540px] items-center justify-center lg:order-none max-lg:order-first">
+    <div class="relative mx-auto flex w-full max-w-[540px] flex-col justify-center lg:order-none max-lg:order-first">
       <div
         class="relative w-full rounded-xl border border-wake-border bg-white p-2 shadow-[0_20px_40px_rgba(0,0,0,0.06)]"
       >
@@ -73,6 +71,9 @@ const heroShot = SITE.assets.gallery[0].src;
           {dict.home.hero.badge}
         </div>
       </div>
+      <p class="mt-8 font-mono text-[10px] leading-relaxed text-wake-light">
+        {dict.home.products.illustrationNote}
+      </p>
     </div>
   </Container>
 </section>

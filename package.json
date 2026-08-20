@@ -7,8 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "seo": "node scripts/generate-seo.mjs",
-    "build": "npm run seo && astro build && node scripts/prepare-pages.mjs",
+    "build": "astro build && node scripts/prepare-pages.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },

@@ -21,6 +21,13 @@ interface Props {
   placename?: string;
   geoRegionCode?: string;
   hreflang?: string;
+  /**
+   * Explicit hreflang alternates for pages that exist in both languages but
+   * live outside the core `paths` map (landings, hubs, blog posts).
+   */
+  alternates?: Array<{ hreflang: string; href: string }>;
+  /** Skip indexing (used for thin utility pages, none today) */
+  noindex?: boolean;
 }
 
 const {
@@ -35,14 +42,18 @@ const {
   placename,
   geoRegionCode,
   hreflang,
+  alternates: alternatesProp,
+  noindex = false,
 } = Astro.props;
 
 const siteUrl = (Astro.site?.href ?? SITE.url).replace(/\/$/, '') + '/';
 const canonicalPath = canonicalPathProp ?? getLocalizedPath(page, locale);
 const canonical = new URL(canonicalPath, siteUrl).href;
-const alternates = canonicalPathProp
-  ? []
-  : getAlternateUrls(page, siteUrl);
+const alternates = canonicalPathProp ? [] : getAlternateUrls(page, siteUrl);
+const explicitAlternates = (alternatesProp ?? []).map(({ hreflang: hl, href }) => ({
+  hreflang: hl,
+  href: new URL(href, siteUrl).href,
+}));
 const xDefault = canonicalPathProp
   ? canonical
   : new URL(getLocalizedPath(page, 'es'), siteUrl).href;
@@ -57,9 +68,13 @@ const place = placename ?? SITE.location.country;
 <meta name="keywords" content={keywords} />
 <meta
   name="robots"
-  content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  content={
+    noindex
+      ? 'noindex, follow'
+      : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+  }
 />
-<meta name="googlebot" content="index, follow" />
+<meta name="googlebot" content={noindex ? 'noindex, follow' : 'index, follow'} />
 <meta name="author" content={SITE.name} />
 <meta name="publisher" content={SITE.name} />
 <link rel="canonical" href={canonical} />
@@ -86,7 +101,22 @@ const place = placename ?? SITE.location.country;
 }
 
 {
-  canonicalPathProp && hreflang && (
+  explicitAlternates.length > 0 && (
+    <>
+      {explicitAlternates.map(({ href, hreflang: hl }) => (
+        <link rel="alternate" hreflang={hl} href={href} />
+      ))}
+      <link
+        rel="alternate"
+        hreflang="x-default"
+        href={explicitAlternates[0].href}
+      />
+    </>
+  )
+}
+
+{
+  canonicalPathProp && hreflang && explicitAlternates.length === 0 && (
     <>
       <link rel="alternate" hreflang={hreflang} href={canonical} />
       <link rel="alternate" hreflang={locale} href={canonical} />

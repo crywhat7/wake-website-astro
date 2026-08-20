@@ -25,25 +25,26 @@ const healthPath = getLocalizedPath('health', locale);
     <p class="mb-16 max-w-[600px] text-[17px] text-wake-muted">{dict.home.products.subtitle}</p>
 
     <div
-      class="relative grid items-center gap-16 overflow-hidden rounded-xl border border-wake-border bg-wake-card p-8 md:p-12 lg:grid-cols-[1.2fr_0.8fr]"
+      class="relative overflow-hidden rounded-xl border border-wake-border bg-wake-card p-8 md:p-12"
     >
       <div
         class="pointer-events-none absolute top-0 right-0 z-[1] h-[150px] w-[150px] bg-[radial-gradient(circle,rgba(173,252,220,0.4)_0%,transparent_70%)]"
       >
       </div>
-      <div class="relative z-[2]">
-        <div class="mb-4 h-[250px]">
+
+      <div class="relative z-[2] max-w-[640px]">
+        <div class="mb-4 h-[180px] md:h-[220px]">
           <img
             src={SITE.assets.healthLogoSvg}
             alt={dict.home.products.logoAlt}
             class="h-full w-auto object-contain"
             loading="lazy"
             width="400"
-            height="250"
+            height="220"
           />
         </div>
         <h3 class="mb-2 text-2xl font-semibold tracking-tight">{dict.home.products.healthTitle}</h3>
-        <p class="mb-8 max-w-[540px] text-[15px] leading-relaxed text-wake-muted">
+        <p class="mb-8 text-[15px] leading-relaxed text-wake-muted">
           {dict.home.products.healthDesc}
         </p>
         <Button href={healthPath} variant="secondary" cta="view_health" ctaLocation="products">
@@ -51,18 +52,26 @@ const healthPath = getLocalizedPath('health', locale);
           <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[11px]"></i>
         </Button>
       </div>
-      <div
-        class="relative z-[2] rounded-lg border border-wake-border bg-white p-4 shadow-[0_10px_30px_rgba(0,0,0,0.02)]"
-      >
-        <div class="mb-3 flex items-center justify-between">
-          <span class="font-mono text-[11px] text-wake-light"
-            >{dict.home.products.patientsLabel}</span
-          >
-          <span class="h-2 w-2 rounded-full bg-wake-accent-dark"></span>
-        </div>
-        <div class="mb-3 font-mono text-2xl font-semibold">{dict.home.products.patientsCount}</div>
-        <div class="mb-2 h-2 w-4/5 rounded bg-wake-border-subtle"></div>
-        <div class="h-2 w-[95%] rounded bg-wake-border-subtle"></div>
+
+      <div class="relative z-[2] mt-12 border-t border-wake-border pt-10">
+        <h4 class="mb-6 font-mono text-[11px] tracking-[0.14em] text-wake-light uppercase">
+          {dict.home.products.featuresTitle}
+        </h4>
+        <ul class="grid list-none gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            dict.home.products.features.map((feature) => (
+              <li class="rounded-lg border border-wake-border bg-white p-5 transition hover:border-zinc-300">
+                <span class="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-md bg-wake-accent/40 text-wake-text">
+                  <i class={`fa-solid ${feature.icon} text-[13px]`} />
+                </span>
+                <h5 class="mb-1.5 text-[15px] font-semibold tracking-tight text-wake-text">
+                  {feature.title}
+                </h5>
+                <p class="text-[13.5px] leading-relaxed text-wake-muted">{feature.desc}</p>
+              </li>
+            ))
+          }
+        </ul>
       </div>
     </div>
   </Container>

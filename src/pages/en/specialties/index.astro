@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../../components/layout/BaseLayout.astro';
+import LandingHeader from '../../../components/landing/LandingHeader.astro';
+import LandingHub from '../../../components/landing/LandingHub.astro';
+import LandingFooter from '../../../components/landing/LandingFooter.astro';
+import { getHubCopy, getHubPath } from '../../../data/landings';
+import type { Locale } from '../../../i18n';
+
+const locale: Locale = 'en';
+const kind = 'specialty' as const;
+const copy = getHubCopy(kind, locale);
+---
+
+<BaseLayout
+  locale={locale}
+  page="home"
+  title={copy.title}
+  description={copy.description}
+  keywords={copy.keywords}
+  theme="home"
+  canonicalPath={getHubPath(kind, locale)}
+  alternates={[
+    { hreflang: 'es', href: getHubPath(kind, 'es') },
+    { hreflang: 'en', href: getHubPath(kind, 'en') },
+  ]}
+>
+  <LandingHeader
+    locale={locale}
+    hrefs={{ es: getHubPath(kind, 'es'), en: getHubPath(kind, 'en') }}
+  />
+  <LandingHub kind={kind} locale={locale} />
+  <LandingFooter locale={locale} />
+</BaseLayout>

@@ -2,8 +2,10 @@
 import Container from '../ui/Container.astro';
 import LanguageSwitcher from '../ui/LanguageSwitcher.astro';
 import GeoLinks from '../geo/GeoLinks.astro';
+import SocialLinks from '../ui/SocialLinks.astro';
 import { SITE } from '../../data/site';
 import { t, getLocalizedPath, type Locale } from '../../i18n';
+import { getHubCopy, getHubPath } from '../../data/landings';
 
 interface Props {
   locale: Locale;
@@ -14,6 +16,10 @@ const dict = t(locale);
 const healthPath = getLocalizedPath('health', locale);
 const legalPath = getLocalizedPath('legal', locale);
 const blogPath = getLocalizedPath('blog', locale);
+const hubs = (['sector', 'specialty', 'feature'] as const).map((kind) => ({
+  href: getHubPath(kind, locale),
+  label: getHubCopy(kind, locale).tag,
+}));
 ---
 
 <footer class="border-t border-wake-border bg-white pb-8 pt-16">
@@ -57,6 +63,18 @@ const blogPath = getLocalizedPath('blog', locale);
               >WAKE Health</a
             >
           </li>
+          {
+            hubs.map((hub) => (
+              <li>
+                <a
+                  href={hub.href}
+                  class="text-[13px] text-wake-muted no-underline hover:text-wake-text"
+                >
+                  {hub.label}
+                </a>
+              </li>
+            ))
+          }
           <li>
             <a href={blogPath} class="text-[13px] text-wake-muted no-underline hover:text-wake-text"
               >{dict.home.nav.blog}</a
@@ -89,6 +107,13 @@ const blogPath = getLocalizedPath('blog', locale);
               >{dict.home.footer.refund}</a
             >
           </li>
+          <li>
+            <a
+              href={`${legalPath}#health-terms`}
+              class="text-[13px] text-wake-muted no-underline hover:text-wake-text"
+              >{dict.home.footer.healthTerms}</a
+            >
+          </li>
         </ul>
       </div>
       <div>
@@ -101,16 +126,11 @@ const blogPath = getLocalizedPath('blog', locale);
     </div>
     <div class="flex flex-wrap items-center justify-between gap-4 pt-8">
       <p class="text-xs text-wake-light">{dict.home.footer.rights}</p>
-      <div class="flex gap-4">
-        <a href={SITE.social.facebook} aria-label="Facebook" class="text-sm text-wake-muted hover:text-wake-text"
-          ><i class="fab fa-facebook"></i></a
+      <div class="flex items-center gap-3">
+        <span class="font-mono text-[11px] tracking-[0.12em] text-wake-light uppercase"
+          >{dict.home.footer.social}</span
         >
-        <a href={SITE.social.linkedin} aria-label="LinkedIn" class="text-sm text-wake-muted hover:text-wake-text"
-          ><i class="fab fa-linkedin"></i></a
-        >
-        <a href={SITE.social.instagram} aria-label="Instagram" class="text-sm text-wake-muted hover:text-wake-text"
-          ><i class="fab fa-instagram"></i></a
-        >
+        <SocialLinks />
       </div>
     </div>
   </Container>

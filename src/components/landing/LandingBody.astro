@@ -1,0 +1,181 @@
+---
+import Container from '../ui/Container.astro';
+import Button from '../ui/Button.astro';
+import MonoTag from '../ui/MonoTag.astro';
+import Breadcrumbs from '../ui/Breadcrumbs.astro';
+import { SITE, whatsappUrl } from '../../data/site';
+import { getLocalizedPath, type Locale } from '../../i18n';
+import {
+  buildLandingCopy,
+  getHubPath,
+  getLandingPath,
+  productForKind,
+  seedsForKind,
+  type LandingSeed,
+} from '../../data/landings';
+
+interface Props {
+  seed: LandingSeed;
+  locale: Locale;
+}
+
+const { seed, locale } = Astro.props;
+const copy = buildLandingCopy(seed, locale);
+const isHealth = productForKind(seed.kind) === 'health';
+
+const hubPath = getHubPath(seed.kind, locale);
+const healthPath = getLocalizedPath('health', locale);
+const homePath = getLocalizedPath('home', locale);
+
+const related = seedsForKind(seed.kind)
+  .filter((s) => s.slug !== seed.slug)
+  .slice(0, 8);
+
+const wa = whatsappUrl(
+  locale === 'es'
+    ? `Hola! Me interesa ${copy.name} — vi la página en el sitio de WAKE.`
+    : `Hi! I'm interested in ${copy.name} — I saw the page on the WAKE site.`,
+);
+
+const ctaPrimaryHref = isHealth ? SITE.healthAppLogin : wa;
+const ctaSecondaryHref = isHealth ? `${healthPath}#precios` : `${homePath}#services`;
+---
+
+<main class="pt-[calc(4rem+3rem)] pb-24">
+  <Container>
+    <Breadcrumbs
+      items={[
+        { label: locale === 'es' ? 'Inicio' : 'Home', href: homePath },
+        { label: copy.breadcrumbRoot, href: hubPath },
+        { label: copy.name },
+      ]}
+    />
+
+    <MonoTag>{copy.tag}</MonoTag>
+    <h1
+      class="mb-4 max-w-[860px] text-[clamp(2.25rem,4.5vw,3.25rem)] font-semibold leading-[1.08] tracking-[-0.03em] text-wake-text"
+    >
+      {copy.h1}
+    </h1>
+    <div class="mb-10 max-w-[720px]">
+      {
+        copy.intro.map((p) => (
+          <p class="mb-3 text-[17px] leading-relaxed text-wake-muted">{p}</p>
+        ))
+      }
+    </div>
+
+    <div class="mb-20 flex flex-wrap gap-4">
+      <Button
+        href={ctaPrimaryHref}
+        target={isHealth ? '_blank' : '_blank'}
+        rel="noopener noreferrer"
+      >
+        {copy.ctaPrimary}
+        <i class={isHealth ? 'fa-solid fa-rocket text-[11px]' : 'fa-brands fa-whatsapp text-sm'}></i>
+      </Button>
+      <Button href={ctaSecondaryHref} variant="secondary">{copy.ctaSecondary}</Button>
+    </div>
+  </Container>
+
+  <section class="border-t border-wake-border-subtle py-24 max-lg:py-16">
+    <Container>
+      <h2 class="mb-10 text-[clamp(1.6rem,3vw,2.25rem)] font-semibold tracking-tight text-wake-text">
+        {copy.benefitsTitle}
+      </h2>
+      <ul class="grid list-none gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          copy.benefits.map((benefit) => (
+            <li class="rounded-xl border border-wake-border bg-white p-6 transition hover:border-zinc-300">
+              <span class="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-md bg-wake-accent/40 text-wake-text">
+                <i class={`fa-solid ${benefit.icon} text-sm`} />
+              </span>
+              <h3 class="mb-1.5 text-[15px] font-semibold tracking-tight text-wake-text">
+                {benefit.title}
+              </h3>
+              <p class="text-[13.5px] leading-relaxed text-wake-muted">{benefit.desc}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </Container>
+  </section>
+
+  <section class="border-t border-wake-border-subtle py-24 max-lg:py-16">
+    <Container class="grid gap-12 lg:grid-cols-3">
+      {
+        copy.sections.map((section) => (
+          <div>
+            <h2 class="mb-3 text-xl font-semibold tracking-tight text-wake-text">
+              {section.heading}
+            </h2>
+            {section.paragraphs.map((p) => (
+              <p class="mb-3 text-[15px] leading-relaxed text-wake-muted">{p}</p>
+            ))}
+          </div>
+        ))
+      }
+    </Container>
+  </section>
+
+  <section class="border-t border-wake-border-subtle py-24 max-lg:py-16">
+    <Container>
+      <h2 class="mb-8 text-[clamp(1.6rem,3vw,2.25rem)] font-semibold tracking-tight text-wake-text">
+        {copy.faqTitle}
+      </h2>
+      <div class="grid gap-4 md:grid-cols-2">
+        {
+          copy.faq.map((item) => (
+            <div class="rounded-xl border border-wake-border bg-wake-subtle p-6">
+              <h3 class="mb-2 text-[15px] font-semibold text-wake-text">{item.q}</h3>
+              <p class="text-[14px] leading-relaxed text-wake-muted">{item.a}</p>
+            </div>
+          ))
+        }
+      </div>
+    </Container>
+  </section>
+
+  <section class="border-t border-wake-border-subtle py-24 max-lg:py-16">
+    <Container>
+      <div
+        class="flex flex-col gap-6 rounded-xl border border-wake-text bg-white p-8 shadow-[0_20px_40px_rgba(0,0,0,0.04)] md:flex-row md:items-center md:justify-between md:p-12"
+      >
+        <div class="max-w-[520px]">
+          <h2 class="mb-2 text-2xl font-semibold tracking-tight text-wake-text">{copy.ctaTitle}</h2>
+          <p class="text-[15px] leading-relaxed text-wake-muted">{copy.ctaBody}</p>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <Button href={ctaPrimaryHref} target="_blank" rel="noopener noreferrer">
+            {copy.ctaPrimary}
+          </Button>
+          <Button href={ctaSecondaryHref} variant="secondary">{copy.ctaSecondary}</Button>
+        </div>
+      </div>
+
+      <div class="mt-10">
+        <p class="mb-4 font-mono text-[11px] tracking-wider text-wake-light uppercase">
+          {copy.relatedTitle}
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <a
+            href={hubPath}
+            class="rounded-md border border-wake-text bg-wake-text px-3 py-1.5 text-[13px] text-white no-underline transition hover:bg-zinc-800"
+          >
+            {copy.breadcrumbRoot}
+          </a>
+          {
+            related.map((s) => (
+              <a
+                href={getLandingPath(s.kind, locale, s.slug)}
+                class="rounded-md border border-wake-border bg-white px-3 py-1.5 text-[13px] text-wake-muted no-underline transition hover:border-wake-text hover:text-wake-text"
+              >
+                {locale === 'es' ? s.es.name : s.en.name}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </Container>
+  </section>
+</main>

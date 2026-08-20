@@ -1,0 +1,35 @@
+---
+import { SITE, SOCIAL_LINKS } from '../../data/site';
+
+interface Props {
+  /** Only render icons whose URL is already filled in (not '#') */
+  onlyActive?: boolean;
+  class?: string;
+}
+
+const { onlyActive = false, class: className } = Astro.props;
+
+const links = SOCIAL_LINKS.map(({ key, label, icon }) => ({
+  label,
+  icon,
+  href: SITE.social[key],
+  ready: SITE.social[key] !== '#' && SITE.social[key].length > 0,
+})).filter((link) => (onlyActive ? link.ready : true));
+---
+
+<div class:list={['flex flex-wrap gap-3', className]}>
+  {
+    links.map(({ href, label, icon, ready }) => (
+      <a
+        href={href}
+        aria-label={label}
+        title={label}
+        rel={ready ? 'noopener noreferrer me' : 'nofollow'}
+        target={ready ? '_blank' : undefined}
+        class="inline-flex h-8 w-8 items-center justify-center rounded-md border border-wake-border text-[13px] text-wake-muted transition hover:border-wake-text/30 hover:text-wake-text"
+      >
+        <i class={icon} />
+      </a>
+    ))
+  }
+</div>

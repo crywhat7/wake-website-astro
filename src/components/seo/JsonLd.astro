@@ -1,5 +1,5 @@
 ---
-import { SITE } from '../../data/site';
+import { PRICING, SITE, activeSocialLinks, healthPriceLabel, healthPriceRaw } from '../../data/site';
 import type { Locale, PageKey } from '../../i18n';
 import { getLocalizedPath, t } from '../../i18n';
 
@@ -41,9 +41,7 @@ const organization = {
     availableLanguage: ['Spanish', 'English'],
     areaServed: ['HN', 'US', 'LATAM'],
   },
-  sameAs: [SITE.social.facebook, SITE.social.linkedin, SITE.social.instagram].filter(
-    (u) => u !== '#',
-  ),
+  sameAs: activeSocialLinks.map(({ key }) => SITE.social[key]),
 };
 
 const website = {
@@ -78,31 +76,22 @@ const softwareApplication = {
   url: healthUrl,
   image: SITE.assets.healthLogo,
   description: dict.health.seo.description,
-  offers: [
-    {
-      '@type': 'Offer',
-      name: dict.health.pricing.basic.name,
-      price: '9.99',
-      priceCurrency: 'USD',
-      availability: 'https://schema.org/InStock',
-      url: healthUrl,
+  offers: {
+    '@type': 'Offer',
+    name: dict.health.pricing.planName,
+    price: healthPriceRaw,
+    priceCurrency: PRICING.currency,
+    availability: 'https://schema.org/InStock',
+    url: healthUrl,
+    priceSpecification: {
+      '@type': 'UnitPriceSpecification',
+      price: healthPriceRaw,
+      priceCurrency: PRICING.currency,
+      billingDuration: 1,
+      billingIncrement: 1,
+      unitCode: 'MON',
     },
-    {
-      '@type': 'Offer',
-      name: dict.health.pricing.plus.name,
-      price: '17.99',
-      priceCurrency: 'USD',
-      availability: 'https://schema.org/InStock',
-      url: healthUrl,
-    },
-    {
-      '@type': 'Offer',
-      name: dict.health.pricing.business.name,
-      priceCurrency: 'USD',
-      availability: 'https://schema.org/InStock',
-      url: healthUrl,
-    },
-  ],
+  },
   provider: { '@id': `${siteUrl}/#organization` },
   featureList: dict.health.modules.items.map((m) => m.title),
   inLanguage: locale === 'es' ? 'es-HN' : 'en-US',
@@ -153,8 +142,8 @@ const faq =
               '@type': 'Answer',
               text:
                 locale === 'es'
-                  ? 'Planes desde $9.99/mes (Básico), $17.99/mes (Plus) y cotización personalizada Business para redes clínicas.'
-                  : 'Plans from $9.99/mo (Basic), $17.99/mo (Plus), and custom Business quotes for clinic networks.',
+                  ? `WAKE Health tiene un plan único de ${healthPriceLabel} al mes con todos los módulos incluidos, y ${PRICING.trialDays} días de prueba gratuita antes de pagar. Las redes clínicas grandes se cotizan a la medida.`
+                  : `WAKE Health has a single plan at ${healthPriceLabel} per month with every module included, plus a ${PRICING.trialDays}-day free trial before paying. Large clinic networks are quoted individually.`,
             },
           },
         ],

@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../../../components/layout/BaseLayout.astro';
+import Header from '../../../components/home/Header.astro';
+import Hero from '../../../components/home/Hero.astro';
+import Breadcrumbs from '../../../components/ui/Breadcrumbs.astro';
+import Container from '../../../components/ui/Container.astro';
+import CityFocus from '../../../components/geo/CityFocus.astro';
+import FaqJsonLd from '../../../components/seo/FaqJsonLd.astro';
+import Services from '../../../components/home/Services.astro';
+import Products from '../../../components/home/Products.astro';
+import Process from '../../../components/home/Process.astro';
+import Pricing from '../../../components/home/Pricing.astro';
+import Contact from '../../../components/home/Contact.astro';
+import Footer from '../../../components/home/Footer.astro';
+import { buildCityCopy } from '../../../data/city-copy';
+import { cities, getCityPath, getGeoPath } from '../../../data/geo';
+import type { Locale } from '../../../i18n';
+
+export function getStaticPaths() {
+  return cities
+    .filter((city) => city.region.locale === 'en')
+    .map((city) => ({
+      params: { geo: city.region.slug, city: city.slug },
+      props: { city },
+    }));
+}
+
+const locale: Locale = 'en';
+const { city } = Astro.props;
+const copy = buildCityCopy(city, 'home');
+const healthHref = getCityPath('health', city);
+---
+
+<BaseLayout
+  locale={locale}
+  page="home"
+  title={copy.title}
+  description={copy.description}
+  keywords={copy.keywords}
+  theme="home"
+  canonicalPath={getCityPath('home', city)}
+  placename={`${city.name}, ${city.region.name}`}
+  geoRegionCode="US"
+  hreflang={city.region.hreflang}
+>
+  <Header locale={locale} />
+  <main>
+    <Container class="pt-[calc(4rem+2rem)]">
+      <Breadcrumbs
+        items={[
+          { label: 'Home', href: '/en' },
+          { label: city.region.name, href: getGeoPath('home', city.region) },
+          { label: city.name },
+        ]}
+      />
+    </Container>
+    <Hero
+      locale={locale}
+      tag={copy.heroTag}
+      subtitle={copy.heroSubtitle}
+      healthHref={healthHref}
+    />
+    <CityFocus city={city} kind="home" />
+    <Services locale={locale} />
+    <Products locale={locale} />
+    <Process locale={locale} />
+    <Pricing locale={locale} />
+    <Contact locale={locale} />
+  </main>
+  <Footer locale={locale} />
+  <FaqJsonLd items={copy.faq} />
+</BaseLayout>

@@ -1,0 +1,96 @@
+---
+import Container from '../ui/Container.astro';
+import MonoTag from '../ui/MonoTag.astro';
+import Breadcrumbs from '../ui/Breadcrumbs.astro';
+import { getLocalizedPath, type Locale } from '../../i18n';
+import {
+  citiesForRegion,
+  getCityPath,
+  getGeoPath,
+  regionsForLocale,
+} from '../../data/geo';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const isEs = locale === 'es';
+const regions = regionsForLocale(locale);
+const homePath = getLocalizedPath('home', locale);
+
+const copy = isEs
+  ? {
+      tag: 'Cobertura',
+      h1: 'Dónde trabajamos',
+      intro:
+        'WAKE opera de forma remota en toda Latinoamérica y España, con presencia en Honduras. Estas son las regiones y ciudades con página propia: cada una explica cómo aplicamos el sistema en su contexto.',
+      countryPage: 'Ver página del país',
+      healthLabel: 'Software clínico',
+      citiesLabel: 'Ciudades',
+      crumb: 'Cobertura',
+    }
+  : {
+      tag: 'Coverage',
+      h1: 'Where we work',
+      intro:
+        'WAKE serves clients remotely across the United States, with headquarters in Honduras. These are the states and cities with a dedicated page, each explaining how the system applies in that context.',
+      countryPage: 'View state page',
+      healthLabel: 'Clinic software',
+      citiesLabel: 'Cities',
+      crumb: 'Coverage',
+    };
+---
+
+<main class="pt-[calc(4rem+3rem)] pb-24">
+  <Container>
+    <Breadcrumbs
+      items={[{ label: isEs ? 'Inicio' : 'Home', href: homePath }, { label: copy.crumb }]}
+    />
+
+    <MonoTag>{copy.tag}</MonoTag>
+    <h1
+      class="mb-4 max-w-[820px] text-[clamp(2.25rem,4.5vw,3.25rem)] font-semibold leading-[1.08] tracking-[-0.03em] text-wake-text"
+    >
+      {copy.h1}
+    </h1>
+    <p class="mb-16 max-w-[720px] text-[17px] leading-relaxed text-wake-muted">{copy.intro}</p>
+
+    <div class="flex flex-col gap-10">
+      {
+        regions.map((region) => (
+          <section class="rounded-xl border border-wake-border bg-white p-6 md:p-8">
+            <div class="mb-4 flex flex-wrap items-baseline gap-x-4 gap-y-2">
+              <h2 class="text-xl font-semibold tracking-tight text-wake-text">{region.name}</h2>
+              <a
+                href={getGeoPath('home', region)}
+                class="text-[13px] text-wake-muted no-underline hover:text-wake-text"
+              >
+                {copy.countryPage}
+              </a>
+              <a
+                href={getGeoPath('health', region)}
+                class="text-[13px] text-wake-muted no-underline hover:text-wake-text"
+              >
+                {copy.healthLabel}
+              </a>
+            </div>
+            <p class="mb-3 font-mono text-[11px] tracking-wider text-wake-light uppercase">
+              {copy.citiesLabel}
+            </p>
+            <div class="flex flex-wrap gap-2">
+              {citiesForRegion(region).map((city) => (
+                <a
+                  href={getCityPath('health', city)}
+                  class="rounded-md border border-wake-border bg-wake-subtle px-3 py-1.5 text-[13px] text-wake-muted no-underline transition hover:border-wake-text hover:text-wake-text"
+                >
+                  {city.name}
+                </a>
+              ))}
+            </div>
+          </section>
+        ))
+      }
+    </div>
+  </Container>
+</main>
