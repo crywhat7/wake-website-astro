@@ -4,13 +4,21 @@ interface Props {
 }
 
 const { class: className = '' } = Astro.props;
+
+/*
+ * Rótulo de sección. Antes era una "píldora" con borde y fondo que competía
+ * visualmente con el titular que venía justo debajo. Ahora es un rótulo
+ * tipográfico con un guion de acento: pesa menos, ordena más y deja que el
+ * titular sea lo primero que se lee.
+ */
 ---
 
 <span
   class:list={[
-    'mb-4 inline-block rounded border border-wake-border bg-wake-subtle px-2.5 py-1 font-mono text-[12px] font-medium uppercase tracking-wider text-wake-text',
+    'wake-label mb-5 flex items-center gap-3 text-wake-accent-deep',
     className,
   ]}
 >
+  <span class="h-px w-8 bg-wake-accent-dark" aria-hidden="true"></span>
   <slot />
 </span>

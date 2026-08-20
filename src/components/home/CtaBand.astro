@@ -16,18 +16,34 @@ const band = dict.home.ctaBand;
 const wa = whatsappUrl(band.whatsappMsg);
 ---
 
-<section class="border-y border-wake-border bg-wake-text py-14">
-  <Container class="flex flex-wrap items-center justify-between gap-8">
-    <div class="max-w-[560px]">
-      <h2 class="mb-2 text-[clamp(1.5rem,2.8vw,2rem)] font-semibold tracking-tight text-white">
+{/*
+  Banda oscura: corta el ritmo claro de la página y funciona como respiro entre
+  bloques densos. La rejilla y el halo la emparentan con el hero, de modo que
+  las dos apariciones se leen como el mismo sistema y no como parches.
+*/}
+<section
+  class="wake-grid-bg wake-grid-bg--dark relative overflow-hidden border-y border-wake-ink bg-wake-ink py-20 max-lg:py-14"
+>
+  <div
+    class="wake-glow left-1/2 top-full h-[420px] w-[620px] -translate-x-1/2 -translate-y-1/2 opacity-20"
+    aria-hidden="true"
+  >
+  </div>
+
+  <Container class="flex flex-wrap items-end justify-between gap-10">
+    <div class="max-w-[540px]" data-reveal>
+      <h2
+        class="mb-3 text-[clamp(1.75rem,3.4vw,2.5rem)] font-semibold leading-[1.08] tracking-[-0.035em] text-white"
+      >
         {band.title}
       </h2>
-      <p class="text-[15px] leading-relaxed text-white/70">{band.subtitle}</p>
+      <p class="text-[15px] leading-relaxed text-white/60">{band.subtitle}</p>
     </div>
-    <div class="flex flex-wrap gap-3">
+    <div class="flex flex-wrap gap-3" data-reveal style="--reveal-delay:120ms">
       <Button
         href="#contact"
-        class="!border-white !bg-white !text-wake-text hover:!bg-wake-accent hover:!border-wake-accent"
+        magnetic
+        class="!border-white !bg-white !text-wake-ink hover:!border-wake-accent hover:!bg-wake-accent"
         cta="book_diagnostic"
         ctaLocation={placement}
       >

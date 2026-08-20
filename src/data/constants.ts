@@ -120,11 +120,31 @@ export const ASSETS = {
   healthHeroBg:
     'https://pub-f6d32fe4d40f4f899fa753aab8eb28d5.r2.dev/healthwpp.png',
   trustLogos: [
-    'https://lh3.googleusercontent.com/d/1ZwSVPhyS1dJcbxYjlJH8PfO0Q9sc64NB',
-    'https://lh3.googleusercontent.com/d/1dFJNLP-3p855R1hCtLvAnAEDIBlzuPEr',
-    'https://lh3.googleusercontent.com/d/18bvpl-104yGuCtGxQ-3w_XzOX-Vk576p',
-    'https://lh3.googleusercontent.com/d/1S3byR29fdjwN_VtF8eecd5NhSGk5oCMY',
-    'https://lh3.googleusercontent.com/d/1-Ioj0XeJoDFmjQpkEftAVIgM81WknWe0',
+    {
+      name: 'Invercodi',
+      src: 'https://lh3.googleusercontent.com/d/1ZwSVPhyS1dJcbxYjlJH8PfO0Q9sc64NB',
+      alt: 'Business partner 1 — Invercodi',
+    },
+    {
+      name: 'Kilómetro',
+      src: 'https://lh3.googleusercontent.com/d/1dFJNLP-3p855R1hCtLvAnAEDIBlzuPEr',
+      alt: 'Business partner 2 — Kilómetro',
+    },
+    {
+      name: 'Neptuno',
+      src: 'https://lh3.googleusercontent.com/d/18bvpl-104yGuCtGxQ-3w_XzOX-Vk576p',
+      alt: 'Business partner 3 — Neptuno',
+    },
+    {
+      name: 'Napete\'s',
+      src: 'https://lh3.googleusercontent.com/d/1S3byR29fdjwN_VtF8eecd5NhSGk5oCMY',
+      alt: 'Business partner 4 — Napete\'s',
+    },
+    {
+      name: 'Transportes los Gemelos',
+      src: 'https://lh3.googleusercontent.com/d/1-Ioj0XeJoDFmjQpkEftAVIgM81WknWe0',
+      alt: 'Business partner 5 — Transportes los Gemelos',
+    },
   ],
   gallery: [
     {

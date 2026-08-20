@@ -11,6 +11,8 @@ interface Props {
   cta?: string;
   /** Sección donde vive el CTA, para segmentar el evento. */
   ctaLocation?: string;
+  /** Atrae ligeramente el botón hacia el puntero. Reservado a CTAs primarios. */
+  magnetic?: boolean;
 }
 
 const {
@@ -23,38 +25,43 @@ const {
   id,
   cta,
   ctaLocation,
+  magnetic = false,
 } = Astro.props;
 
+/*
+ * Cada variante define su propio movimiento de hover. Nada usa `ease` ni
+ * `linear`: la curva expo-out hace que el botón "aterrice" en vez de deslizarse
+ * de forma mecánica.
+ */
 const variants: Record<string, string> = {
   primary:
-    'bg-wake-text text-white border border-wake-text hover:bg-zinc-800 hover:border-zinc-800 hover:-translate-y-px',
+    'bg-wake-ink text-white border border-wake-ink shadow-wake-sm hover:shadow-wake-glow hover:border-wake-accent-dark',
   secondary:
-    'bg-white text-wake-text border border-wake-border hover:bg-wake-subtle hover:border-wake-light',
-  try: 'bg-white/10 text-white border border-white/30 backdrop-blur-sm hover:bg-wake-accent hover:text-black hover:border-wake-accent',
-  nav: 'bg-health-dark text-white hover:bg-black hover:-translate-y-0.5',
-  dark: 'bg-[#333] text-white hover:bg-black',
+    'bg-transparent text-wake-text border border-wake-border hover:border-wake-ink hover:bg-wake-subtle',
+  try: 'bg-white/10 text-white border border-white/25 backdrop-blur-sm hover:bg-wake-accent hover:text-wake-ink hover:border-wake-accent',
+  nav: 'bg-health-dark text-white border border-health-dark hover:bg-wake-ink',
+  dark: 'bg-wake-ink-soft text-white border border-wake-ink-soft hover:bg-wake-ink',
 };
 
+/*
+ * `min-h-[44px]`: con solo el padding el botón medía 40px de alto, por debajo
+ * del objetivo táctil de 44px recomendado en móvil. El mínimo no altera el
+ * aspecto en escritorio y evita pulsaciones fallidas en pantallas pequeñas.
+ */
 const base =
-  'inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium no-underline transition-all duration-200 cursor-pointer';
+  'group/btn relative inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full px-6 py-3 text-[14px] font-medium leading-none no-underline cursor-pointer transition-[background-color,border-color,box-shadow,color] duration-500 ease-expo-out';
 
 const tracking = cta ? { 'data-cta': cta, 'data-cta-location': ctaLocation ?? 'unknown' } : {};
+const classes = [base, variants[variant], magnetic && 'wake-magnetic', className];
 ---
 
 {
   href ? (
-    <a
-      id={id}
-      href={href}
-      target={target}
-      rel={rel}
-      class:list={[base, variants[variant], className]}
-      {...tracking}
-    >
+    <a id={id} href={href} target={target} rel={rel} class:list={classes} {...tracking}>
       <slot />
     </a>
   ) : (
-    <button id={id} type={type} class:list={[base, variants[variant], className]} {...tracking}>
+    <button id={id} type={type} class:list={classes} {...tracking}>
       <slot />
     </button>
   )

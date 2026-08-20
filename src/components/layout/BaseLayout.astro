@@ -1,6 +1,7 @@
 ---
 import '../../styles/global.css';
 import Analytics from './Analytics.astro';
+import Motion from './Motion.astro';
 import SeoHead from '../seo/SeoHead.astro';
 import JsonLd from '../seo/JsonLd.astro';
 import type { Locale, PageKey } from '../../i18n';
@@ -37,10 +38,19 @@ const {
   noindex,
 } = Astro.props;
 
+/*
+ * Poppins es la tipografía de marca, una sola para todo el sitio.
+ *
+ * Antes esta constante bifurcaba por `theme`: la rama "health" pedía Poppins y
+ * la rama "home" pedía Inter + Geist Mono. Como TODAS las páginas (incluidas
+ * las de /health) pasaban theme="home", la rama de Poppins nunca se ejecutaba y
+ * la fuente jamás llegó a cargarse en el sitio. Lo que se veía era Geist Mono
+ * en los elementos con `font-mono`, que se leía como un fallback roto.
+ *
+ * Una sola familia elimina la bifurcación, el bug y una petición de red.
+ */
 const fontHref =
-  theme === 'health'
-    ? 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Montserrat:wght@400;500;600&display=swap'
-    : 'https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap';
+  'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap';
 
 const htmlLang = hreflang ?? (locale === 'es' ? 'es-HN' : 'en-US');
 ---
@@ -56,6 +66,7 @@ const htmlLang = hreflang ?? (locale === 'es' ? 'es-HN' : 'en-US');
     <meta name="generator" content={Astro.generator} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href={fontHref} />
     <link href={fontHref} rel="stylesheet" />
     <link
       rel="stylesheet"
@@ -79,8 +90,9 @@ const htmlLang = hreflang ?? (locale === 'es' ? 'es-HN' : 'en-US');
     />
     <JsonLd locale={locale} page={page} />
     <Analytics />
+    <Motion />
   </head>
-  <body class:list={[theme === 'health' && 'font-health-body']}>
+  <body data-theme={theme}>
     <slot />
   </body>
 </html>

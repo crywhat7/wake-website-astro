@@ -25,10 +25,10 @@ const cases = getCaseStudies(locale);
     >
       <Container>
         <MonoTag>{dict.home.proof.tag}</MonoTag>
-        <h2 class="mb-2 text-[clamp(2rem,4vw,2.75rem)] font-semibold leading-[1.15] tracking-tight text-wake-text">
+        <h2 class="wake-h2 mb-3 text-wake-text" data-reveal>
           {dict.home.proof.title}
         </h2>
-        <p class="mb-16 max-w-[600px] text-[17px] text-wake-muted">{dict.home.proof.subtitle}</p>
+        <p class="mb-16 max-w-[620px] text-[17px] leading-relaxed text-wake-muted" data-reveal>{dict.home.proof.subtitle}</p>
 
         <div class="mt-8 grid gap-6 lg:grid-cols-2">
           {cases.map((study) => (

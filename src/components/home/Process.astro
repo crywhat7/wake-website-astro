@@ -15,19 +15,19 @@ const dict = t(locale);
   <Container>
     <MonoTag>{dict.home.process.tag}</MonoTag>
     <h2
-      class="mb-2 text-[clamp(2rem,4vw,2.75rem)] font-semibold leading-[1.15] tracking-tight text-wake-text"
+      class="wake-h2 mb-3 text-wake-text" data-reveal
     >
       {dict.home.process.title}
     </h2>
-    <p class="mb-16 max-w-[600px] text-[17px] text-wake-muted">{dict.home.process.subtitle}</p>
+    <p class="mb-16 max-w-[620px] text-[17px] leading-relaxed text-wake-muted" data-reveal>{dict.home.process.subtitle}</p>
 
-    <div class="mt-8 grid gap-16 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="mt-8 grid gap-12 sm:grid-cols-2 lg:grid-cols-3" data-reveal-group="130">
       {
         dict.home.process.steps.map((s) => (
-          <div>
-            <span class="mb-2 block font-mono text-xs text-wake-light">{s.num}</span>
-            <h3 class="mb-2 text-base font-semibold">{s.title}</h3>
-            <p class="text-sm leading-relaxed text-wake-muted">{s.desc}</p>
+          <div data-reveal class="border-t border-wake-border pt-6">
+            <span class="wake-label mb-4 block text-wake-accent-deep">{s.num}</span>
+            <h3 class="mb-2 text-[18px] font-semibold tracking-[-0.02em]">{s.title}</h3>
+            <p class="text-[14px] leading-relaxed text-wake-muted">{s.desc}</p>
           </div>
         ))
       }

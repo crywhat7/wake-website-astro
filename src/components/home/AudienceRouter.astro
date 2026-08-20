@@ -33,14 +33,15 @@ const hrefFor = (target: string) => (target === 'health' ? healthPath : '#contac
     </h2>
     <p class="mb-10 max-w-[600px] text-[17px] text-wake-muted">{dict.home.audience.subtitle}</p>
 
-    <div class="grid gap-4 md:grid-cols-2">
+    <div class="grid gap-4 md:grid-cols-2" data-reveal-group="140">
       {
         dict.home.audience.options.map((option) => (
           <a
             href={hrefFor(option.target)}
             data-cta={`audience_${option.target}`}
             data-cta-location="audience_router"
-            class="group flex flex-col rounded-xl border border-wake-border bg-white p-8 no-underline transition hover:-translate-y-0.5 hover:border-wake-text hover:shadow-[0_12px_30px_rgba(0,0,0,0.05)]"
+            data-reveal
+            class="group flex flex-col rounded-2xl border border-wake-border bg-white p-8 no-underline transition-all duration-500 ease-expo-out hover:-translate-y-1 hover:border-wake-accent-dark hover:shadow-wake-md md:p-10"
           >
             <i class={`fa-solid ${option.icon} mb-4 text-xl text-wake-text`} />
             <h3 class="mb-2 text-[19px] font-semibold tracking-tight text-wake-text">

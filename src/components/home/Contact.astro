@@ -25,7 +25,7 @@ const wa = whatsappUrl(contact.whatsappMsg);
     <div>
       <MonoTag>{contact.tag}</MonoTag>
       <h2
-        class="mb-2 text-[clamp(2rem,4vw,2.75rem)] font-semibold leading-[1.15] tracking-tight text-wake-text"
+        class="wake-h2 mb-3 text-wake-text" data-reveal
       >
         {contact.title}
       </h2>
@@ -57,7 +57,7 @@ const wa = whatsappUrl(contact.whatsappMsg);
             href={`mailto:${SITE.email}`}
             data-cta="email"
             data-cta-location="contact"
-            class="text-[13px] text-wake-muted no-underline hover:text-wake-text"
+            class="inline-flex min-h-[44px] items-center text-[13px] text-wake-muted no-underline transition-colors duration-500 ease-expo-out hover:text-wake-text"
           >
             <i class="fa-regular fa-envelope mr-1.5"></i>
             {SITE.email}

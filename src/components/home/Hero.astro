@@ -21,59 +21,133 @@ const heroSubtitle = subtitle ?? dict.home.hero.subtitle;
 // Captura real del producto en lugar de un mockup de relleno: es el activo de
 // confianza más valioso de la página y ya existe en `SITE.assets.gallery`.
 const heroShot = SITE.assets.gallery[0].src;
+
+/*
+ * Coreografía de entrada. El orden ES la jerarquía de lectura:
+ * rótulo -> titular línea por línea -> subtítulo -> acciones -> apoyo.
+ * La captura entra con más retardo para que el titular termine de asentarse
+ * antes de que el ojo se vaya a la derecha.
+ */
+const LOAD = {
+  tag: 80,
+  line1: 200,
+  line2: 330,
+  subtitle: 620,
+  actions: 740,
+  note: 850,
+  shot: 560,
+  caption: 960,
+};
 ---
 
-<section id="hero" class="relative overflow-hidden pb-32 pt-[calc(4rem+8rem)] max-lg:pb-20 max-lg:pt-28">
-  <Container class="grid items-center gap-16 lg:grid-cols-[1.1fr_0.9fr]">
-    <div>
+<section
+  id="hero"
+  class="wake-grid-bg relative overflow-hidden pb-24 pt-[calc(4rem+4.75rem)] max-lg:pb-16 max-lg:pt-28"
+>
+  {/* Halo de acento: atmósfera, no relleno. Decorativo y aislado del contenido. */}
+  <div class="wake-glow left-[-12%] top-[-16%] h-[560px] w-[560px]" aria-hidden="true"></div>
+  <div
+    class="wake-glow right-[-16%] top-[30%] h-[440px] w-[440px] opacity-25"
+    aria-hidden="true"
+  >
+  </div>
+
+  <Container>
+    {/*
+      El titular ocupa todo el ancho del contenedor para respirar a escala de
+      display: encajonado en media columna se quedaba en ~95px.
+    */}
+    <div data-load style={`--load-delay:${LOAD.tag}ms`}>
       <MonoTag>{heroTag}</MonoTag>
-      <h1
-        class="mb-4 text-[clamp(2.5rem,4.6vw,3.75rem)] font-semibold leading-[1.05] tracking-[-0.04em] text-wake-text"
-      >
-        {dict.home.hero.titleBefore}
-        <br />
-        <strong class="wake-gradient-text font-semibold">
-          {dict.home.hero.titleAccent}
-        </strong>
-      </h1>
-      <p class="mb-8 max-w-[560px] text-lg font-light leading-relaxed text-wake-muted">
-        {heroSubtitle}
-      </p>
-      <div class="flex flex-wrap gap-4">
-        <Button href="#contact" cta="book_diagnostic" ctaLocation="hero">
-          {dict.home.hero.ctaPrimary}
-          <i class="fa-solid fa-arrow-right text-[11px]"></i>
-        </Button>
-        <Button href={healthPath} variant="secondary" cta="view_health" ctaLocation="hero">
-          {dict.home.hero.ctaSecondary}
-        </Button>
-      </div>
-      <p class="mt-4 text-[13px] text-wake-light">{dict.home.hero.note}</p>
     </div>
 
-    <div class="relative mx-auto flex w-full max-w-[540px] flex-col justify-center lg:order-none max-lg:order-first">
-      <div
-        class="relative w-full rounded-xl border border-wake-border bg-white p-2 shadow-[0_20px_40px_rgba(0,0,0,0.06)]"
-      >
-        <img
-          src={heroShot}
-          alt={dict.home.hero.imageAlt}
-          width="1080"
-          height="720"
-          fetchpriority="high"
-          decoding="async"
-          class="w-full rounded-lg border border-wake-border-subtle object-cover"
-        />
-        <div
-          class="absolute -bottom-5 -left-5 flex items-center gap-2 rounded-lg bg-wake-text px-4 py-2.5 font-mono text-[11px] text-white shadow-[0_10px_20px_rgba(0,0,0,0.1)] max-sm:left-0"
+    {/*
+      Cada frase se revela de arriba abajo con su propio retardo. Es el gesto
+      firma del hero: el titular se "ordena" solo, que es literalmente lo que
+      vende la marca.
+    */}
+    <h1 class="wake-display max-w-[22ch] text-wake-text">
+      <span class="wake-line-mask">
+        <span data-load="line" style={`--load-delay:${LOAD.line1}ms`}>
+          {dict.home.hero.titleBefore}
+        </span>
+      </span>
+      <span class="wake-line-mask">
+        <span data-load="line" style={`--load-delay:${LOAD.line2}ms`}>
+          <span class="wake-gradient-text">{dict.home.hero.titleAccent}</span>
+        </span>
+      </span>
+    </h1>
+
+    {/*
+      Fila inferior asimétrica: el texto de apoyo se alinea a la izquierda bajo
+      el titular y la captura se desplaza a la derecha, rompiendo la simetría
+      centrada.
+    */}
+    <div class="mt-10 grid items-end gap-x-16 gap-y-12 lg:grid-cols-[0.85fr_1.15fr] max-lg:mt-10">
+      <div>
+        <p
+          class="mb-7 max-w-[440px] text-[17px] font-light leading-[1.65] text-wake-muted"
+          data-load
+          style={`--load-delay:${LOAD.subtitle}ms`}
         >
-          <span class="h-1.5 w-1.5 rounded-full bg-wake-accent-dark"></span>
-          {dict.home.hero.badge}
+          {heroSubtitle}
+        </p>
+
+        <div class="flex flex-wrap gap-3" data-load style={`--load-delay:${LOAD.actions}ms`}>
+          <Button href="#contact" magnetic cta="book_diagnostic" ctaLocation="hero">
+            {dict.home.hero.ctaPrimary}
+            <i class="fa-solid fa-arrow-right text-[11px]"></i>
+          </Button>
+          <Button href={healthPath} variant="secondary" cta="view_health" ctaLocation="hero">
+            {dict.home.hero.ctaSecondary}
+          </Button>
         </div>
+
+        <p
+          class="mt-5 flex items-center gap-2.5 text-[13px] text-wake-light"
+          data-load
+          style={`--load-delay:${LOAD.note}ms`}
+        >
+          <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-wake-accent-dark" aria-hidden="true"
+          ></span>
+          {dict.home.hero.note}
+        </p>
       </div>
-      <p class="mt-8 font-mono text-[10px] leading-relaxed text-wake-light">
-        {dict.home.products.illustrationNote}
-      </p>
+
+      <div class="relative w-full lg:-mr-[6vw]">
+        <div
+          class="relative rounded-2xl border border-wake-border bg-white/70 p-2 shadow-wake-lg backdrop-blur-sm"
+          data-load
+          style={`--load-delay:${LOAD.shot}ms`}
+        >
+          <img
+            src={heroShot}
+            alt={dict.home.hero.imageAlt}
+            width="1080"
+            height="720"
+            fetchpriority="high"
+            decoding="async"
+            class="w-full rounded-xl border border-wake-border-subtle object-cover"
+          />
+
+          {/* Estado en vivo: ancla el producto en el presente sin inventar cifras. */}
+          <div
+            class="absolute -bottom-5 -left-5 flex items-center gap-2.5 rounded-xl bg-wake-ink px-4 py-3 text-white shadow-wake-md max-sm:left-0"
+          >
+            <span class="h-1.5 w-1.5 rounded-full bg-wake-accent-dark"></span>
+            <span class="wake-label">{dict.home.hero.badge}</span>
+          </div>
+        </div>
+
+        <p
+          class="mt-9 max-w-[340px] text-[11px] leading-relaxed text-wake-light"
+          data-load
+          style={`--load-delay:${LOAD.caption}ms`}
+        >
+          {dict.home.products.illustrationNote}
+        </p>
+      </div>
     </div>
   </Container>
 </section>

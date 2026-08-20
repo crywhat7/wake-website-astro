@@ -1,0 +1,122 @@
+---
+/**
+ * Motor de movimiento del sitio.
+ *
+ * Tres responsabilidades:
+ *  1. `js-motion` — marca que JS puede revertir los estados iniciales. Se
+ *     aplica en un script bloqueante del <head> a propósito: si se aplicara
+ *     después del primer pintado, el contenido aparecería y luego saltaría a
+ *     su estado oculto. Sin JS (o con él fallando) nada se oculta nunca.
+ *  2. Reveals al entrar en viewport, con escalonado automático por grupo.
+ *  3. Botones magnéticos: el puntero atrae ligeramente el botón.
+ *
+ * Todo se apaga bajo `prefers-reduced-motion`.
+ */
+---
+
+<script is:inline>
+  (function () {
+    var reduced =
+      window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduced) document.documentElement.classList.add('js-motion');
+  })();
+</script>
+
+<script>
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!reduced) {
+    // --- Reveals -----------------------------------------------------------
+    // Los hijos directos de un [data-reveal-group] entran escalonados: el ojo
+    // sigue una secuencia en lugar de recibir todo el bloque de golpe.
+    const STAGGER_MS = 90;
+
+    document.querySelectorAll<HTMLElement>('[data-reveal-group]').forEach((group) => {
+      const step = Number(group.dataset.revealGroup) || STAGGER_MS;
+      const items = group.querySelectorAll<HTMLElement>('[data-reveal]');
+      items.forEach((item, index) => {
+        // Respeta un delay ya declarado a mano en el marcado.
+        if (!item.style.getPropertyValue('--reveal-delay')) {
+          item.style.setProperty('--reveal-delay', `${index * step}ms`);
+        }
+      });
+    });
+
+    const targets = document.querySelectorAll<HTMLElement>('[data-reveal]');
+
+    if ('IntersectionObserver' in window && targets.length) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (!entry.isIntersecting) continue;
+            entry.target.classList.add('is-visible');
+            // Una sola vez: re-animar al volver a subir se siente barato.
+            observer.unobserve(entry.target);
+          }
+        },
+        { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+      );
+
+      targets.forEach((el) => observer.observe(el));
+
+      /*
+       * Failsafe. Ocultar contenido con CSS solo es aceptable si algo garantiza
+       * que se volverá a mostrar. Si el observer no llega a disparar (pestaña
+       * en segundo plano al cargar, throttling agresivo, un fallo en el
+       * observer), esto revela todo lo que ya esté en pantalla para que nadie
+       * se quede mirando un hueco en blanco.
+       */
+      window.setTimeout(() => {
+        targets.forEach((el) => {
+          if (el.classList.contains('is-visible')) return;
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            el.classList.add('is-visible');
+          }
+        });
+      }, 3000);
+    } else {
+      // Sin IntersectionObserver no se oculta nada.
+      targets.forEach((el) => el.classList.add('is-visible'));
+    }
+
+    // --- Botones magnéticos ------------------------------------------------
+    // Solo con puntero fino: en táctil no hay hover y el efecto estorba.
+    const finePointer = window.matchMedia('(pointer: fine)').matches;
+
+    if (finePointer) {
+      const STRENGTH = 0.28;
+      const MAX_PX = 10;
+
+      document.querySelectorAll<HTMLElement>('.wake-magnetic').forEach((el) => {
+        let frame = 0;
+
+        const onMove = (event: MouseEvent) => {
+          if (frame) return;
+          frame = requestAnimationFrame(() => {
+            frame = 0;
+            const rect = el.getBoundingClientRect();
+            const dx = event.clientX - (rect.left + rect.width / 2);
+            const dy = event.clientY - (rect.top + rect.height / 2);
+            const x = Math.max(-MAX_PX, Math.min(MAX_PX, dx * STRENGTH));
+            const y = Math.max(-MAX_PX, Math.min(MAX_PX, dy * STRENGTH));
+            // Solo transform: se mantiene en la GPU y no dispara layout.
+            el.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+          });
+        };
+
+        const reset = () => {
+          if (frame) cancelAnimationFrame(frame);
+          frame = 0;
+          el.style.transform = '';
+        };
+
+        el.addEventListener('mousemove', onMove);
+        el.addEventListener('mouseleave', reset);
+        // El foco por teclado no debe dejar el botón desplazado.
+        el.addEventListener('blur', reset);
+      });
+    }
+  }
+</script>

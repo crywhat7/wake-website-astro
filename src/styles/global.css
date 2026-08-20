@@ -1,24 +1,68 @@
 @import "tailwindcss";
 
+/* ============================================================================
+   WAKE — SISTEMA DE DISEÑO
+   Esencia: orden. Tensión visual: caos operativo vs. estructura.
+   Una sola tipografía (Poppins), un solo acento (menta), mucho aire.
+   ========================================================================= */
+
 @theme {
-  --color-wake-bg: #ffffff;
-  --color-wake-subtle: #fafafa;
-  --color-wake-card: #fcfcfc;
+  /* --- Superficies -------------------------------------------------------
+     Nada de #ffffff ni #000000 puros: los blancos y negros absolutos se ven
+     digitales y planos. Estos tienen una leve temperatura cálida que hace que
+     la página se sienta impresa, no renderizada. */
+  --color-wake-bg: #fbfaf8;
+  --color-wake-subtle: #f5f4f0;
+  --color-wake-card: #f9f8f5;
+  --color-wake-ink: #101013;
+  --color-wake-ink-soft: #1c1c21;
+
+  /* --- Acento -------------------------------------------------------------
+     La menta es la firma de la marca. `accent` es para superficies y brillos;
+     `accent-dark` es la única versión con contraste suficiente para texto. */
   --color-wake-accent: #adfcdc;
-  --color-wake-accent-dark: #00f59b;
-  --color-wake-text: #0c0c0d;
-  --color-wake-muted: #616166;
-  --color-wake-light: #8e8e93;
-  --color-wake-border: #e4e4e7;
-  --color-wake-border-subtle: #f4f4f5;
-  --color-health-dark: #1a1a1a;
-  --color-health-section: #222;
-  --color-health-footer: #111;
-  --color-health-pricing-bg: #f4f7f6;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "Geist Mono", ui-monospace, monospace;
-  --font-health-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
-  --font-health-body: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --color-wake-accent-dark: #00b876;
+  --color-wake-accent-deep: #067a52;
+
+  /* --- Texto y bordes ----------------------------------------------------- */
+  --color-wake-text: #101013;
+  --color-wake-muted: #5c5c63;
+  --color-wake-light: #8a8a91;
+  --color-wake-border: #e2e1dc;
+  --color-wake-border-subtle: #eeede8;
+
+  /* --- Tema health (se conserva para las secciones oscuras) --------------- */
+  --color-health-dark: #16161a;
+  --color-health-section: #1e1e23;
+  --color-health-footer: #101013;
+  --color-health-pricing-bg: #f2f5f3;
+
+  /* --- Tipografía ---------------------------------------------------------
+     Poppins es la única familia del sitio.
+
+     `--font-mono` apunta A PROPÓSITO a Poppins: hay ~29 utilidades `font-mono`
+     repartidas en 24 componentes que antes renderizaban en Geist Mono y se
+     leían como una fuente de fallback rota. Repuntando el token, todas pasan a
+     la tipografía de marca sin tocar archivo por archivo. Para esos rótulos
+     técnicos el carácter lo aporta ahora `.wake-label` (versalitas + tracking),
+     no un cambio de familia. */
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
+
+  /* --- Curvas de aceleración ---------------------------------------------
+     `ease`, `ease-in`, `ease-out` y `linear` están prohibidas: son mecánicas y
+     delatan al instante una animación por defecto. */
+  --ease-expo-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-quart-out: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-expo-in-out: cubic-bezier(0.87, 0, 0.13, 1);
+
+  /* --- Sombras ------------------------------------------------------------
+     Difusas y de muy baja opacidad: elevan sin ensuciar el fondo cálido. */
+  --shadow-wake-sm: 0 1px 2px rgba(16, 16, 19, 0.04);
+  --shadow-wake-md: 0 8px 24px -8px rgba(16, 16, 19, 0.08);
+  --shadow-wake-lg: 0 24px 60px -20px rgba(16, 16, 19, 0.14);
+  --shadow-wake-glow: 0 20px 60px -24px rgba(0, 184, 118, 0.45);
 }
 
 @layer base {
@@ -26,21 +70,83 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* El header fijo mide 4rem: sin esto los anclajes dejan el título debajo. */
+    scroll-padding-top: 5.5rem;
   }
 
   body {
     @apply bg-wake-bg text-wake-text overflow-x-hidden;
-    font-size: 15px;
-    letter-spacing: -0.01em;
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.6;
+    letter-spacing: -0.011em;
   }
 
+  /* Las cifras se alinean en columna en tablas, precios y métricas. */
+  .tabular,
+  [class*="font-mono"] {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Selección de marca: detalle mínimo, señal inmediata de que todo está
+     considerado. */
+  ::selection {
+    background: var(--color-wake-accent);
+    color: var(--color-wake-ink);
+  }
+
+  /* Foco visible Y bonito: el teclado no es ciudadano de segunda. */
   *:focus-visible {
-    outline: 2px solid var(--color-wake-text);
-    outline-offset: 2px;
+    outline: 2px solid var(--color-wake-accent-dark);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Evita viudas en titulares clave sin intervención manual. */
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
   }
 }
 
 @layer components {
+  /* ---------------------------------------------------------------------
+     TIPOGRAFÍA DE DISPLAY
+     Contraste de escala ~9:1 entre el display del hero y el cuerpo. El
+     tracking negativo compacta los tamaños grandes en un bloque sólido.
+     ------------------------------------------------------------------ */
+  .wake-display {
+    font-family: var(--font-display);
+    /* El titular envuelve a 2-3 lineas con este copy; el tamano esta ajustado
+       para dominar la pantalla sin empujar todo lo demas fuera del viewport. */
+    font-size: clamp(2.35rem, 6vw, 5.25rem);
+    line-height: 0.92;
+    letter-spacing: -0.048em;
+    font-weight: 600;
+  }
+
+  .wake-h2 {
+    font-size: clamp(2rem, 4.4vw, 3.25rem);
+    line-height: 1.04;
+    letter-spacing: -0.035em;
+    font-weight: 600;
+  }
+
+  /* Rótulo técnico en Poppins: el carácter viene del tracking y las
+     versalitas, no de cambiar de familia. */
+  .wake-label {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-variant-numeric: tabular-nums;
+  }
+
   /*
    * Texto con degradado recortado.
    *
@@ -53,9 +159,9 @@
   .wake-gradient-text {
     display: inline-block;
     background-image: linear-gradient(
-      90deg,
+      100deg,
       var(--color-wake-text) 0%,
-      #067a52 55%,
+      var(--color-wake-accent-deep) 52%,
       var(--color-wake-accent-dark) 100%
     );
     background-size: 100% 100%;
@@ -84,5 +190,211 @@
       -webkit-text-fill-color: currentColor;
       color: var(--color-wake-text);
     }
+  }
+
+  /* ---------------------------------------------------------------------
+     TEXTURA DE REJILLA
+     Rejilla técnica muy tenue que ancla el hero y las bandas oscuras. Es
+     decorativa: va en un pseudo-elemento y nunca sobre contenido.
+     ------------------------------------------------------------------ */
+  .wake-grid-bg {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .wake-grid-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image:
+      linear-gradient(to right, rgba(16, 16, 19, 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(16, 16, 19, 0.045) 1px, transparent 1px);
+    background-size: 72px 72px;
+    /* La rejilla se disuelve hacia los bordes para que no parezca un tablero. */
+    mask-image: radial-gradient(ellipse 90% 70% at 50% 35%, #000 20%, transparent 78%);
+    -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 35%, #000 20%, transparent 78%);
+    pointer-events: none;
+  }
+
+  .wake-grid-bg--dark::before {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  }
+
+  /* Halo de acento difuso: da atmósfera sin recurrir al degradado morado-azul
+     genérico. */
+  .wake-glow {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(90px);
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: -1;
+    background: radial-gradient(
+      circle,
+      var(--color-wake-accent) 0%,
+      transparent 70%
+    );
+  }
+
+  /* ---------------------------------------------------------------------
+     ENLACE CON SUBRAYADO PROGRESIVO
+     ------------------------------------------------------------------ */
+  .wake-link {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.4s var(--ease-expo-out);
+  }
+
+  .wake-link:hover {
+    background-size: 100% 1px;
+  }
+}
+
+/* ============================================================================
+   MOTION
+   Toda animación responde a "¿por qué se mueve esto?": la carga jerarquiza la
+   lectura del hero y los reveals acompañan el descubrimiento al hacer scroll.
+   ========================================================================= */
+
+/*
+ * IMPORTANTE: este bloque va SIN envolver en `@layer utilities`.
+ * Tailwind v4 intercepta esa at-rule para registrar utilidades propias y en el
+ * proceso descarta las `@keyframes` declaradas dentro: las animaciones se
+ * quedaban en "running" pero sin fotogramas, dejando el titular en opacidad 0
+ * de forma permanente. Sin capa, son CSS normal y sobreviven al build.
+ */
+
+/* --- Reveal al entrar en viewport ----------------------------------------
+   El estado inicial solo se aplica si JS va a poder revertirlo (`js-motion`
+   lo pone el script del <head>). Sin JS, el contenido se ve siempre. */
+.js-motion [data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 1.75rem, 0);
+  transition:
+    opacity 0.9s var(--ease-expo-out),
+    transform 0.9s var(--ease-expo-out);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+
+.js-motion [data-reveal="mask"] {
+  opacity: 0;
+  clip-path: inset(0 0 100% 0);
+  transform: none;
+  transition:
+    opacity 1s var(--ease-expo-out),
+    clip-path 1s var(--ease-expo-out);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.js-motion [data-reveal].is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  clip-path: inset(0 0 0 0);
+  will-change: auto;
+}
+
+/* --- Coreografía de carga del hero ---------------------------------------
+   Estructura primero, luego el titular, después el apoyo. Nada aparece a la
+   vez: el orden de entrada ES la jerarquía. */
+.js-motion [data-load] {
+  opacity: 0;
+  transform: translate3d(0, 1.25rem, 0);
+  animation: wake-enter 1s var(--ease-expo-out) forwards;
+  animation-delay: var(--load-delay, 0ms);
+}
+
+/*
+ * Revelado del titular.
+ *
+ * Se hace con `clip-path` y no con una máscara de `overflow:hidden` + subida:
+ * esa técnica asume que cada frase ocupa UNA línea, y aquí el titular envuelve
+ * a 2-3 líneas según idioma y viewport (las páginas geo además inyectan copy
+ * propio). Al envolver, la máscara recortaba texto de forma permanente.
+ * `clip-path` revela de arriba abajo sin importar cuántas líneas ocupe.
+ */
+.js-motion [data-load="line"] {
+  display: block;
+  opacity: 0;
+  clip-path: inset(0 0 100% 0);
+  transform: none;
+  animation: wake-line-reveal 1.1s var(--ease-expo-out) forwards;
+  animation-delay: var(--load-delay, 0ms);
+}
+
+@keyframes wake-enter {
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes wake-line-reveal {
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* Contenedor de línea del titular. Sin `overflow:hidden` a propósito: el
+   descendente de la "p" y el degradado necesitan sobresalir del box. */
+.wake-line-mask {
+  display: block;
+  padding-bottom: 0.06em;
+}
+
+/* --- Botón magnético -----------------------------------------------------
+   El desplazamiento lo calcula JS; aquí solo vive la transición de retorno. */
+.wake-magnetic {
+  transition: transform 0.5s var(--ease-expo-out);
+}
+
+/* --------------------------------------------------------------------------
+   RESPETO A prefers-reduced-motion
+   No se degrada el contenido: todo queda visible, sin desplazamiento.
+   ----------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .js-motion [data-reveal],
+  .js-motion [data-load],
+  .js-motion [data-load="line"] {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .wake-magnetic {
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Al imprimir no hay animaciones que completar: si el contenido depende de
+   ellas para ser visible, la hoja saldría en blanco. */
+@media print {
+  .js-motion [data-reveal],
+  .js-motion [data-load],
+  .js-motion [data-load="line"] {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    animation: none !important;
   }
 }

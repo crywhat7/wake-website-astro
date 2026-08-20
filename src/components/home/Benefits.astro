@@ -12,19 +12,22 @@ const dict = t(locale);
 
 <section class="py-32 max-lg:py-20">
   <Container>
-    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4" data-reveal-group="110">
       {
         dict.home.benefits.map((b) => (
-          <div class="border-l border-wake-border py-2 pl-4 transition hover:border-l-wake-text">
-            <div class="mb-2 font-mono text-[32px] font-medium tracking-tighter text-wake-text">
+          <div
+            data-reveal
+            class="group border-l border-wake-border py-2 pl-5 transition-colors duration-500 ease-expo-out hover:border-l-wake-accent-dark"
+          >
+            <div class="mb-3 text-[clamp(2.25rem,3.6vw,3rem)] font-semibold leading-none tracking-[-0.05em] text-wake-text tabular">
               {b.num}
             </div>
-            <div class="text-sm leading-snug text-wake-muted">{b.desc}</div>
+            <div class="text-[14px] leading-snug text-wake-muted">{b.desc}</div>
           </div>
         ))
       }
     </div>
-    <p class="mt-10 max-w-[640px] text-[13px] leading-relaxed text-wake-light">
+    <p class="mt-12 max-w-[640px] text-[13px] leading-relaxed text-wake-light" data-reveal>
       {dict.home.benefitsNote}
     </p>
   </Container>
