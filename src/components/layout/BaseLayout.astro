@@ -1,5 +1,6 @@
 ---
 import '../../styles/global.css';
+import Analytics from './Analytics.astro';
 import SeoHead from '../seo/SeoHead.astro';
 import JsonLd from '../seo/JsonLd.astro';
 import type { Locale, PageKey } from '../../i18n';
@@ -71,6 +72,7 @@ const htmlLang = hreflang ?? (locale === 'es' ? 'es-HN' : 'en-US');
       hreflang={hreflang}
     />
     <JsonLd locale={locale} page={page} />
+    <Analytics />
   </head>
   <body class:list={[theme === 'health' && 'font-health-body']}>
     <slot />

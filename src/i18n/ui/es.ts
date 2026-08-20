@@ -165,21 +165,45 @@ export const es = {
       products: 'Productos',
       pricing: 'Planes',
       contact: 'Contacto',
-      cta: 'Consultoría',
+      cta: 'Agendar diagnóstico',
       blog: 'Blog',
     },
     hero: {
-      tag: 'Infraestructura del Crecimiento',
-      titleBefore: 'Menos caos.',
-      titleAccent: 'Más orden operativo.',
+      tag: 'Sistematización y automatización',
+      titleBefore: 'Tu operación, centralizada.',
+      titleAccent: 'Ventas, inventario y finanzas en un solo sistema.',
       subtitle:
-        'Construimos las bases tecnológicas para empresas en Honduras y Centroamérica. Automatizamos operaciones, configuramos software centralizado e integramos IA para escalar sin fricciones.',
-      ctaPrimary: 'Probar software',
-      ctaSecondary: 'Ver soluciones',
+        'Auditamos tu operación, te mostramos exactamente qué automatizar y lo implementamos. Software centralizado e IA para empresas en Honduras y Centroamérica — en semanas, no en meses.',
+      ctaPrimary: 'Agendar diagnóstico gratuito',
+      ctaSecondary: 'Ver WAKE Health',
+      note: 'Diagnóstico sin costo · Sin compromiso · Respondemos en menos de 24 h',
+      imageAlt:
+        'Panel de WAKE Health mostrando pacientes, citas y control operativo en una sola pantalla',
       badge: 'WAKE_CORE // ACCIONADO',
     },
+    audience: {
+      tag: 'Empecemos por lo tuyo',
+      title: '¿Qué tipo de operación quieres ordenar?',
+      subtitle: 'Cada camino lleva directo a lo que necesitas ver primero.',
+      options: [
+        {
+          icon: 'fa-stethoscope',
+          title: 'Tengo una clínica o consultorio',
+          desc: 'WAKE Health ya está listo: pacientes, citas, expediente clínico, facturación e inventario médico desde US$29/mes.',
+          cta: 'Ver WAKE Health',
+          target: 'health',
+        },
+        {
+          icon: 'fa-building',
+          title: 'Tengo otro tipo de empresa',
+          desc: 'Diseñamos e implementamos la sistematización a la medida de tus procesos: ventas, inventario, finanzas y automatización.',
+          cta: 'Agendar diagnóstico gratuito',
+          target: 'contact',
+        },
+      ],
+    },
     trust: {
-      text: 'Infraestructura de confianza regional',
+      text: 'Empresas y aliados que ya trabajan con WAKE',
       logoAlts: [
         'Socio de negocio 1 — WAKE Solutions Honduras',
         'Socio de negocio 2 — clientes LATAM',
@@ -202,10 +226,12 @@ export const es = {
         desc: 'Fricción manual. Automatización completa de tareas administrativas repetitivas.',
       },
       {
-        num: 'DATA',
-        desc: 'Mayor claridad financiera total para decisiones estratégicas inmediatas.',
+        num: '1',
+        desc: 'Un solo panel para ventas, inventario y finanzas. Se acabaron las hojas de cálculo sueltas.',
       },
     ],
+    benefitsNote:
+      'Rangos objetivo que buscamos en cada implementación. El resultado real depende del punto de partida de tu operación y se define contigo en el diagnóstico inicial.',
     services: {
       tag: 'Capacidades',
       title: '¿Qué resolvemos?',
@@ -331,7 +357,15 @@ export const es = {
       ],
       trialTitle: 'Empieza gratis durante 3 días',
       trialNote: 'Sin tarjeta de crédito. Sin compromiso.',
-      cta: 'Comenzar prueba gratuita',
+      cta: 'Crear mi cuenta gratis',
+      ctaNote: 'Te lleva directo a crear tu cuenta. No hay formulario de por medio.',
+      guarantee:
+        'Garantía de reembolso durante los primeros 3 días. Cancelas cuando quieras, sin penalidad.',
+      secondaryCta: 'Prefiero que me lo muestren',
+      secondaryWhatsappMsg:
+        'Hola! Quiero que me muestren WAKE Health antes de crear mi cuenta.',
+      audienceNote:
+        '¿Tienes una clínica o consultorio? Este producto ya está listo para usar hoy mismo.',
     },
     contact: {
       tag: 'Contacto directo',
@@ -342,12 +376,66 @@ export const es = {
       company: 'Empresa corporativa',
       email: 'Correo electrónico *',
       phone: 'Teléfono de contacto',
-      message: 'Mensaje u objetivos operativos',
-      submit: 'Enviar consulta',
+      message: 'Mensaje u objetivos operativos (opcional)',
+      submit: 'Agendar diagnóstico gratuito',
       sending: 'Enviando…',
       success: 'Mensaje enviado. Te contactaremos pronto.',
       error: 'No se pudo enviar. Intenta de nuevo o escríbenos a ventas@wake.solutions.',
       mailSubject: 'Solicitud de Infraestructura Tecnológica',
+      whatsappCta: 'Escribir por WhatsApp',
+      whatsappMsg: 'Hola! Quiero agendar un diagnóstico gratuito para mi empresa.',
+      orLabel: 'o si prefieres algo más directo',
+      responseNote: 'Respondemos en menos de 24 horas hábiles.',
+      privacyNote: 'Solo usamos tus datos para responderte. Nunca los compartimos.',
+      privacyLink: 'Ver política de privacidad',
+    },
+    proof: {
+      tag: 'Resultados',
+      title: 'Lo que cambió para quienes ya lo hicieron',
+      subtitle: 'Casos reales de empresas que ordenaron su operación con WAKE.',
+    },
+    faq: {
+      tag: 'Dudas frecuentes',
+      title: 'Antes de que preguntes',
+      subtitle: 'Lo que casi todos quieren saber antes de empezar.',
+      items: [
+        {
+          q: '¿Cuánto cuesta un proyecto de sistematización?',
+          a: 'Depende del alcance: no es lo mismo automatizar la facturación que rediseñar toda la operación. Por eso el diagnóstico inicial es gratuito y termina con un alcance y un precio cerrado antes de que te comprometas a nada. Si lo que necesitas es software clínico, WAKE Health tiene precio público: US$29 al mes.',
+        },
+        {
+          q: '¿Cuánto tarda la implementación?',
+          a: 'WAKE Health se activa el mismo día que creas tu cuenta. Los proyectos a medida se implementan de forma modular y gradual, arrancando por el flujo que más te duele, para que tu operación diaria no se detenga en ningún momento. El cronograma exacto sale del diagnóstico.',
+        },
+        {
+          q: 'Ya uso otro sistema o Excel. ¿Tengo que empezar de cero?',
+          a: 'No. Migramos tu información y, cuando el sistema actual sigue siendo útil, lo integramos en lugar de reemplazarlo. Buena parte de nuestro trabajo es justamente interconectar herramientas que hoy no se hablan entre sí.',
+        },
+        {
+          q: '¿Qué pasa con mis datos?',
+          a: 'Tus datos son tuyos. Aplicamos medidas técnicas y administrativas para protegerlos de accesos no autorizados, WAKE Health hace copias de seguridad automáticas y solo usamos tu información para prestarte el servicio y darte soporte. Todo está detallado en nuestra política de privacidad.',
+        },
+        {
+          q: '¿Mi equipo necesita conocimientos técnicos?',
+          a: 'No. Configuramos las herramientas al ritmo real de trabajo de tu equipo y los capacitamos como parte de la implementación. Si algo necesita un manual de 40 páginas para usarse, lo diseñamos mal.',
+        },
+        {
+          q: '¿Puedo cancelar si no me sirve?',
+          a: 'Sí. WAKE Health tiene garantía de reembolso durante los primeros 3 días y puedes cancelar en cualquier momento para evitar cobros futuros. Los desarrollos a medida se rigen por el alcance acordado antes de arrancar.',
+        },
+      ],
+    },
+    ctaBand: {
+      title: '¿Listo para ordenar tu operación?',
+      subtitle:
+        'Empezamos con un diagnóstico gratuito de tus procesos actuales. Sin compromiso y sin lenguaje técnico innecesario.',
+      primary: 'Agendar diagnóstico gratuito',
+      secondary: 'Escribir por WhatsApp',
+      whatsappMsg: 'Hola! Quiero agendar un diagnóstico gratuito para mi empresa.',
+    },
+    whatsappFab: {
+      label: 'Escríbenos por WhatsApp',
+      msg: 'Hola! Quiero más información sobre WAKE Solutions.',
     },
     footer: {
       brand:

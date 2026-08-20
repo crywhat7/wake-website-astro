@@ -11,7 +11,11 @@ const { locale } = Astro.props;
 const dict = t(locale);
 ---
 
-<section id="services" class="border-y border-wake-border bg-wake-subtle py-32 max-lg:py-20">
+<section
+  id="services"
+  data-track-section="services"
+  class="border-y border-wake-border bg-wake-subtle py-32 max-lg:py-20"
+>
   <Container>
     <MonoTag>{dict.home.services.tag}</MonoTag>
     <h2

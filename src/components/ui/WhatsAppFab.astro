@@ -1,0 +1,30 @@
+---
+import { whatsappUrl } from '../../data/site';
+import { t, type Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+const fab = dict.home.whatsappFab;
+const wa = whatsappUrl(fab.msg);
+
+// WhatsApp es el canal de contacto dominante en Honduras y LATAM. El botón
+// flotante da una salida de conversión en cualquier punto del scroll, sin
+// obligar al visitante a volver al formulario.
+---
+
+<a
+  href={wa}
+  target="_blank"
+  rel="noopener noreferrer"
+  data-cta="whatsapp"
+  data-cta-location="floating"
+  aria-label={fab.label}
+  title={fab.label}
+  class="fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-2xl text-white shadow-[0_8px_24px_rgba(0,0,0,0.18)] transition hover:scale-105 hover:bg-[#1ebe5b] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wake-text print:hidden"
+>
+  <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+</a>

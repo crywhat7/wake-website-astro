@@ -167,21 +167,45 @@ export const en: Dictionary = {
       products: 'Products',
       pricing: 'Pricing',
       contact: 'Contact',
-      cta: 'Consulting',
+      cta: 'Book a diagnostic',
       blog: 'Blog',
     },
     hero: {
-      tag: 'Growth Infrastructure',
-      titleBefore: 'Less chaos.',
-      titleAccent: 'More operational order.',
+      tag: 'Systematization and automation',
+      titleBefore: 'Your operation, centralized.',
+      titleAccent: 'Sales, inventory, and finance in one system.',
       subtitle:
-        'We build the technology foundations for businesses in Honduras and Central America. We automate operations, configure centralized software, and integrate AI so you can scale without friction.',
-      ctaPrimary: 'Try software',
-      ctaSecondary: 'See solutions',
+        'We audit your operation, show you exactly what to automate, and implement it. Centralized software and AI for companies in Honduras and Central America — in weeks, not months.',
+      ctaPrimary: 'Book a free diagnostic',
+      ctaSecondary: 'See WAKE Health',
+      note: 'Free diagnostic · No commitment · We reply in under 24h',
+      imageAlt:
+        'WAKE Health dashboard showing patients, appointments, and operational control on a single screen',
       badge: 'WAKE_CORE // ACTIVE',
     },
+    audience: {
+      tag: 'Start with what you have',
+      title: 'What kind of operation are you trying to fix?',
+      subtitle: 'Each path takes you straight to what you need to see first.',
+      options: [
+        {
+          icon: 'fa-stethoscope',
+          title: 'I run a clinic or private practice',
+          desc: 'WAKE Health is ready today: patients, appointments, clinical records, billing, and medical inventory from US$29/mo.',
+          cta: 'See WAKE Health',
+          target: 'health',
+        },
+        {
+          icon: 'fa-building',
+          title: 'I run a different kind of business',
+          desc: 'We design and implement systematization around your actual processes: sales, inventory, finance, and automation.',
+          cta: 'Book a free diagnostic',
+          target: 'contact',
+        },
+      ],
+    },
     trust: {
-      text: 'Trusted regional infrastructure',
+      text: 'Companies and partners already working with WAKE',
       logoAlts: [
         'Business partner 1 — WAKE Solutions Honduras',
         'Business partner 2 — LATAM clients',
@@ -204,10 +228,12 @@ export const en: Dictionary = {
         desc: 'Manual friction. Full automation of repetitive admin tasks.',
       },
       {
-        num: 'DATA',
-        desc: 'Total financial clarity for immediate strategic decisions.',
+        num: '1',
+        desc: 'One dashboard for sales, inventory, and finance. No more scattered spreadsheets.',
       },
     ],
+    benefitsNote:
+      'Target ranges we aim for on every implementation. Actual results depend on where your operation starts, and we define them with you during the initial diagnostic.',
     services: {
       tag: 'Capabilities',
       title: 'What do we solve?',
@@ -333,7 +359,15 @@ export const en: Dictionary = {
       ],
       trialTitle: 'Start free for 3 days',
       trialNote: 'No credit card. No commitment.',
-      cta: 'Start free trial',
+      cta: 'Create my free account',
+      ctaNote: 'Takes you straight to account creation. No form in between.',
+      guarantee:
+        'Full refund within the first 3 days. Cancel anytime, no penalty.',
+      secondaryCta: 'I would rather see a demo first',
+      secondaryWhatsappMsg:
+        'Hi! I would like a walkthrough of WAKE Health before creating an account.',
+      audienceNote:
+        'Run a clinic or private practice? This product is ready to use today.',
     },
     contact: {
       tag: 'Direct contact',
@@ -344,12 +378,66 @@ export const en: Dictionary = {
       company: 'Company',
       email: 'Email *',
       phone: 'Phone',
-      message: 'Message or operational goals',
-      submit: 'Send inquiry',
+      message: 'Message or operational goals (optional)',
+      submit: 'Book a free diagnostic',
       sending: 'Sending…',
       success: 'Message sent. We’ll get back to you soon.',
       error: 'Could not send. Try again or email ventas@wake.solutions.',
       mailSubject: 'Technology Infrastructure Request',
+      whatsappCta: 'Message us on WhatsApp',
+      whatsappMsg: 'Hi! I would like to book a free diagnostic for my company.',
+      orLabel: 'or if you prefer something more direct',
+      responseNote: 'We reply within one business day.',
+      privacyNote: 'We only use your details to reply. We never share them.',
+      privacyLink: 'Read the privacy policy',
+    },
+    proof: {
+      tag: 'Results',
+      title: 'What changed for the companies that did it',
+      subtitle: 'Real cases from businesses that put their operation in order with WAKE.',
+    },
+    faq: {
+      tag: 'Common questions',
+      title: 'Before you ask',
+      subtitle: 'What almost everyone wants to know before starting.',
+      items: [
+        {
+          q: 'How much does a systematization project cost?',
+          a: 'It depends on scope: automating billing is not the same as redesigning an entire operation. That is why the initial diagnostic is free and ends with a defined scope and a fixed price before you commit to anything. If what you need is clinical software, WAKE Health has public pricing: US$29 per month.',
+        },
+        {
+          q: 'How long does implementation take?',
+          a: 'WAKE Health is active the same day you create your account. Custom projects are implemented modularly and gradually, starting with the workflow that hurts most, so your daily operation never stops. The exact timeline comes out of the diagnostic.',
+        },
+        {
+          q: 'I already use another system or Excel. Do I start from scratch?',
+          a: 'No. We migrate your data and, when your current system still earns its keep, we integrate it rather than replace it. A large part of our work is connecting tools that currently do not talk to each other.',
+        },
+        {
+          q: 'What happens to my data?',
+          a: 'Your data is yours. We apply technical and administrative measures to protect it from unauthorized access, WAKE Health runs automatic backups, and we only use your information to deliver the service and support you. It is all detailed in our privacy policy.',
+        },
+        {
+          q: 'Does my team need technical skills?',
+          a: 'No. We configure the tools around how your team actually works and train them as part of the implementation. If something needs a 40-page manual to be used, we designed it badly.',
+        },
+        {
+          q: 'Can I cancel if it does not work for me?',
+          a: 'Yes. WAKE Health includes a refund guarantee within the first 3 days, and you can cancel at any time to avoid future charges. Custom development follows the scope agreed before kickoff.',
+        },
+      ],
+    },
+    ctaBand: {
+      title: 'Ready to put your operation in order?',
+      subtitle:
+        'We start with a free diagnostic of your current processes. No commitment and no unnecessary technical jargon.',
+      primary: 'Book a free diagnostic',
+      secondary: 'Message us on WhatsApp',
+      whatsappMsg: 'Hi! I would like to book a free diagnostic for my company.',
+    },
+    whatsappFab: {
+      label: 'Message us on WhatsApp',
+      msg: 'Hi! I would like more information about WAKE Solutions.',
     },
     footer: {
       brand: 'Building predictive technology for growing companies.',

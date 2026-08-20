@@ -2,6 +2,7 @@
 import Container from '../ui/Container.astro';
 import Button from '../ui/Button.astro';
 import MonoTag from '../ui/MonoTag.astro';
+import { SITE } from '../../data/site';
 import { t, getLocalizedPath, type Locale } from '../../i18n';
 
 interface Props {
@@ -16,6 +17,10 @@ const dict = t(locale);
 const healthPath = healthHref ?? getLocalizedPath('health', locale);
 const heroTag = tag ?? dict.home.hero.tag;
 const heroSubtitle = subtitle ?? dict.home.hero.subtitle;
+
+// Captura real del producto en lugar de un mockup de relleno: es el activo de
+// confianza más valioso de la página y ya existe en `SITE.assets.gallery`.
+const heroShot = SITE.assets.gallery[0].src;
 ---
 
 <section id="hero" class="relative overflow-hidden pb-32 pt-[calc(4rem+8rem)] max-lg:pb-20 max-lg:pt-28">
@@ -23,7 +28,7 @@ const heroSubtitle = subtitle ?? dict.home.hero.subtitle;
     <div>
       <MonoTag>{heroTag}</MonoTag>
       <h1
-        class="mb-4 text-[clamp(2.75rem,5vw,4rem)] font-semibold leading-[1.05] tracking-[-0.04em] text-wake-text"
+        class="mb-4 text-[clamp(2.5rem,4.6vw,3.75rem)] font-semibold leading-[1.05] tracking-[-0.04em] text-wake-text"
       >
         {dict.home.hero.titleBefore}
         <br />
@@ -33,41 +38,34 @@ const heroSubtitle = subtitle ?? dict.home.hero.subtitle;
           {dict.home.hero.titleAccent}
         </strong>
       </h1>
-      <p class="mb-8 max-w-[520px] text-lg font-light leading-relaxed text-wake-muted">
+      <p class="mb-8 max-w-[560px] text-lg font-light leading-relaxed text-wake-muted">
         {heroSubtitle}
       </p>
       <div class="flex flex-wrap gap-4">
-        <Button href={healthPath}>
+        <Button href="#contact" cta="book_diagnostic" ctaLocation="hero">
           {dict.home.hero.ctaPrimary}
           <i class="fa-solid fa-arrow-right text-[11px]"></i>
         </Button>
-        <Button href="#services" variant="secondary">{dict.home.hero.ctaSecondary}</Button>
+        <Button href={healthPath} variant="secondary" cta="view_health" ctaLocation="hero">
+          {dict.home.hero.ctaSecondary}
+        </Button>
       </div>
+      <p class="mt-4 text-[13px] text-wake-light">{dict.home.hero.note}</p>
     </div>
 
     <div class="relative mx-auto flex w-full max-w-[540px] items-center justify-center lg:order-none max-lg:order-first">
       <div
-        class="relative w-full rounded-xl border border-wake-border bg-white p-4 shadow-[0_20px_40px_rgba(0,0,0,0.03)]"
+        class="relative w-full rounded-xl border border-wake-border bg-white p-2 shadow-[0_20px_40px_rgba(0,0,0,0.06)]"
       >
-        <div class="mb-4 flex gap-1.5 border-b border-wake-border-subtle pb-2">
-          <div class="h-2 w-2 rounded-full bg-wake-border"></div>
-          <div class="h-2 w-2 rounded-full bg-wake-border"></div>
-          <div class="h-2 w-2 rounded-full bg-wake-border"></div>
-        </div>
-        <div class="grid grid-cols-2 gap-4">
-          <div class="col-span-2 rounded-lg border border-wake-border-subtle bg-wake-card p-4">
-            <div class="mb-2 h-2 w-[30%] rounded bg-wake-border-subtle"></div>
-            <div class="mt-2.5 h-4 w-full rounded bg-wake-accent"></div>
-          </div>
-          <div class="rounded-lg border border-wake-border-subtle bg-wake-card p-4">
-            <div class="mb-2 h-2 w-[60%] rounded bg-wake-border-subtle"></div>
-            <div class="h-2 w-full rounded bg-wake-border-subtle"></div>
-          </div>
-          <div class="rounded-lg border border-wake-border-subtle bg-wake-card p-4">
-            <div class="mb-2 h-2 w-full rounded bg-wake-border-subtle"></div>
-            <div class="h-2 w-[60%] rounded bg-wake-border-subtle"></div>
-          </div>
-        </div>
+        <img
+          src={heroShot}
+          alt={dict.home.hero.imageAlt}
+          width="1080"
+          height="720"
+          fetchpriority="high"
+          decoding="async"
+          class="w-full rounded-lg border border-wake-border-subtle object-cover"
+        />
         <div
           class="absolute -bottom-5 -left-5 flex items-center gap-2 rounded-lg bg-wake-text px-4 py-2.5 font-mono text-[11px] text-white shadow-[0_10px_20px_rgba(0,0,0,0.1)] max-sm:left-0"
         >

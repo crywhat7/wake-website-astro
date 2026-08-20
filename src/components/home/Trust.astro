@@ -9,22 +9,33 @@ interface Props {
 
 const { locale } = Astro.props;
 const dict = t(locale);
+
+// Logos atenuados al 40% y anónimos se leen como "no tenemos clientes".
+// Se muestran legibles y, cuando hay nombre real cargado en `site.ts`, se usa
+// como alt y como etiqueta visible bajo el logo.
 ---
 
 <section class="border-y border-wake-border-subtle bg-wake-subtle py-8">
   <Container class="flex flex-wrap items-center justify-between gap-8">
     <span class="font-mono text-[11px] uppercase text-wake-light">{dict.home.trust.text}</span>
-    <div class="flex flex-wrap items-center gap-8 md:gap-16">
+    <div class="flex flex-wrap items-center gap-8 md:gap-14">
       {
-        SITE.assets.trustLogos.map((src, i) => (
-          <img
-            src={src}
-            alt={dict.home.trust.logoAlts[i]}
-            loading="lazy"
-            width="120"
-            height="50"
-            class="h-[50px] w-auto opacity-40 grayscale transition hover:opacity-90 hover:grayscale-0"
-          />
+        SITE.assets.trustLogos.map((logo, i) => (
+          <div class="flex flex-col items-center gap-1.5">
+            <img
+              src={logo.src}
+              alt={logo.name || dict.home.trust.logoAlts[i]}
+              loading="lazy"
+              width="120"
+              height="50"
+              class="h-[50px] w-auto opacity-70 grayscale transition hover:opacity-100 hover:grayscale-0"
+            />
+            {logo.name && (
+              <span class="font-mono text-[10px] uppercase tracking-wider text-wake-light">
+                {logo.name}
+              </span>
+            )}
+          </div>
         ))
       }
     </div>

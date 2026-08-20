@@ -10,6 +10,11 @@ import About from '../../components/home/About.astro';
 import Process from '../../components/home/Process.astro';
 import Pricing from '../../components/home/Pricing.astro';
 import Contact from '../../components/home/Contact.astro';
+import AudienceRouter from '../../components/home/AudienceRouter.astro';
+import CtaBand from '../../components/home/CtaBand.astro';
+import Faq from '../../components/home/Faq.astro';
+import Proof from '../../components/home/Proof.astro';
+import WhatsAppFab from '../../components/ui/WhatsAppFab.astro';
 import Footer from '../../components/home/Footer.astro';
 import { t, type Locale } from '../../i18n';
 
@@ -29,13 +34,19 @@ const dict = t(locale);
   <main>
     <Hero locale={locale} />
     <Trust locale={locale} />
+    <AudienceRouter locale={locale} />
     <Benefits locale={locale} />
     <Services locale={locale} />
+    <CtaBand locale={locale} placement="after_services" />
     <Products locale={locale} />
+    <Proof locale={locale} />
     <About locale={locale} />
     <Process locale={locale} />
     <Pricing locale={locale} />
+    <Faq locale={locale} />
+    <CtaBand locale={locale} placement="after_faq" />
     <Contact locale={locale} />
   </main>
   <Footer locale={locale} />
+  <WhatsAppFab locale={locale} />
 </BaseLayout>

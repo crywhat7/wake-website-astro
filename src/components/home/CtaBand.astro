@@ -1,0 +1,50 @@
+---
+import Container from '../ui/Container.astro';
+import Button from '../ui/Button.astro';
+import { whatsappUrl } from '../../data/site';
+import { t, type Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+  /** Identifica la posición de la banda en la analítica (p. ej. "after_services"). */
+  placement: string;
+}
+
+const { locale, placement } = Astro.props;
+const dict = t(locale);
+const band = dict.home.ctaBand;
+const wa = whatsappUrl(band.whatsappMsg);
+---
+
+<section class="border-y border-wake-border bg-wake-text py-14">
+  <Container class="flex flex-wrap items-center justify-between gap-8">
+    <div class="max-w-[560px]">
+      <h2 class="mb-2 text-[clamp(1.5rem,2.8vw,2rem)] font-semibold tracking-tight text-white">
+        {band.title}
+      </h2>
+      <p class="text-[15px] leading-relaxed text-white/70">{band.subtitle}</p>
+    </div>
+    <div class="flex flex-wrap gap-3">
+      <Button
+        href="#contact"
+        class="!border-white !bg-white !text-wake-text hover:!bg-wake-accent hover:!border-wake-accent"
+        cta="book_diagnostic"
+        ctaLocation={placement}
+      >
+        {band.primary}
+        <i class="fa-solid fa-arrow-right text-[11px]"></i>
+      </Button>
+      <Button
+        href={wa}
+        target="_blank"
+        rel="noopener noreferrer"
+        variant="try"
+        cta="whatsapp"
+        ctaLocation={placement}
+      >
+        {band.secondary}
+        <i class="fa-brands fa-whatsapp text-sm"></i>
+      </Button>
+    </div>
+  </Container>
+</section>

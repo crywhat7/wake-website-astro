@@ -60,7 +60,13 @@ const healthPath = getLocalizedPath('health', locale);
     <div class="flex items-center gap-3">
       <LanguageSwitcher locale={locale} page="home" class="hidden sm:inline-flex" />
       <div class="nav-actions hidden md:block">
-        <Button href="#contact" variant="secondary" class="!px-3.5 !py-1.5 !text-[13px]">
+        <Button
+          href="#contact"
+          variant="secondary"
+          class="!px-3.5 !py-1.5 !text-[13px]"
+          cta="book_diagnostic"
+          ctaLocation="header"
+        >
           {dict.home.nav.cta}
         </Button>
       </div>

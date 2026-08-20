@@ -14,7 +14,7 @@ const dict = t(locale);
 const healthPath = getLocalizedPath('health', locale);
 ---
 
-<section id="products" class="py-32 max-lg:py-20">
+<section id="products" data-track-section="products" class="py-32 max-lg:py-20">
   <Container>
     <MonoTag>{dict.home.products.tag}</MonoTag>
     <h2
@@ -46,7 +46,7 @@ const healthPath = getLocalizedPath('health', locale);
         <p class="mb-8 max-w-[540px] text-[15px] leading-relaxed text-wake-muted">
           {dict.home.products.healthDesc}
         </p>
-        <Button href={healthPath} variant="secondary">
+        <Button href={healthPath} variant="secondary" cta="view_health" ctaLocation="products">
           {dict.home.products.healthCta}
           <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[11px]"></i>
         </Button>

@@ -7,6 +7,10 @@ interface Props {
   target?: string;
   rel?: string;
   id?: string;
+  /** Identificador del CTA para analítica (emite `cta_click`). */
+  cta?: string;
+  /** Sección donde vive el CTA, para segmentar el evento. */
+  ctaLocation?: string;
 }
 
 const {
@@ -17,6 +21,8 @@ const {
   target,
   rel,
   id,
+  cta,
+  ctaLocation,
 } = Astro.props;
 
 const variants: Record<string, string> = {
@@ -31,6 +37,8 @@ const variants: Record<string, string> = {
 
 const base =
   'inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium no-underline transition-all duration-200 cursor-pointer';
+
+const tracking = cta ? { 'data-cta': cta, 'data-cta-location': ctaLocation ?? 'unknown' } : {};
 ---
 
 {
@@ -41,11 +49,12 @@ const base =
       target={target}
       rel={rel}
       class:list={[base, variants[variant], className]}
+      {...tracking}
     >
       <slot />
     </a>
   ) : (
-    <button id={id} type={type} class:list={[base, variants[variant], className]}>
+    <button id={id} type={type} class:list={[base, variants[variant], className]} {...tracking}>
       <slot />
     </button>
   )

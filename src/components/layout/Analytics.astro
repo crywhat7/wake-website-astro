@@ -1,0 +1,144 @@
+---
+/**
+ * Capa de analítica y tracking de conversión.
+ *
+ * Los proveedores se activan solo si existen las variables de entorno; sin
+ * ellas el sitio sigue funcionando igual y `wakeTrack()` queda como no-op que
+ * bufferiza eventos (útil para depurar en local con ?debug_analytics=1).
+ *
+ * Variables (.env):
+ *   PUBLIC_GA_ID=G-XXXXXXXXXX        // Google Analytics 4
+ *   PUBLIC_CLARITY_ID=xxxxxxxxxx     // Microsoft Clarity (mapas de calor)
+ *
+ * Eventos emitidos automáticamente:
+ *   cta_click      { cta_id, cta_location, cta_href }
+ *   whatsapp_click { cta_location }
+ *   generate_lead  { form_id }
+ *   form_error     { form_id, reason }
+ *   scroll_depth   { percent }
+ *   section_view   { section_id }
+ */
+const gaId = import.meta.env.PUBLIC_GA_ID ?? '';
+const clarityId = import.meta.env.PUBLIC_CLARITY_ID ?? '';
+---
+
+{
+  gaId && (
+    <script
+      is:inline
+      async
+      src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+    />
+  )
+}
+
+<script is:inline define:vars={{ gaId, clarityId }}>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    window.dataLayer.push(arguments);
+  }
+  window.gtag = gtag;
+
+  if (gaId) {
+    gtag('js', new Date());
+    gtag('config', gaId, { send_page_view: true });
+  }
+
+  if (clarityId) {
+    (function (c, l, a, r, i, t, y) {
+      c[a] =
+        c[a] ||
+        function () {
+          (c[a].q = c[a].q || []).push(arguments);
+        };
+      t = l.createElement(r);
+      t.async = 1;
+      t.src = 'https://www.clarity.ms/tag/' + i;
+      y = l.getElementsByTagName(r)[0];
+      y.parentNode.insertBefore(t, y);
+    })(window, document, 'clarity', 'script', clarityId);
+  }
+
+  var debug =
+    typeof location !== 'undefined' &&
+    location.search.indexOf('debug_analytics=1') !== -1;
+
+  /** Punto único de entrada para cualquier evento de conversión. */
+  window.wakeTrack = function (event, params) {
+    var payload = params || {};
+    if (debug) console.info('[wakeTrack]', event, payload);
+    if (gaId) gtag('event', event, payload);
+    if (window.clarity) {
+      try {
+        window.clarity('event', event);
+      } catch (e) {
+        /* Clarity aún no está listo */
+      }
+    }
+  };
+</script>
+
+<script>
+  // Tracking declarativo: cualquier elemento con [data-cta] se mide sin tocar
+  // este archivo. `data-cta` identifica la acción, `data-cta-location` la sección.
+  const track = (event: string, params: Record<string, unknown> = {}) => {
+    (window as unknown as { wakeTrack?: (e: string, p?: unknown) => void }).wakeTrack?.(
+      event,
+      params
+    );
+  };
+
+  document.addEventListener(
+    'click',
+    (event) => {
+      const target = (event.target as HTMLElement | null)?.closest<HTMLElement>('[data-cta]');
+      if (!target) return;
+
+      const ctaId = target.dataset.cta ?? 'unknown';
+      const location = target.dataset.ctaLocation ?? 'unknown';
+      const href = target.getAttribute('href') ?? '';
+
+      if (href.startsWith('https://wa.me/')) {
+        track('whatsapp_click', { cta_id: ctaId, cta_location: location });
+      }
+      track('cta_click', { cta_id: ctaId, cta_location: location, cta_href: href });
+    },
+    { capture: true }
+  );
+
+  // Profundidad de scroll: un disparo por umbral y por carga de página.
+  const thresholds = [25, 50, 75, 100];
+  const fired = new Set<number>();
+  const onScroll = () => {
+    const doc = document.documentElement;
+    const scrollable = doc.scrollHeight - window.innerHeight;
+    if (scrollable <= 0) return;
+    const percent = Math.round((window.scrollY / scrollable) * 100);
+    for (const threshold of thresholds) {
+      if (percent >= threshold && !fired.has(threshold)) {
+        fired.add(threshold);
+        track('scroll_depth', { percent: threshold });
+      }
+    }
+    if (fired.size === thresholds.length) window.removeEventListener('scroll', onScroll);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Visibilidad de secciones clave para calcular tasas por sección
+  // (p. ej. clics en CTA de precios / vistas de la sección de precios).
+  const observed = document.querySelectorAll<HTMLElement>('[data-track-section]');
+  if (observed.length && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          const el = entry.target as HTMLElement;
+          track('section_view', { section_id: el.dataset.trackSection });
+          observer.unobserve(el);
+        }
+      },
+      { threshold: 0.4 }
+    );
+    observed.forEach((el) => observer.observe(el));
+  }
+</script>

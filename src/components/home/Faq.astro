@@ -1,0 +1,63 @@
+---
+import Container from '../ui/Container.astro';
+import MonoTag from '../ui/MonoTag.astro';
+import { t, type Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+const faq = dict.home.faq;
+
+// Schema.org FAQPage: además de resolver objeciones en la página, habilita
+// rich results en la SERP para las mismas preguntas que la gente ya busca.
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.items.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+---
+
+<section id="faq" data-track-section="faq" class="py-32 max-lg:py-20">
+  <Container>
+    <MonoTag>{faq.tag}</MonoTag>
+    <h2
+      class="mb-2 text-[clamp(2rem,4vw,2.75rem)] font-semibold leading-[1.15] tracking-tight text-wake-text"
+    >
+      {faq.title}
+    </h2>
+    <p class="mb-16 max-w-[600px] text-[17px] text-wake-muted">{faq.subtitle}</p>
+
+    <div class="mt-8 grid gap-3 lg:grid-cols-2">
+      {
+        faq.items.map((item, index) => (
+          <details
+            class="group rounded-xl border border-wake-border bg-white transition open:border-wake-text"
+            open={index === 0}
+          >
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 p-6 text-[15px] font-semibold tracking-tight text-wake-text marker:hidden">
+              {item.q}
+              <i class="fa-solid fa-plus shrink-0 text-[12px] text-wake-light transition-transform group-open:rotate-45" />
+            </summary>
+            <p class="px-6 pb-6 text-[15px] leading-relaxed text-wake-muted">{item.a}</p>
+          </details>
+        ))
+      }
+    </div>
+  </Container>
+</section>
+
+<style>
+  /* Safari sigue pintando el triángulo por defecto sin esto. */
+  summary::-webkit-details-marker {
+    display: none;
+  }
+</style>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} is:inline />

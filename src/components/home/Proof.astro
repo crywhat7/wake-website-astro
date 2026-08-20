@@ -1,0 +1,76 @@
+---
+import Container from '../ui/Container.astro';
+import MonoTag from '../ui/MonoTag.astro';
+import { getCaseStudies } from '../../data/proof';
+import { t, type Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+const cases = getCaseStudies(locale);
+
+// Sin casos reales cargados en `src/data/proof.ts` la sección no se renderiza:
+// preferimos ausencia de prueba social antes que prueba social inventada.
+---
+
+{
+  cases.length > 0 && (
+    <section
+      id="proof"
+      data-track-section="proof"
+      class="border-y border-wake-border bg-wake-subtle py-32 max-lg:py-20"
+    >
+      <Container>
+        <MonoTag>{dict.home.proof.tag}</MonoTag>
+        <h2 class="mb-2 text-[clamp(2rem,4vw,2.75rem)] font-semibold leading-[1.15] tracking-tight text-wake-text">
+          {dict.home.proof.title}
+        </h2>
+        <p class="mb-16 max-w-[600px] text-[17px] text-wake-muted">{dict.home.proof.subtitle}</p>
+
+        <div class="mt-8 grid gap-6 lg:grid-cols-2">
+          {cases.map((study) => (
+            <article class="flex flex-col rounded-xl border border-wake-border bg-white p-8 md:p-10">
+              <div class="mb-6 flex items-baseline gap-3">
+                <span class="text-[17px] font-semibold tracking-tight text-wake-text">
+                  {study.client}
+                </span>
+                <span class="font-mono text-[11px] uppercase tracking-wider text-wake-light">
+                  {study.industry}
+                </span>
+              </div>
+
+              <p class="mb-6 text-[15px] leading-relaxed text-wake-muted">{study.summary}</p>
+
+              {study.metrics.length > 0 && (
+                <div class="mb-6 grid gap-4 border-y border-wake-border-subtle py-6 sm:grid-cols-3">
+                  {study.metrics.map((metric) => (
+                    <div>
+                      <div class="font-mono text-[26px] font-medium tracking-tighter text-wake-text">
+                        {metric.value}
+                      </div>
+                      <div class="text-[13px] leading-snug text-wake-muted">{metric.label}</div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              <blockquote class="mt-auto border-l-2 border-wake-accent-dark pl-4">
+                <p class="mb-3 text-[15px] italic leading-relaxed text-wake-text">
+                  “{study.quote}”
+                </p>
+                <footer class="text-[13px] text-wake-light">
+                  <strong class="font-medium text-wake-muted">{study.author}</strong>
+                  {' — '}
+                  {study.role}
+                </footer>
+              </blockquote>
+            </article>
+          ))}
+        </div>
+      </Container>
+    </section>
+  )
+}
