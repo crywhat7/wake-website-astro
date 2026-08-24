@@ -9,6 +9,7 @@ export {
   LOCATION,
   PADDLE,
   PRICING,
+  SEO,
   SITE,
   SOCIAL,
   SOCIAL_LINKS,

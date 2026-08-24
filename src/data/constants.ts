@@ -175,6 +175,55 @@ export const ASSETS = {
 } as const;
 
 /* --------------------------------------------------------------------------
+ *  5b. SEO SOCIAL — Open Graph, Twitter/X, WhatsApp, verificaciones
+ *  ------------------------------------------------------------------------
+ *  Las imágenes viven en `public/og/` y las genera `scripts/generate-assets.mjs`
+ *  (`npm run assets`). Se guardan como PNG porque WhatsApp, Facebook, LinkedIn
+ *  y X NO renderizan SVG en las previsualizaciones: si el og:image es un .svg,
+ *  el enlace se comparte sin imagen.
+ * ------------------------------------------------------------------------ */
+export const SEO = {
+  /** Imagen Open Graph por defecto (la URL absoluta se arma en SeoHead) */
+  ogImage: '/og/wake-solutions.png',
+  ogImageEn: '/og/wake-solutions-en.png',
+  ogImageHealth: '/og/wake-health.png',
+  ogImageHealthEn: '/og/wake-health-en.png',
+  /** Variante 1:1 para clientes que recortan cuadrado (Telegram, algunos WhatsApp) */
+  ogImageSquare: '/og/wake-solutions-square.png',
+  ogImageSquareHealth: '/og/wake-health-square.png',
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
+  ogImageType: 'image/png',
+
+  /**
+   * Handles sociales. Déjalos vacíos si aún no existen: las metaetiquetas
+   * correspondientes simplemente no se imprimen (mejor eso que un valor falso).
+   */
+  twitterSite: '', // ej. '@wakesolutions'
+  twitterCreator: '', // ej. '@wakesolutions'
+  /** ID de app de Facebook para las estadísticas de compartidos (opcional) */
+  fbAppId: '',
+  /** URL de la página de Facebook para `article:publisher` (opcional) */
+  fbPage: '',
+
+  /** Color de la barra del navegador / PWA, por tema */
+  themeColor: '#0c0c0d',
+  themeColorHealth: '#141618',
+
+  /**
+   * Verificación de propiedad en buscadores. Pega aquí SOLO el valor del
+   * atributo `content` que te da cada panel; si está vacío no se imprime.
+   */
+  verification: {
+    google: '', // Google Search Console
+    bing: '', // Bing Webmaster Tools
+    yandex: '', // Yandex Webmaster
+    pinterest: '',
+    facebook: '', // facebook-domain-verification
+  },
+} as const;
+
+/* --------------------------------------------------------------------------
  *  6. AGREGADO — objeto único usado por los componentes
  * ------------------------------------------------------------------------ */
 export const SITE = {
@@ -186,6 +235,7 @@ export const SITE = {
   paddle: PADDLE,
   pricing: PRICING,
   assets: ASSETS,
+  seo: SEO,
 } as const;
 
 export function whatsappUrl(message: string) {

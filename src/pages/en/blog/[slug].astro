@@ -26,6 +26,9 @@ const copy = getPostLocale(post, locale);
   description={copy.description}
   keywords={copy.keywords}
   theme="home"
+  ogType="article"
+  publishedTime={`${post.published}T09:00:00Z`}
+  articleSection={post.category.en}
   canonicalPath={getBlogPath(locale, post.slug)}
   hreflang="en-US"
 >

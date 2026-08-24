@@ -1,5 +1,12 @@
 ---
-import { PRICING, SITE, activeSocialLinks, healthPriceLabel, healthPriceRaw } from '../../data/site';
+import {
+  PRICING,
+  SEO,
+  SITE,
+  activeSocialLinks,
+  healthPriceLabel,
+  healthPriceRaw,
+} from '../../data/site';
 import type { Locale, PageKey } from '../../i18n';
 import { getLocalizedPath, t } from '../../i18n';
 
@@ -14,13 +21,28 @@ const siteUrl = (Astro.site?.href ?? SITE.url).replace(/\/$/, '');
 const homeUrl = new URL(getLocalizedPath('home', locale), `${siteUrl}/`).href;
 const healthUrl = new URL(getLocalizedPath('health', locale), `${siteUrl}/`).href;
 
+/* Google pide el logo como ImageObject con medidas y en formato raster;
+   un SVG suelto se ignora en los resultados enriquecidos. */
+const logo = {
+  '@type': 'ImageObject',
+  url: new URL('icon-512.png', `${siteUrl}/`).href,
+  width: 512,
+  height: 512,
+  caption: SITE.name,
+};
+const ogImage = new URL(
+  (locale === 'en' ? SEO.ogImageEn : SEO.ogImage).replace(/^\//, ''),
+  `${siteUrl}/`,
+).href;
+
 const organization = {
   '@type': 'Organization',
   '@id': `${siteUrl}/#organization`,
   name: SITE.name,
   url: siteUrl,
   email: SITE.email,
-  logo: SITE.assets.healthLogoSvg,
+  logo,
+  image: ogImage,
   description: dict.home.seo.description,
   address: {
     '@type': 'PostalAddress',
@@ -41,6 +63,8 @@ const organization = {
     availableLanguage: ['Spanish', 'English'],
     areaServed: ['HN', 'US', 'LATAM'],
   },
+  foundingDate: String(SITE.foundingYear),
+  slogan: dict.home.seo.title,
   sameAs: activeSocialLinks.map(({ key }) => SITE.social[key]),
 };
 
@@ -59,7 +83,7 @@ const professionalService = {
   '@id': `${siteUrl}/#service`,
   name: SITE.name,
   url: homeUrl,
-  image: SITE.assets.healthLogoSvg,
+  image: ogImage,
   description: dict.home.seo.description,
   priceRange: '$$',
   address: organization.address,
@@ -74,7 +98,10 @@ const softwareApplication = {
   applicationCategory: 'HealthApplication',
   operatingSystem: 'Web, iOS, Android',
   url: healthUrl,
-  image: SITE.assets.healthLogo,
+  image: new URL(
+    (locale === 'en' ? SEO.ogImageHealthEn : SEO.ogImageHealth).replace(/^\//, ''),
+    `${siteUrl}/`,
+  ).href,
   description: dict.health.seo.description,
   offers: {
     '@type': 'Offer',

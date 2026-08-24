@@ -4,6 +4,7 @@ import Analytics from './Analytics.astro';
 import Motion from './Motion.astro';
 import SeoHead from '../seo/SeoHead.astro';
 import JsonLd from '../seo/JsonLd.astro';
+import { SEO, SITE } from '../../data/site';
 import type { Locale, PageKey } from '../../i18n';
 
 interface Props {
@@ -20,6 +21,16 @@ interface Props {
   hreflang?: string;
   alternates?: Array<{ hreflang: string; href: string }>;
   noindex?: boolean;
+  /** Tipo Open Graph: 'article' en el blog, 'product' en WAKE Health */
+  ogType?: 'website' | 'product' | 'article' | 'profile';
+  publishedTime?: string;
+  modifiedTime?: string;
+  articleSection?: string;
+  articleTags?: string[];
+  twitterLabel1?: string;
+  twitterData1?: string;
+  twitterLabel2?: string;
+  twitterData2?: string;
 }
 
 const {
@@ -36,6 +47,15 @@ const {
   hreflang,
   alternates,
   noindex,
+  ogType,
+  publishedTime,
+  modifiedTime,
+  articleSection,
+  articleTags,
+  twitterLabel1,
+  twitterData1,
+  twitterLabel2,
+  twitterData2,
 } = Astro.props;
 
 /*
@@ -53,6 +73,7 @@ const fontHref =
   'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap';
 
 const htmlLang = hreflang ?? (locale === 'es' ? 'es-HN' : 'en-US');
+const rssPath = locale === 'en' ? '/en/rss.xml' : '/rss.xml';
 ---
 
 <!doctype html>
@@ -60,12 +81,46 @@ const htmlLang = hreflang ?? (locale === 'es' ? 'es-HN' : 'en-US');
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
+
+    {/*
+      Iconos. Todos salen de `public/favicon.svg` vía `npm run assets`.
+      El .ico multi-resolución existe porque Windows, varios lectores RSS y
+      algunos rastreadores lo piden por la ruta fija /favicon.ico y, si no
+      está, registran un 404 en cada visita.
+    */}
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/favicon.svg" color={SEO.themeColor} />
+    <meta name="application-name" content={SITE.name} />
+    <meta name="apple-mobile-web-app-title" content={SITE.name} />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
+    {/* Evita que iOS convierta teléfonos y direcciones en enlaces con estilo
+        propio, que rompen la maquetación. */}
+    <meta name="format-detection" content="telephone=no,address=no,email=no" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    {/* Las capturas e imágenes del sitio viven en R2; resolver el DNS por
+        adelantado recorta el LCP, que sí pesa en el ranking. */}
+    <link
+      rel="dns-prefetch"
+      href="https://pub-f6d32fe4d40f4f899fa753aab8eb28d5.r2.dev"
+    />
+    <link
+      rel="dns-prefetch"
+      href="https://pub-c91a757ecc0647fc9f8436786c936eff.r2.dev"
+    />
     <link rel="preload" as="style" href={fontHref} />
     <link href={fontHref} rel="stylesheet" />
     <link
@@ -74,6 +129,15 @@ const htmlLang = hreflang ?? (locale === 'es' ? 'es-HN' : 'en-US');
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={`${SITE.name} — Blog`}
+      href={rssPath}
+    />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
     <SeoHead
       locale={locale}
       page={page}
@@ -81,12 +145,22 @@ const htmlLang = hreflang ?? (locale === 'es' ? 'es-HN' : 'en-US');
       description={description}
       keywords={keywords}
       image={image}
+      theme={theme}
+      type={ogType}
       canonicalPath={canonicalPath}
       placename={placename}
       geoRegionCode={geoRegionCode}
       hreflang={hreflang}
       alternates={alternates}
       noindex={noindex}
+      publishedTime={publishedTime}
+      modifiedTime={modifiedTime}
+      articleSection={articleSection}
+      articleTags={articleTags}
+      twitterLabel1={twitterLabel1}
+      twitterData1={twitterData1}
+      twitterLabel2={twitterLabel2}
+      twitterData2={twitterData2}
     />
     <JsonLd locale={locale} page={page} />
     <Analytics />

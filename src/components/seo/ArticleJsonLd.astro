@@ -1,5 +1,5 @@
 ---
-import { SITE } from '../../data/site';
+import { SEO, SITE } from '../../data/site';
 import type { Locale } from '../../i18n';
 
 interface Props {
@@ -22,12 +22,17 @@ const {
   keywords,
   published,
   path,
-  image = SITE.assets.healthLogoSvg,
+  image = SEO.ogImage,
   section,
 } = Astro.props;
 
 const siteUrl = (Astro.site?.href ?? SITE.url).replace(/\/$/, '');
 const url = new URL(path, `${siteUrl}/`).href;
+/* Google exige URL absoluta; las redes además rechazan SVG, por eso el
+   fallback es la tarjeta PNG y no el logo vectorial. */
+const imageUrl = /^https?:\/\//i.test(image)
+  ? image
+  : new URL(image.replace(/^\//, ''), `${siteUrl}/`).href;
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -37,7 +42,12 @@ const jsonLd = {
   headline,
   description,
   keywords,
-  image,
+  image: {
+    '@type': 'ImageObject',
+    url: imageUrl,
+    width: SEO.ogImageWidth,
+    height: SEO.ogImageHeight,
+  },
   datePublished: published,
   dateModified: published,
   inLanguage: locale === 'es' ? 'es-HN' : 'en-US',
@@ -47,7 +57,12 @@ const jsonLd = {
     '@type': 'Organization',
     name: SITE.name,
     url: siteUrl,
-    logo: { '@type': 'ImageObject', url: SITE.assets.healthLogoSvg },
+    logo: {
+      '@type': 'ImageObject',
+      url: new URL('icon-512.png', `${siteUrl}/`).href,
+      width: 512,
+      height: 512,
+    },
   },
 };
 ---

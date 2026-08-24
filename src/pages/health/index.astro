@@ -22,8 +22,12 @@ const dict = t(locale);
   title={dict.health.seo.title}
   description={dict.health.seo.description}
   keywords={dict.health.seo.keywords}
-  image={SITE.assets.gallery[0].src}
   theme="home"
+  ogType="product"
+  twitterLabel1="Precio"
+  twitterData1={`${SITE.pricing.symbol}${SITE.pricing.healthMonthly.toFixed(2)} / mes`}
+  twitterLabel2="Prueba gratis"
+  twitterData2={`${SITE.pricing.trialDays} días de prueba`}
 >
   <Header locale={locale} />
   <main>
